@@ -81,11 +81,23 @@
     <Compile Include="Class\cItemData.vb" />
     <Compile Include="Class\Sys_user.vb" />
     <Compile Include="Class\InventoryController.vb" />
+    <Compile Include="Forms\frmLogin.Designer.vb">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmMain.Designer.vb">
       <DependentUpon>frmMain.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTransaction.Designer.vb">
+      <DependentUpon>frmTransaction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmTransaction.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmUserManagement.Designer.vb">
@@ -97,6 +109,9 @@
     <Compile Include="Module\database.vb" />
     <Compile Include="Module\mod_system.vb" />
     <Compile Include="Module\security.vb" />
+    <Compile Include="Module\watermark.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -114,8 +129,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\frmLogin.resx">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTransaction.resx">
+      <DependentUpon>frmTransaction.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmUserManagement.resx">
       <DependentUpon>frmUserManagement.vb</DependentUpon>

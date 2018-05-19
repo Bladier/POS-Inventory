@@ -16,6 +16,7 @@
 
         If ds.Tables(0).Rows.Count = 0 Then Exit Sub
 
+        lvUser.Items.Clear()
         For Each dr As DataRow In ds.Tables(0).Rows
             Dim u As New Sys_user
             u.LoadUserByRow(dr)
@@ -85,6 +86,8 @@
         txtpword1.Enabled = st
         cboUserRole.Enabled = st
         chkEnableDisable.Enabled = st
+
+        loadUser()
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
@@ -143,6 +146,7 @@
             .Lastname = txtLname.Text
             .UserName = txtUname.Text
             .userRole = cboUserRole.Text
+            .UserStatus = IIf(chkEnableDisable.Checked, True, False)
             .SaveUser(False, txtPword.Text)
         End With
 
@@ -185,4 +189,8 @@
 
         Return True
     End Function
+
+    Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+        Me.Close()
+    End Sub
 End Class

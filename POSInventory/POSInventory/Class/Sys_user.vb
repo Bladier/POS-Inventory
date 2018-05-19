@@ -177,6 +177,7 @@ Public Class Sys_user
                 If NewPassword <> "" Then
                     .Item("Pword") = Encrypt(_password)
                 End If
+                .Item("Status") = IIf(_UserStatus, 1, 0)
             End With
         End If
 

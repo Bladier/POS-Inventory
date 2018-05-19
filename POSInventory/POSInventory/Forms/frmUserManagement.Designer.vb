@@ -231,9 +231,9 @@ Partial Class frmUserManagement
         'btnSave
         '
         Me.btnSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.Location = New System.Drawing.Point(308, 311)
+        Me.btnSave.Location = New System.Drawing.Point(281, 311)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(75, 23)
+        Me.btnSave.Size = New System.Drawing.Size(125, 23)
         Me.btnSave.TabIndex = 17
         Me.btnSave.Text = "&Save"
         Me.btnSave.UseVisualStyleBackColor = True
@@ -241,9 +241,9 @@ Partial Class frmUserManagement
         'btnCancel
         '
         Me.btnCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(420, 311)
+        Me.btnCancel.Location = New System.Drawing.Point(418, 311)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(75, 23)
+        Me.btnCancel.Size = New System.Drawing.Size(115, 23)
         Me.btnCancel.TabIndex = 18
         Me.btnCancel.Text = "&Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
