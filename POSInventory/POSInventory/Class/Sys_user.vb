@@ -196,14 +196,14 @@ Public Class Sys_user
     End Sub
 
     Public Function LoginUser(ByVal user As String, ByVal password As String) As Boolean
-        mySql = "SELECT ID, LOWER(Username) FROM " & fillData
+        mySql = "SELECT ID, LOWER(uname) FROM " & fillData
         mySql &= vbCrLf & String.Format(" WHERE LOWER(Uname) = LOWER('{0}') AND Pword = '{1}' AND STATUS <> '0'", user, Encrypt(password))
         Dim ds As DataSet
 
         ds = LoadSQL(mySql)
         If ds.Tables(0).Rows.Count = 0 Then Return False
 
-        LoadUser(ds.Tables(0).Rows(0).Item("UserID"))
+        LoadUser(ds.Tables(0).Rows(0).Item("ID"))
 
         Return True
     End Function
