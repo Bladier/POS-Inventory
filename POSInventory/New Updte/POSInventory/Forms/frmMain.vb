@@ -32,4 +32,8 @@
     Private Sub ToolStripButton4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton4.Click
         frmIMD.Show()
     End Sub
+
+    Private Sub DailyToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DailyToolStripMenuItem.Click
+        qryDate.Show()
+    End Sub
 End Class

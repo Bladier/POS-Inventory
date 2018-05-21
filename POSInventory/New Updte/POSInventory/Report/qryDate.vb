@@ -6,17 +6,17 @@ Public Class qryDate
     Dim verified_url As String
 
     Enum ReportType As Integer
-        Inventory = 0
-        DailyCashCount = 1
+        StockIn = 0
+        Sales = 1
 
     End Enum
 
-    Friend FormType As ReportType = ReportType.Inventory
+    Friend FormType As ReportType = ReportType.StockIn
     Private Sub Generate()
         Select Case FormType
-            Case ReportType.Inventory
-
-            Case ReportType.DailyCashCount
+            Case ReportType.StockIn
+                StockIn()
+            Case ReportType.Sales
 
         End Select
     End Sub
@@ -83,6 +83,27 @@ Public Class qryDate
         frmReport.Show()
     End Sub
 
+    Private Sub StockIn()
+        Dim mySql As String, dsName As String, rptPath As String
+        Dim dt As DateTime = Convert.ToDateTime(monCal.SelectionStart.ToShortDateString)
+        Dim format As String = "yyyy-MM-dd"
+        Dim str As String = dt.ToString(format)
+
+        dsName = "dsStockIn"
+        rptPath = "Report\rptStockIn.rdlc"
+        mySql = "SELECT inv.DOCID,inv.DOCNUM,inv.DOCDATE,inv.DOCSTATUS, "
+        mySql &= "invLines.Itemcode, invLines.DESCRIPTION, "
+        mySql &= "invLines.RowTotal, invLines.qty "
+        mySql &= "FROM inv Inner Join invlines ON inv.DOCID = invlines.DOCID "
+        mySql &= "WHERE inv.DOCDATE = '" & str & "' AND inv.DOCSTATUS <> '0' ORDER BY inv.DOCID ASC"
+
+        Dim addParameter As New Dictionary(Of String, String)
+        addParameter.Add("txtMonthOf", "DATE : " & monCal.SelectionStart.ToString("MMMM dd, yyyy"))
+        addParameter.Add("txtUsername", SystemUser.UserName)
+
+        frmReport.ReportInit(mySql, dsName, rptPath, addParameter)
+        frmReport.Show()
+    End Sub
 
     '' STEP 4
     'Private Function NoFilter() As Boolean

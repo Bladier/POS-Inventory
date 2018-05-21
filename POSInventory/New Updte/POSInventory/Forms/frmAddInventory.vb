@@ -222,7 +222,7 @@
             Exit Sub
         End If
 
-        Dim mysql As String = "select * from inv where docid=" + dID
+        Dim mysql As String = "select * from inv where docid=" & dID
         Dim ds As DataSet = LoadSQL(mysql, "inv")
 
         With ds.Tables(0).Rows(0)
@@ -231,6 +231,7 @@
         database.SaveEntry(ds, False)
 
         MsgBox("Successfully voided", MsgBoxStyle.Information)
+        lvListIItems.Items.Clear()
         clearfields()
     End Sub
 

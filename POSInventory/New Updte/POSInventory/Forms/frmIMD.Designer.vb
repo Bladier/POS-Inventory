@@ -327,7 +327,7 @@ Partial Class frmIMD
         Me.Controls.Add(Me.btnSave)
         Me.MaximizeBox = False
         Me.Name = "frmIMD"
-        Me.Text = "IMD"
+        Me.Text = "ADD Item"
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
