@@ -28,4 +28,8 @@
     Private Sub ToolStripButton3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton3.Click
         frmIMDList.Show()
     End Sub
+
+    Private Sub ToolStripButton4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton4.Click
+        frmIMD.Show()
+    End Sub
 End Class

@@ -37,7 +37,8 @@
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
-        If txtQty.Text = "" Then Exit Sub
+        If lvListIItems.Items.Count = 0 Then Exit Sub
+
 
         Dim mysql As String = "Select * from INV limit 1"
         Dim ds As DataSet = LoadSQL(mysql, "INV")
@@ -47,6 +48,7 @@
         With dsnewrow
             .Item("DocNum") = GetInvNum()
             .Item("DocDate") = CurrentDate
+            .Item("GrandTotal") = lvListIItems.Items.Count
             .Item("Partner") = "N/A"
         End With
         ds.Tables(0).Rows.Add(dsnewrow)
@@ -58,28 +60,31 @@
 
         Dim docid As Integer = ds.Tables(0).Rows(0).Item("DocID")
 
+        For Each lv As ListViewItem In lvListIItems.Items
 
-        mysql = "Select * from InvLines limit 1"
-        ds.Clear()
-        ds = LoadSQL(mysql, "InvLines")
+            mysql = "Select * from InvLines limit 1"
+            ds.Clear()
+            ds = LoadSQL(mysql, "InvLines")
 
-        dsnewrow = ds.Tables(0).NewRow
-        With dsnewrow
-            .Item("DocID") = docid
-            .Item("itemcode") = cd.ItemCode
-            .Item("Description") = cd.Description
-            .Item("QTY") = txtQty.Text
-            .Item("UOM") = cd.UnitofMeasure
-            .Item("Remarks") = "UPLOADED DATE " & CurrentDate
-        End With
-        ds.Tables(0).Rows.Add(dsnewrow)
-        database.SaveEntry(ds)
+            dsnewrow = ds.Tables(0).NewRow
+            With dsnewrow
+                .Item("DocID") = docid
+                .Item("itemcode") = lv.Text
+                .Item("Description") = lv.SubItems(1).Text
+                .Item("UOM") = lv.SubItems(2).Text
+                .Item("QTY") = lv.SubItems(3).Text
+                .Item("Remarks") = "UPLOADED DATE " & CurrentDate
+            End With
+            ds.Tables(0).Rows.Add(dsnewrow)
+            database.SaveEntry(ds)
 
-        AddInventory(cd.ItemCode, txtQty.Text)
+            AddInventory(cd.ItemCode, lv.SubItems(3).Text)
+        Next
 
         MsgBox("Inventory Added", MsgBoxStyle.Information, "Inventory")
         clearfields()
-        ' updateInvNum()
+        lvListIItems.Items.Clear()
+        updateInvNum()
     End Sub
 
 
@@ -109,7 +114,7 @@
         txtDescription.Clear()
         txtSalePrice.Clear()
         txtQty.Clear()
-        txtremarks.Clear()
+
         TxtUnitPrice.Clear()
         txtUOM.Clear()
         txtSearch.Clear()
@@ -118,5 +123,57 @@
 
     Private Sub txtQty_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtQty.KeyPress
         If isEnter(e) Then btnSave.PerformClick()
+    End Sub
+
+    Private Sub frmAddInventory_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
+        If txtQty.Text = "" Then Exit Sub
+        If txtQty.Text = 0 Then Exit Sub
+
+        If btnAdd.Text = "&>" Then
+            lvListIItems.SelectedItems(0).Text = txtItemcode.Text
+            lvListIItems.SelectedItems(0).SubItems(1).Text = txtDescription.Text
+            lvListIItems.SelectedItems(0).SubItems(2).Text = txtUOM.Text
+            lvListIItems.SelectedItems(0).SubItems(3).Text = txtQty.Text
+            lvListIItems.SelectedItems(0).SubItems(4).Text = TxtUnitPrice.Text
+            lvListIItems.SelectedItems(0).SubItems(5).Text = txtSalePrice.Text
+            btnAdd.Text = "&+"
+            clearfields()
+            Exit Sub
+        End If
+
+        For Each lv1 As ListViewItem In lvListIItems.Items
+            If lv1.Text = txtItemcode.Text Then
+                lv1.BackColor = Color.Cyan
+                Exit Sub
+            End If
+        Next
+
+        Dim lv As ListViewItem = lvListIItems.Items.Add(cd.ItemCode)
+        lv.SubItems.Add(cd.Description)
+        lv.SubItems.Add(cd.UnitofMeasure)
+        lv.SubItems.Add(txtQty.Text)
+        lv.SubItems.Add(TxtUnitPrice.Text)
+        lv.SubItems.Add(txtSalePrice.Text)
+        clearfields()
+    End Sub
+
+    Private Sub lvListIItems_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lvListIItems.DoubleClick
+        If lvListIItems.SelectedItems.Count = 0 Then Exit Sub
+
+        txtItemcode.Text = lvListIItems.SelectedItems(0).Text
+        txtDescription.Text = lvListIItems.SelectedItems(0).SubItems(1).Text
+        txtUOM.Text = lvListIItems.SelectedItems(0).SubItems(2).Text
+        txtQty.Text = lvListIItems.SelectedItems(0).SubItems(3).Text
+        TxtUnitPrice.Text = lvListIItems.SelectedItems(0).SubItems(4).Text
+        txtSalePrice.Text = lvListIItems.SelectedItems(0).SubItems(5).Text
+        btnAdd.Text = "&>"
+    End Sub
+
+    Private Sub btnRemove_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRemove.Click
+        lvListIItems.SelectedItems(0).Remove()
     End Sub
 End Class
