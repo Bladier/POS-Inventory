@@ -82,12 +82,21 @@
     <Compile Include="Class\cItem.vb" />
     <Compile Include="Class\cItemData.vb" />
     <Compile Include="Class\CollectionItemData.vb" />
+    <Compile Include="Class\invCollection.vb" />
+    <Compile Include="Class\Inv.vb" />
+    <Compile Include="Class\invLines.vb" />
     <Compile Include="Class\Sys_user.vb" />
     <Compile Include="Class\InventoryController.vb" />
     <Compile Include="Forms\frmAddInventory.Designer.vb">
       <DependentUpon>frmAddInventory.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmAddInventory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmHistory.Designer.vb">
+      <DependentUpon>frmHistory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmHistory.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmIMD.Designer.vb">
@@ -135,6 +144,7 @@
     </Compile>
     <Compile Include="Module\database.vb" />
     <Compile Include="Module\mod_system.vb" />
+    <Compile Include="Class\Reporting.vb" />
     <Compile Include="Module\security.vb" />
     <Compile Include="Module\watermark.vb">
       <SubType>Component</SubType>
@@ -175,6 +185,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Forms\frmAddInventory.resx">
       <DependentUpon>frmAddInventory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmHistory.resx">
+      <DependentUpon>frmHistory.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmIMD.resx">
       <DependentUpon>frmIMD.vb</DependentUpon>

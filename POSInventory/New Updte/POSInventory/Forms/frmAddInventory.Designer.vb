@@ -26,6 +26,8 @@ Partial Class frmAddInventory
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.btnRemove = New System.Windows.Forms.Button()
         Me.txtQty = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtUOM = New System.Windows.Forms.TextBox()
@@ -40,8 +42,6 @@ Partial Class frmAddInventory
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btncancel = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
-        Me.btnAdd = New System.Windows.Forms.Button()
-        Me.btnRemove = New System.Windows.Forms.Button()
         Me.lvListIItems = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -49,6 +49,8 @@ Partial Class frmAddInventory
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.btnHistory = New System.Windows.Forms.Button()
+        Me.btnVoid = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -100,6 +102,24 @@ Partial Class frmAddInventory
         Me.GroupBox2.Size = New System.Drawing.Size(747, 108)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
+        '
+        'btnAdd
+        '
+        Me.btnAdd.Location = New System.Drawing.Point(672, 69)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(32, 23)
+        Me.btnAdd.TabIndex = 4
+        Me.btnAdd.Text = "&+"
+        Me.btnAdd.UseVisualStyleBackColor = True
+        '
+        'btnRemove
+        '
+        Me.btnRemove.Location = New System.Drawing.Point(708, 69)
+        Me.btnRemove.Name = "btnRemove"
+        Me.btnRemove.Size = New System.Drawing.Size(31, 23)
+        Me.btnRemove.TabIndex = 5
+        Me.btnRemove.Text = "-"
+        Me.btnRemove.UseVisualStyleBackColor = True
         '
         'txtQty
         '
@@ -221,24 +241,6 @@ Partial Class frmAddInventory
         Me.btnSave.Text = "&Save"
         Me.btnSave.UseVisualStyleBackColor = True
         '
-        'btnAdd
-        '
-        Me.btnAdd.Location = New System.Drawing.Point(672, 69)
-        Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(32, 23)
-        Me.btnAdd.TabIndex = 4
-        Me.btnAdd.Text = "&+"
-        Me.btnAdd.UseVisualStyleBackColor = True
-        '
-        'btnRemove
-        '
-        Me.btnRemove.Location = New System.Drawing.Point(708, 69)
-        Me.btnRemove.Name = "btnRemove"
-        Me.btnRemove.Size = New System.Drawing.Size(31, 23)
-        Me.btnRemove.TabIndex = 5
-        Me.btnRemove.Text = "-"
-        Me.btnRemove.UseVisualStyleBackColor = True
-        '
         'lvListIItems
         '
         Me.lvListIItems.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6})
@@ -279,11 +281,31 @@ Partial Class frmAddInventory
         '
         Me.ColumnHeader6.Text = "Sale Price"
         '
+        'btnHistory
+        '
+        Me.btnHistory.Location = New System.Drawing.Point(20, 350)
+        Me.btnHistory.Name = "btnHistory"
+        Me.btnHistory.Size = New System.Drawing.Size(75, 23)
+        Me.btnHistory.TabIndex = 5
+        Me.btnHistory.Text = "&History"
+        Me.btnHistory.UseVisualStyleBackColor = True
+        '
+        'btnVoid
+        '
+        Me.btnVoid.Location = New System.Drawing.Point(101, 350)
+        Me.btnVoid.Name = "btnVoid"
+        Me.btnVoid.Size = New System.Drawing.Size(75, 23)
+        Me.btnVoid.TabIndex = 6
+        Me.btnVoid.Text = "&Void"
+        Me.btnVoid.UseVisualStyleBackColor = True
+        '
         'frmAddInventory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(778, 382)
+        Me.Controls.Add(Me.btnVoid)
+        Me.Controls.Add(Me.btnHistory)
         Me.Controls.Add(Me.lvListIItems)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.btncancel)
@@ -327,4 +349,6 @@ Partial Class frmAddInventory
     Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader5 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader6 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents btnHistory As System.Windows.Forms.Button
+    Friend WithEvents btnVoid As System.Windows.Forms.Button
 End Class
