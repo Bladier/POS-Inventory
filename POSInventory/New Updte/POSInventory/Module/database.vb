@@ -7,9 +7,9 @@
 Friend Module database
     Public con As MySqlConnection
     Public ReaderCon As MySqlConnection
-    Friend dbName As String = "w3w1llh@cku" 'Final
-    Friend fbUser As String = "blade"
-    Friend fbPass As String = "bladegamer"
+    Friend dbName As String = "w3w1llh_cku" 'Final
+    Friend fbUser As String = "root"
+    Friend fbPass As String = ""
     Friend fbDataSet As New DataSet
     Friend conStr As String = String.Empty
 
