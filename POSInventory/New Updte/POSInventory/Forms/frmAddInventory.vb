@@ -1,5 +1,7 @@
 ﻿Public Class frmAddInventory
     Dim cd As cItemData
+    Dim dID As Integer = 0
+    Friend isVoid As Boolean = False
 
     Private Sub txtSearch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSearch.KeyPress
         If isEnter(e) Then
@@ -73,6 +75,8 @@
                 .Item("Description") = lv.SubItems(1).Text
                 .Item("UOM") = lv.SubItems(2).Text
                 .Item("QTY") = lv.SubItems(3).Text
+                .Item("UnitPrice") = lv.SubItems(4).Text
+                .Item("SalePrice") = lv.SubItems(5).Text
                 .Item("Remarks") = "UPLOADED DATE " & CurrentDate
             End With
             ds.Tables(0).Rows.Add(dsnewrow)
@@ -119,6 +123,10 @@
         txtUOM.Clear()
         txtSearch.Clear()
         txtSearch.Focus()
+
+        isVoid = False
+        Me.Text = "Add Inventory"
+        btnSave.Enabled = True
     End Sub
 
     Private Sub txtQty_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtQty.KeyPress
@@ -175,5 +183,59 @@
 
     Private Sub btnRemove_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRemove.Click
         lvListIItems.SelectedItems(0).Remove()
+    End Sub
+
+    Private Sub btnHistory_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHistory.Click
+        frmHistory.ShowDialog()
+    End Sub
+
+    Friend Sub load_History(ByVal i As Inv)
+        If i.ID = Nothing Then Exit Sub
+
+        dID = i.ID
+
+        lvListIItems.Items.Clear()
+        For Each inlnes As invLines In i.InvLines
+            Dim lv As ListViewItem = lvListIItems.Items.Add(inlnes.Itemcode)
+            lv.SubItems.Add(inlnes.desc)
+            lv.SubItems.Add(inlnes.UOM)
+            lv.SubItems.Add(inlnes.qty)
+            lv.SubItems.Add(inlnes.UnitPrice)
+            lv.SubItems.Add(inlnes.SalePrice)
+
+            lv.Tag = inlnes.ID
+        Next
+
+        Me.Text = "Add Inventory [VOID]"
+        btnSave.Enabled = False
+    End Sub
+
+    Private Sub btnVoid_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVoid.Click
+        If lvListIItems.Items.Count = 0 Then Exit Sub
+        If Not isVoid Then
+            MsgBox("Mod not for void")
+            Exit Sub
+        End If
+
+        If SystemUser.userRole <> "Admin" Then
+            MsgBox("You can't access this module", MsgBoxStyle.Critical)
+            Exit Sub
+        End If
+
+        Dim mysql As String = "select * from inv where docid=" + dID
+        Dim ds As DataSet = LoadSQL(mysql, "inv")
+
+        With ds.Tables(0).Rows(0)
+            .Item("Docstatus") = 0
+        End With
+        database.SaveEntry(ds, False)
+
+        MsgBox("Successfully voided", MsgBoxStyle.Information)
+        clearfields()
+    End Sub
+
+    Private Sub btncancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btncancel.Click
+        clearfields()
+        lvListIItems.Items.Clear()
     End Sub
 End Class

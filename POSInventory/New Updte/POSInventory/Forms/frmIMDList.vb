@@ -78,6 +78,7 @@
 
         cd.Load_Item(idx)
 
+
         If isAdd_Or_Update_IMD Then
             frmIMD.loaditem(cd)
             frmIMD.Show()
