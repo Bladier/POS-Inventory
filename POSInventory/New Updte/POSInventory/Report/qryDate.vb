@@ -17,7 +17,7 @@ Public Class qryDate
             Case ReportType.StockIn
                 StockIn()
             Case ReportType.Sales
-
+                SalesReport()
         End Select
     End Sub
 
@@ -50,15 +50,31 @@ Public Class qryDate
 
     Private Sub SalesReport()
         Dim mySql As String, dsName As String, rptPath As String
+        Dim dt As DateTime = Convert.ToDateTime(monCal.SelectionStart.ToShortDateString)
+        Dim format As String = "yyyy-MM-dd"
+        Dim str As String = dt.ToString(format)
         dsName = "dsSales"
-        rptPath = "Reports\rpt_SalesReport.rdlc"
+        rptPath = "Report\rpt_SalesReport.rdlc"
         mySql = "SELECT D.DOCID, "
-        mySql &= "WHERE D.DOCDATE = '" & monCal.SelectionStart.ToShortDateString & "' AND D.STATUS <> 'V' AND D.MOP <> 'E' AND D.MOP <>'S' ORDER BY DL.DOCID ASC"
+        mySql &= "CASE D.DOCTYPE "
+        mySql &= "WHEN 0 THEN 'SALES' "
+        mySql &= "WHEN 1 THEN 'SALES' "
+        mySql &= "WHEN 2 THEN 'RECALL' "
+        mySql &= "WHEN 3 THEN 'RETURNS' "
+        mySql &= "WHEN 4 THEN 'STOCKOUT' "
+        mySql &= "End AS DOCTYPE, "
+        mySql &= "D.MOP, D.CODE, D.CUSTOMER, D.DOCDATE, D.NOVAT, D.VATRATE, D.VATTOTAL, D.DOCTOTAL, "
+        mySql &= "D.STATUS, D.REMARKS,"
+        mySql &= "DL.ITEMCODE, DL.DESCRIPTION, DL.QTY, DL.UNITPRICE, DL.SALEPRICE, DL.ROWTOTAL "
+        mySql &= "FROM DOC D "
+        mySql &= "INNER JOIN DOCLINES DL ON DL.DOCID = D.DOCID "
+        mySql &= "WHERE D.DOCDATE = '" & str & "' AND D.STATUS <> 'V'"
 
+        If DEV_MODE Then Console.WriteLine(mySql)
         Dim addParameter As New Dictionary(Of String, String)
         addParameter.Add("txtMonthOf", "DATE : " & monCal.SelectionStart.ToString("MMMM dd, yyyy"))
-        ' addParameter.Add("branchName", branchName)
-        addParameter.Add("txtUsername", SystemUser.USERNAME)
+        addParameter.Add("branchName", "GSC")
+        addParameter.Add("txtUsername", SystemUser.UserName)
 
         frmReport.ReportInit(mySql, dsName, rptPath, addParameter)
         frmReport.Show()
@@ -76,7 +92,6 @@ Public Class qryDate
         If DEV_MODE Then Console.WriteLine(mySql)
         Dim addParameter As New Dictionary(Of String, String)
         addParameter.Add("txtMonthOf", "DATE : " & monCal.SelectionStart.ToString("MMMM dd, yyyy"))
-        ' addParameter.Add("branchName", branchName)
         addParameter.Add("txtUsername", SystemUser.USERNAME)
 
         frmReport.ReportInit(mySql, dsName, rptPath, addParameter)
@@ -93,7 +108,7 @@ Public Class qryDate
         rptPath = "Report\rptStockIn.rdlc"
         mySql = "SELECT inv.DOCID,inv.DOCNUM,inv.DOCDATE,inv.DOCSTATUS, "
         mySql &= "invLines.Itemcode, invLines.DESCRIPTION, "
-        mySql &= "invLines.RowTotal, invLines.qty "
+        mySql &= "invLines.RowTotal, invLines.qty,invLines.UOm "
         mySql &= "FROM inv Inner Join invlines ON inv.DOCID = invlines.DOCID "
         mySql &= "WHERE inv.DOCDATE = '" & str & "' AND inv.DOCSTATUS <> '0' ORDER BY inv.DOCID ASC"
 

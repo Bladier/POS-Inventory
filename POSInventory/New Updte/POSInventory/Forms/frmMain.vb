@@ -1,12 +1,43 @@
 ﻿Public Class frmMain
 
     Friend Sub NotyetLogin(Optional ByVal st As Boolean = True)
+        If Not st Then
+            LoginToolStripMenuItem.Text = "&Log Out"
+        Else
+            LoginToolStripMenuItem.Text = "&Login"
+        End If
 
+        UserManagementToolStripMenuItem.Enabled = Not st
 
+        DailyToolStripMenuItem.Enabled = Not st
+
+        ToolStripButton1.Enabled = Not st
+        ToolStripButton2.Enabled = Not st
+        ToolStripButton3.Enabled = Not st
+        ToolStripButton4.Enabled = Not st
     End Sub
 
     Private Sub LoginToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoginToolStripMenuItem.Click
-        frmLogin.ShowDialog()
+        If LoginToolStripMenuItem.Text = "&Login" Then
+            frmLogin.Show()
+        Else
+            Dim ans As DialogResult = MsgBox("Do you want to LOGOUT?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information, "Logout")
+            If ans = Windows.Forms.DialogResult.No Then Exit Sub
+
+            SystemUser = Nothing
+            Dim formNames As New List(Of String)
+            For Each Form In My.Application.OpenForms
+                If Form.Name <> "frmMain" Or Not Form.name <> "frmLogin" Then
+                    formNames.Add(Form.Name)
+                End If
+            Next
+            For Each currentFormName As String In formNames
+                Application.OpenForms(currentFormName).Close()
+            Next
+            MsgBox("Thank you!", MsgBoxStyle.Information)
+            NotyetLogin()
+            frmLogin.Show()
+        End If
     End Sub
 
     Private Sub UserManagementToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UserManagementToolStripMenuItem.Click
@@ -14,6 +45,12 @@
     End Sub
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        If SystemUser.UserName = Nothing Then
+            NotyetLogin()
+        Else
+            NotyetLogin(False)
+        End If
+
         frmLogin.ShowDialog()
     End Sub
 
@@ -33,7 +70,19 @@
         frmIMD.Show()
     End Sub
 
-    Private Sub DailyToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DailyToolStripMenuItem.Click
+  
+
+    Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
+        End
+    End Sub
+
+    Private Sub SalesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SalesToolStripMenuItem.Click
+        qryDate.FormType = qryDate.ReportType.Sales
+        qryDate.Show()
+    End Sub
+
+    Private Sub StockInToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles StockInToolStripMenuItem.Click
+        qryDate.FormType = qryDate.ReportType.StockIn
         qryDate.Show()
     End Sub
 End Class

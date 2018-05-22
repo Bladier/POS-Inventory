@@ -28,6 +28,11 @@
 
         MsgBox("Welcome, " & u_ser.UserName, MsgBoxStyle.Information, "L O G I N")
 
+        frmMain.Show()
+        frmMain.NotyetLogin(False)
+        'frmMain.CheckStoreStatus()
+
+        Clearfield()
         Me.Close()
     End Sub
 

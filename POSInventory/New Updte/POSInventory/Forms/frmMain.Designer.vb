@@ -26,17 +26,19 @@ Partial Class frmMain
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoginToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserManagementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DailyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
-        Me.DailyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StockInToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -52,7 +54,7 @@ Partial Class frmMain
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoginToolStripMenuItem, Me.ExitToolStripMenuItem, Me.UserManagementToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoginToolStripMenuItem, Me.UserManagementToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "&File"
@@ -61,19 +63,19 @@ Partial Class frmMain
         '
         Me.LoginToolStripMenuItem.Name = "LoginToolStripMenuItem"
         Me.LoginToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
-        Me.LoginToolStripMenuItem.Text = "&Login"
-        '
-        'ExitToolStripMenuItem
-        '
-        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
-        Me.ExitToolStripMenuItem.Text = "&Exit"
+        Me.LoginToolStripMenuItem.Text = "&Logout"
         '
         'UserManagementToolStripMenuItem
         '
         Me.UserManagementToolStripMenuItem.Name = "UserManagementToolStripMenuItem"
         Me.UserManagementToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
         Me.UserManagementToolStripMenuItem.Text = "&User Management"
+        '
+        'ExitToolStripMenuItem
+        '
+        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.ExitToolStripMenuItem.Text = "&Exit"
         '
         'ToolsToolStripMenuItem
         '
@@ -87,6 +89,19 @@ Partial Class frmMain
         Me.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
         Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(59, 20)
         Me.ReportsToolStripMenuItem.Text = "&Reports"
+        '
+        'DailyToolStripMenuItem
+        '
+        Me.DailyToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SalesToolStripMenuItem, Me.StockInToolStripMenuItem})
+        Me.DailyToolStripMenuItem.Name = "DailyToolStripMenuItem"
+        Me.DailyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DailyToolStripMenuItem.Text = "&Daily"
+        '
+        'SalesToolStripMenuItem
+        '
+        Me.SalesToolStripMenuItem.Name = "SalesToolStripMenuItem"
+        Me.SalesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SalesToolStripMenuItem.Text = "&Sales"
         '
         'AboutToolStripMenuItem
         '
@@ -135,11 +150,11 @@ Partial Class frmMain
         Me.ToolStripButton4.Size = New System.Drawing.Size(76, 22)
         Me.ToolStripButton4.Text = "Add Item"
         '
-        'DailyToolStripMenuItem
+        'StockInToolStripMenuItem
         '
-        Me.DailyToolStripMenuItem.Name = "DailyToolStripMenuItem"
-        Me.DailyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.DailyToolStripMenuItem.Text = "&Daily"
+        Me.StockInToolStripMenuItem.Name = "StockInToolStripMenuItem"
+        Me.StockInToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.StockInToolStripMenuItem.Text = "&StockIn"
         '
         'frmMain
         '
@@ -174,5 +189,7 @@ Partial Class frmMain
     Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripButton4 As System.Windows.Forms.ToolStripButton
     Friend WithEvents DailyToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SalesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents StockInToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

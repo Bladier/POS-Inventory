@@ -682,4 +682,7 @@ Public Class frmTransaction
     '    End Function
 
    
+    Private Sub btnReceipt_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReceipt.Click
+        frmPrint.Show()
+    End Sub
 End Class
