@@ -48,6 +48,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Ampeross-Qetto-Power-point.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DeathCodez">
       <HintPath>.\DeathCodez.dll</HintPath>
@@ -160,11 +163,11 @@
     <Compile Include="Forms\frmUserManagement.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Module\database.vb" />
-    <Compile Include="Module\mod_system.vb" />
+    <Compile Include="Forms\Module\database.vb" />
+    <Compile Include="Forms\Module\mod_system.vb" />
     <Compile Include="Class\Reporting.vb" />
-    <Compile Include="Module\security.vb" />
-    <Compile Include="Module\watermark.vb">
+    <Compile Include="Forms\Module\security.vb" />
+    <Compile Include="Forms\Module\watermark.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -283,7 +286,12 @@
       <DependentUpon>dsReports.xsd</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Image\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Ampeross-Qetto-Power-point.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

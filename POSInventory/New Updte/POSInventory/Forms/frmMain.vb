@@ -58,6 +58,7 @@
     End Sub
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
         If SystemUser.UserName = Nothing Then
             NotyetLogin()
         Else
