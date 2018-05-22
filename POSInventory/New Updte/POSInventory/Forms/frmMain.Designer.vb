@@ -54,6 +54,7 @@ Partial Class frmMain
         '
         'MenuStrip1
         '
+        Me.MenuStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.ReportsToolStripMenuItem, Me.AboutToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
@@ -64,6 +65,7 @@ Partial Class frmMain
         'FileToolStripMenuItem
         '
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenStoreToolStripMenuItem, Me.UserManagementToolStripMenuItem, Me.LoginToolStripMenuItem, Me.ExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "&File"
@@ -94,6 +96,7 @@ Partial Class frmMain
         '
         'ToolsToolStripMenuItem
         '
+        Me.ToolsToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
         Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
@@ -101,6 +104,7 @@ Partial Class frmMain
         'ReportsToolStripMenuItem
         '
         Me.ReportsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DailyToolStripMenuItem})
+        Me.ReportsToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
         Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(59, 20)
         Me.ReportsToolStripMenuItem.Text = "&Reports"
@@ -132,6 +136,7 @@ Partial Class frmMain
         '
         'AboutToolStripMenuItem
         '
+        Me.AboutToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
         Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(52, 20)
         Me.AboutToolStripMenuItem.Text = "&About"
@@ -147,6 +152,7 @@ Partial Class frmMain
         '
         'ToolStripButton1
         '
+        Me.ToolStripButton1.ForeColor = System.Drawing.Color.Black
         Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
         Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton1.Name = "ToolStripButton1"
@@ -155,6 +161,7 @@ Partial Class frmMain
         '
         'ToolStripButton2
         '
+        Me.ToolStripButton2.ForeColor = System.Drawing.Color.Black
         Me.ToolStripButton2.Image = CType(resources.GetObject("ToolStripButton2.Image"), System.Drawing.Image)
         Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton2.Name = "ToolStripButton2"
@@ -163,6 +170,7 @@ Partial Class frmMain
         '
         'ToolStripButton3
         '
+        Me.ToolStripButton3.ForeColor = System.Drawing.Color.Black
         Me.ToolStripButton3.Image = CType(resources.GetObject("ToolStripButton3.Image"), System.Drawing.Image)
         Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton3.Name = "ToolStripButton3"
@@ -171,6 +179,7 @@ Partial Class frmMain
         '
         'ToolStripButton4
         '
+        Me.ToolStripButton4.ForeColor = System.Drawing.Color.Black
         Me.ToolStripButton4.Image = CType(resources.GetObject("ToolStripButton4.Image"), System.Drawing.Image)
         Me.ToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton4.Name = "ToolStripButton4"
@@ -179,6 +188,7 @@ Partial Class frmMain
         '
         'statusStrip
         '
+        Me.statusStrip.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
         Me.statusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsCurrentDate, Me.tsUser, Me.tssOthers})
         Me.statusStrip.Location = New System.Drawing.Point(0, 412)
         Me.statusStrip.Name = "statusStrip"
@@ -195,6 +205,7 @@ Partial Class frmMain
         'tsUser
         '
         Me.tsUser.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.tsUser.ForeColor = System.Drawing.Color.Black
         Me.tsUser.Name = "tsUser"
         Me.tsUser.Size = New System.Drawing.Size(68, 17)
         Me.tsUser.Text = "No User yet"
@@ -216,10 +227,11 @@ Partial Class frmMain
         Me.Controls.Add(Me.statusStrip)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.ForeColor = System.Drawing.Color.White
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "frmMain"
-        Me.Text = "Form1"
+        Me.Text = "POS & INVENTORY SYSTEM"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()

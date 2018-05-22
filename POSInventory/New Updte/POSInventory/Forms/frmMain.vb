@@ -118,4 +118,16 @@
         qryDate.FormType = qryDate.ReportType.Inventory
         qryDate.Show()
     End Sub
+
+    Private Sub statusStrip_ItemClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolStripItemClickedEventArgs) Handles statusStrip.ItemClicked
+
+    End Sub
+
+    Private Sub tsCurrentDate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsCurrentDate.Click
+
+    End Sub
+
+    Private Sub tsUser_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsUser.Click
+
+    End Sub
 End Class

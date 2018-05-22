@@ -145,6 +145,7 @@ Partial Class frmPrint
         Me.MaximumSize = New System.Drawing.Size(625, 346)
         Me.MinimumSize = New System.Drawing.Size(625, 346)
         Me.Name = "frmPrint"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Sales List"
         Me.gbReceipt.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)

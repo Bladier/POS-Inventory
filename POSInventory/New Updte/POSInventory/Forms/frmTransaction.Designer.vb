@@ -25,10 +25,6 @@ Partial Class frmTransaction
         Me.components = New System.ComponentModel.Container()
         Dim ListViewItem1 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem(New String() {"GAD 0120", "SAMPLE GAD ITEMS", "3", "1,000", "3,000", "1", "ONE TIME CUSTOMER"}, -1)
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTransaction))
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.btnCash = New System.Windows.Forms.Button()
-        Me.btnReceipt = New System.Windows.Forms.Button()
-        Me.btnStockOut = New System.Windows.Forms.Button()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.lblSearch = New System.Windows.Forms.Label()
@@ -48,64 +44,13 @@ Partial Class frmTransaction
         Me.lblMode = New System.Windows.Forms.Label()
         Me.cms = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.RefreshToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GroupBox1.SuspendLayout()
+        Me.btnStockOut = New System.Windows.Forms.Button()
+        Me.btnReceipt = New System.Windows.Forms.Button()
+        Me.btnCash = New System.Windows.Forms.Button()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.cms.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox1.BackColor = System.Drawing.Color.DimGray
-        Me.GroupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.GroupBox1.Controls.Add(Me.btnCash)
-        Me.GroupBox1.Controls.Add(Me.btnReceipt)
-        Me.GroupBox1.Controls.Add(Me.btnStockOut)
-        Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(889, 71)
-        Me.GroupBox1.TabIndex = 2
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "MODE"
-        '
-        'btnCash
-        '
-        Me.btnCash.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnCash.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.btnCash.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCash.Location = New System.Drawing.Point(267, 17)
-        Me.btnCash.Name = "btnCash"
-        Me.btnCash.Size = New System.Drawing.Size(106, 41)
-        Me.btnCash.TabIndex = 2
-        Me.btnCash.Text = "&CASH"
-        Me.btnCash.UseVisualStyleBackColor = True
-        '
-        'btnReceipt
-        '
-        Me.btnReceipt.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnReceipt.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.btnReceipt.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnReceipt.Location = New System.Drawing.Point(491, 17)
-        Me.btnReceipt.Name = "btnReceipt"
-        Me.btnReceipt.Size = New System.Drawing.Size(106, 41)
-        Me.btnReceipt.TabIndex = 5
-        Me.btnReceipt.Text = "&RECEIPTS"
-        Me.btnReceipt.UseVisualStyleBackColor = True
-        '
-        'btnStockOut
-        '
-        Me.btnStockOut.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnStockOut.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.btnStockOut.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnStockOut.Location = New System.Drawing.Point(379, 17)
-        Me.btnStockOut.Name = "btnStockOut"
-        Me.btnStockOut.Size = New System.Drawing.Size(106, 41)
-        Me.btnStockOut.TabIndex = 4
-        Me.btnStockOut.Text = "&STOCK OUT"
-        Me.btnStockOut.UseVisualStyleBackColor = True
         '
         'btnSearch
         '
@@ -280,6 +225,61 @@ Partial Class frmTransaction
         Me.RefreshToolStripMenuItem.Size = New System.Drawing.Size(113, 22)
         Me.RefreshToolStripMenuItem.Text = "&Refresh"
         '
+        'btnStockOut
+        '
+        Me.btnStockOut.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnStockOut.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.btnStockOut.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnStockOut.Location = New System.Drawing.Point(379, 17)
+        Me.btnStockOut.Name = "btnStockOut"
+        Me.btnStockOut.Size = New System.Drawing.Size(106, 41)
+        Me.btnStockOut.TabIndex = 4
+        Me.btnStockOut.Text = "&STOCK OUT"
+        Me.btnStockOut.UseVisualStyleBackColor = True
+        '
+        'btnReceipt
+        '
+        Me.btnReceipt.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnReceipt.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.btnReceipt.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnReceipt.Location = New System.Drawing.Point(491, 17)
+        Me.btnReceipt.Name = "btnReceipt"
+        Me.btnReceipt.Size = New System.Drawing.Size(106, 41)
+        Me.btnReceipt.TabIndex = 5
+        Me.btnReceipt.Text = "&RECEIPTS"
+        Me.btnReceipt.UseVisualStyleBackColor = True
+        '
+        'btnCash
+        '
+        Me.btnCash.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnCash.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.btnCash.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCash.Location = New System.Drawing.Point(267, 17)
+        Me.btnCash.Name = "btnCash"
+        Me.btnCash.Size = New System.Drawing.Size(106, 41)
+        Me.btnCash.TabIndex = 2
+        Me.btnCash.Text = "&CASH"
+        Me.btnCash.UseVisualStyleBackColor = True
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.BackColor = System.Drawing.Color.DimGray
+        Me.GroupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.GroupBox1.Controls.Add(Me.btnCash)
+        Me.GroupBox1.Controls.Add(Me.btnReceipt)
+        Me.GroupBox1.Controls.Add(Me.btnStockOut)
+        Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.ForeColor = System.Drawing.Color.White
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(889, 71)
+        Me.GroupBox1.TabIndex = 2
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "MODE"
+        '
         'frmTransaction
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -302,16 +302,12 @@ Partial Class frmTransaction
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmTransaction"
         Me.Text = "Transaction"
-        Me.GroupBox1.ResumeLayout(False)
         Me.cms.ResumeLayout(False)
+        Me.GroupBox1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents btnCash As System.Windows.Forms.Button
-    Friend WithEvents btnReceipt As System.Windows.Forms.Button
-    Friend WithEvents btnStockOut As System.Windows.Forms.Button
     Friend WithEvents btnSearch As System.Windows.Forms.Button
     Friend WithEvents txtSearch As System.Windows.Forms.TextBox
     Friend WithEvents lblSearch As System.Windows.Forms.Label
@@ -331,4 +327,8 @@ Partial Class frmTransaction
     Friend WithEvents RefreshToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ColumnHeader6 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader7 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents btnStockOut As System.Windows.Forms.Button
+    Friend WithEvents btnReceipt As System.Windows.Forms.Button
+    Friend WithEvents btnCash As System.Windows.Forms.Button
+    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
 End Class

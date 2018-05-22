@@ -36,7 +36,7 @@ Public Class qryDate
         mySql &= vbCrLf & "SELECT "
         mySql &= vbCrLf & "    'IN' as TYPE, I.DOCDATE, IL.ITEMCODE, IL.QTY"
         mySql &= vbCrLf & "FROM INV I"
-        mySql &= vbCrLf & "INNER JOIN INVLINES IL
+        mySql &= vbCrLf & "INNER JOIN INVLINES IL"
         mySql &= vbCrLf & "ON I.DOCID = IL.DOCID"
         mySql &= vbCrLf & "WHERE I.DOCDATE > '" & SelectedDate & "'"
         mySql &= vbCrLf & "UNION"

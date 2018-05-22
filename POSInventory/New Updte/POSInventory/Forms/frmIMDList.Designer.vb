@@ -124,6 +124,7 @@ Partial Class frmIMDList
         Me.Controls.Add(Me.lvIMDList)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "frmIMDList"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Item Master Data List"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.GroupBox1.ResumeLayout(False)

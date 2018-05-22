@@ -16,8 +16,8 @@
             lv.SubItems.Add(.Item("ItemCode"))
             lv.SubItems.Add(.Item("Description"))
             lv.SubItems.Add(.Item("Qty"))
-            lv.SubItems.Add(.Item("SalePrice"))
-            lv.SubItems.Add(.Item("RowTotal"))
+            lv.SubItems.Add(FormatCurrency(.Item("SalePrice")))
+            lv.SubItems.Add(FormatCurrency(.Item("RowTotal")))
         End With
 
     End Sub

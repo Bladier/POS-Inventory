@@ -22,7 +22,7 @@ Partial Class frmReceiptView
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ListViewItem2 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem(New String() {"90", "ITM 000001", "Sam Apple", "12", "1000", "12000"}, -1)
+        Dim ListViewItem1 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem(New String() {"90", "ITM 000001", "Sam Apple", "12", "1000", "12000"}, -1)
         Me.lvSaleItem = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -40,7 +40,7 @@ Partial Class frmReceiptView
         Me.lvSaleItem.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6})
         Me.lvSaleItem.FullRowSelect = True
         Me.lvSaleItem.GridLines = True
-        Me.lvSaleItem.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem2})
+        Me.lvSaleItem.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem1})
         Me.lvSaleItem.Location = New System.Drawing.Point(12, 12)
         Me.lvSaleItem.Name = "lvSaleItem"
         Me.lvSaleItem.Size = New System.Drawing.Size(704, 312)
@@ -85,6 +85,7 @@ Partial Class frmReceiptView
         Me.ClientSize = New System.Drawing.Size(729, 336)
         Me.Controls.Add(Me.lvSaleItem)
         Me.Name = "frmReceiptView"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "View Items"
         Me.ResumeLayout(False)
 
