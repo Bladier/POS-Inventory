@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2018 at 04:25 AM
+-- Generation Time: May 22, 2018 at 05:17 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -42,6 +42,15 @@ CREATE TABLE `doc` (
   `USERID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `doc`
+--
+
+INSERT INTO `doc` (`DOCID`, `DOCTYPE`, `MOP`, `DOCDATE`, `CODE`, `CUSTOMER`, `NOVAT`, `VATRATE`, `VATTOTAL`, `DOCTOTAL`, `STATUS`, `REMARKS`, `USERID`) VALUES
+(1, 0, 'C', '2018-05-22', 'INV#000001', 'One Time Customer', '10.00', '0.00', '0.00', '10.000', 'V', NULL, 0),
+(2, 0, 'C', '2018-05-22', 'INV#000002', 'One Time Customer', '12.00', '0.00', '0.00', '12.000', '1', NULL, 0),
+(3, 0, 'C', '2018-05-23', 'INV#000003', 'One Time Customer', '7.00', '0.00', '0.00', '7.000', '1', NULL, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -61,6 +70,16 @@ CREATE TABLE `doclines` (
   `REMARKS` varchar(255) DEFAULT NULL,
   `ENDING` decimal(12,6) NOT NULL DEFAULT '0.000000'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `doclines`
+--
+
+INSERT INTO `doclines` (`DLID`, `DOCID`, `ITEMCODE`, `DESCRIPTION`, `QTY`, `UNITPRICE`, `SALEPRICE`, `ROWTOTAL`, `UOM`, `REMARKS`, `ENDING`) VALUES
+(1, 1, '0001', 'pencil monggol 2', '2.000000', '0.000000', '5.000000', '10.000000', 'PCS', NULL, '0.000000'),
+(2, 2, '00002', 'Uni Pen', '1.000000', '0.000000', '7.000000', '7.000000', 'PCS', NULL, '0.000000'),
+(3, 2, '0001', 'pencil monggol 2', '1.000000', '0.000000', '5.000000', '5.000000', 'PCS', NULL, '0.000000'),
+(4, 3, '00002', 'Uni Pen', '1.000000', '0.000000', '7.000000', '7.000000', 'PCS', NULL, '0.000000');
 
 -- --------------------------------------------------------
 
@@ -83,10 +102,15 @@ CREATE TABLE `inv` (
 --
 
 INSERT INTO `inv` (`DOCID`, `DOCNUM`, `DOCDATE`, `PARTNER`, `GRANDTOTAL`, `REMARKS`, `DOCSTATUS`) VALUES
-(1, 'STO#00001', '2018-05-21', 'N/A', '0.00', NULL, '1'),
+(1, 'STO#00001', '2018-05-21', 'N/A', '0.00', NULL, '0'),
 (2, 'STO#00002', '2018-05-21', 'N/A', '2.00', NULL, '1'),
 (3, 'STO#00002', '2018-05-21', 'N/A', '1.00', NULL, '1'),
-(4, 'STO#00003', '2018-05-21', 'N/A', '2.00', NULL, '1');
+(4, 'STO#00003', '2018-05-21', 'N/A', '2.00', NULL, '1'),
+(5, 'STO#00004', '2018-05-21', 'N/A', '1.00', NULL, '1'),
+(6, 'STO#00005', '2018-05-21', 'N/A', '2.00', NULL, '1'),
+(7, 'STO#00006', '2018-05-21', 'N/A', '1.00', NULL, '0'),
+(8, 'STO#00007', '2018-05-21', 'N/A', '2.00', NULL, '1'),
+(9, 'STO#00008', '2018-05-21', 'N/A', '1.00', NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -116,7 +140,14 @@ INSERT INTO `invlines` (`INVID`, `DOCID`, `ITEMCODE`, `DESCRIPTION`, `QTY`, `UNI
 (2, 2, '00002', 'Uni Pen', '10.000000', '0.000000', NULL, '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 10:09:06 AM'),
 (3, 3, '00002', 'Uni Pen', '1.000000', '0.000000', NULL, '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 10:11:04 AM'),
 (4, 4, '0001', 'pencil monggol 2', '2.000000', '0.000000', NULL, '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 10:11:46 AM'),
-(5, 4, '00002', 'Uni Pen', '1.000000', '0.000000', NULL, '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 10:11:46 AM');
+(5, 4, '00002', 'Uni Pen', '1.000000', '0.000000', NULL, '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 10:11:46 AM'),
+(6, 5, '00002', 'Uni Pen', '1.000000', '0.000000', NULL, '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 11:55:41 AM'),
+(7, 6, '00002', 'Uni Pen', '1.000000', '0.000000', NULL, '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 11:55:41 AM'),
+(8, 6, '0001', 'pencil monggol 2', '2.000000', '0.000000', NULL, '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 11:55:41 AM'),
+(9, 7, '0001', 'pencil monggol 2', '1.000000', '0.000000', '5.000000', '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 12:44:30 PM'),
+(10, 8, '0001', 'pencil monggol 2', '8.000000', '0.000000', '5.000000', '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 1:49:58 PM'),
+(11, 8, '00002', 'Uni Pen', '8.000000', '0.000000', '7.000000', '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 1:49:58 PM'),
+(12, 9, '00002', 'Uni Pen', '1.000000', '0.000000', '0.000000', '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 2:02:43 PM');
 
 -- --------------------------------------------------------
 
@@ -147,8 +178,35 @@ CREATE TABLE `itemmaster` (
 --
 
 INSERT INTO `itemmaster` (`ITEMID`, `ITEMCODE`, `DESCRIPTION`, `CATEGORIES`, `SUBCAT`, `UOM`, `UNITPRICE`, `SALEPRICE`, `ISSALE`, `ISINV`, `ONHAND`, `REMARKS`, `ADDTIME`, `UPDATETIME`, `ONHOLD`) VALUES
-(1, '0001', 'pencil monggol 2', 'pens', '', 'PCS', '0.000', '5.000', '1', '1', '21.00', '', '2018-05-21 00:33:49', '2018-05-21 02:11:21', '0'),
-(2, '00002', 'Uni Pen', 'pens', '', 'PCS', '0.000', '7.000', '1', '1', '3.00', '', '2018-05-21 02:09:52', '2018-05-21 02:12:08', '0');
+(1, '0001', 'pencil monggol 2', 'pens', '', 'PCS', '0.000', '5.000', '1', '1', '22.00', '', '2018-05-21 00:33:49', '2018-05-22 00:20:12', '0'),
+(2, '00002', 'Uni Pen', 'pens', '', 'PCS', '0.000', '7.000', '1', '1', '18.00', '', '2018-05-21 02:09:52', '2018-05-22 03:04:29', '0');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbldaily`
+--
+
+CREATE TABLE `tbldaily` (
+  `ID` bigint(20) NOT NULL,
+  `CURRENTDATE` date DEFAULT NULL,
+  `INITIALBAL` decimal(12,2) DEFAULT NULL,
+  `CASHCOUNT` decimal(12,2) DEFAULT NULL,
+  `STATUS` smallint(6) DEFAULT NULL,
+  `REMARKS` smallint(6) DEFAULT NULL,
+  `SYSTEMINFO` date DEFAULT NULL,
+  `OPENNER` smallint(6) DEFAULT NULL,
+  `CLOSER` smallint(6) DEFAULT NULL,
+  `Overage/Shortage` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbldaily`
+--
+
+INSERT INTO `tbldaily` (`ID`, `CURRENTDATE`, `INITIALBAL`, `CASHCOUNT`, `STATUS`, `REMARKS`, `SYSTEMINFO`, `OPENNER`, `CLOSER`, `Overage/Shortage`) VALUES
+(2, '2018-05-23', '1000.00', '1007.00', 0, NULL, '2018-05-22', 0, 1, 0),
+(3, '2018-05-24', '2000.00', '0.00', 1, NULL, '2018-05-22', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -168,10 +226,11 @@ CREATE TABLE `tblmaintenance` (
 --
 
 INSERT INTO `tblmaintenance` (`ID`, `OPT_KEYS`, `OPT_VALUES`, `REMARKS`) VALUES
-(1, 'InvoiceNum', '1', NULL),
+(1, 'InvoiceNum', '4', NULL),
 (2, 'SalesReturnNum', '1', NULL),
 (3, 'STONum', '1', NULL),
-(4, 'InventoryNum', '4', NULL);
+(4, 'InventoryNum', '8', NULL),
+(5, 'CurrentBalance', '2000', NULL);
 
 -- --------------------------------------------------------
 
@@ -196,7 +255,7 @@ CREATE TABLE `tbluser` (
 --
 
 INSERT INTO `tbluser` (`ID`, `firstname`, `middlename`, `lastname`, `uname`, `pword`, `userrole`, `status`, `lastLogin`) VALUES
-(1, 'Admin', '', 'Admin', 'Admin', 'GSTLEXYzj+g=', 'User', '1', '2018-05-19 03:27:07'),
+(1, 'Admin', '', 'Admin', 'Admin', 'GSTLEXYzj+g=', 'Admin', '1', '2018-05-21 06:54:02'),
 (2, 'User', 'User', 'User', '1', 'gRSUjH6XasE=', 'User', '1', NULL);
 
 --
@@ -234,6 +293,12 @@ ALTER TABLE `itemmaster`
   ADD PRIMARY KEY (`ITEMID`);
 
 --
+-- Indexes for table `tbldaily`
+--
+ALTER TABLE `tbldaily`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `tblmaintenance`
 --
 ALTER TABLE `tblmaintenance`
@@ -253,32 +318,37 @@ ALTER TABLE `tbluser`
 -- AUTO_INCREMENT for table `doc`
 --
 ALTER TABLE `doc`
-  MODIFY `DOCID` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `DOCID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `doclines`
 --
 ALTER TABLE `doclines`
-  MODIFY `DLID` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `DLID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `inv`
 --
 ALTER TABLE `inv`
-  MODIFY `DOCID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `DOCID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `invlines`
 --
 ALTER TABLE `invlines`
-  MODIFY `INVID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `INVID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `itemmaster`
 --
 ALTER TABLE `itemmaster`
   MODIFY `ITEMID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `tbldaily`
+--
+ALTER TABLE `tbldaily`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `tblmaintenance`
 --
 ALTER TABLE `tblmaintenance`
-  MODIFY `ID` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tbluser`
 --

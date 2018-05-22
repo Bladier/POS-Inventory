@@ -26,11 +26,11 @@ Partial Class frmHistory
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.ListView1 = New System.Windows.Forms.ListView()
-        Me.btnCancel = New System.Windows.Forms.Button()
-        Me.btnSelect = New System.Windows.Forms.Button()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.btnSelect = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -72,6 +72,20 @@ Partial Class frmHistory
         Me.ListView1.UseCompatibleStateImageBehavior = False
         Me.ListView1.View = System.Windows.Forms.View.Details
         '
+        'ColumnHeader1
+        '
+        Me.ColumnHeader1.Text = "Date"
+        '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "STO #"
+        Me.ColumnHeader2.Width = 162
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "GrandTotal"
+        Me.ColumnHeader3.Width = 178
+        '
         'btnCancel
         '
         Me.btnCancel.Location = New System.Drawing.Point(341, 309)
@@ -89,20 +103,6 @@ Partial Class frmHistory
         Me.btnSelect.TabIndex = 3
         Me.btnSelect.Text = "&Select"
         Me.btnSelect.UseVisualStyleBackColor = True
-        '
-        'ColumnHeader1
-        '
-        Me.ColumnHeader1.Text = "Date"
-        '
-        'ColumnHeader2
-        '
-        Me.ColumnHeader2.Text = "STO #"
-        Me.ColumnHeader2.Width = 162
-        '
-        'ColumnHeader3
-        '
-        Me.ColumnHeader3.Text = "GrandTotal"
-        Me.ColumnHeader3.Width = 178
         '
         'frmHistory
         '

@@ -22,6 +22,7 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -32,15 +33,22 @@ Partial Class frmMain
         Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DailyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StockInToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
-        Me.StockInToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenStoreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.statusStrip = New System.Windows.Forms.StatusStrip()
+        Me.tsCurrentDate = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.tsUser = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.tssOthers = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.tmrCurrent = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
+        Me.statusStrip.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -54,7 +62,7 @@ Partial Class frmMain
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoginToolStripMenuItem, Me.UserManagementToolStripMenuItem, Me.ExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenStoreToolStripMenuItem, Me.UserManagementToolStripMenuItem, Me.LoginToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "&File"
@@ -94,14 +102,20 @@ Partial Class frmMain
         '
         Me.DailyToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SalesToolStripMenuItem, Me.StockInToolStripMenuItem})
         Me.DailyToolStripMenuItem.Name = "DailyToolStripMenuItem"
-        Me.DailyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DailyToolStripMenuItem.Size = New System.Drawing.Size(100, 22)
         Me.DailyToolStripMenuItem.Text = "&Daily"
         '
         'SalesToolStripMenuItem
         '
         Me.SalesToolStripMenuItem.Name = "SalesToolStripMenuItem"
-        Me.SalesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SalesToolStripMenuItem.Size = New System.Drawing.Size(113, 22)
         Me.SalesToolStripMenuItem.Text = "&Sales"
+        '
+        'StockInToolStripMenuItem
+        '
+        Me.StockInToolStripMenuItem.Name = "StockInToolStripMenuItem"
+        Me.StockInToolStripMenuItem.Size = New System.Drawing.Size(113, 22)
+        Me.StockInToolStripMenuItem.Text = "&StockIn"
         '
         'AboutToolStripMenuItem
         '
@@ -150,17 +164,49 @@ Partial Class frmMain
         Me.ToolStripButton4.Size = New System.Drawing.Size(76, 22)
         Me.ToolStripButton4.Text = "Add Item"
         '
-        'StockInToolStripMenuItem
+        'OpenStoreToolStripMenuItem
         '
-        Me.StockInToolStripMenuItem.Name = "StockInToolStripMenuItem"
-        Me.StockInToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.StockInToolStripMenuItem.Text = "&StockIn"
+        Me.OpenStoreToolStripMenuItem.Name = "OpenStoreToolStripMenuItem"
+        Me.OpenStoreToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.OpenStoreToolStripMenuItem.Text = "&Open Store"
+        '
+        'statusStrip
+        '
+        Me.statusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsCurrentDate, Me.tsUser, Me.tssOthers})
+        Me.statusStrip.Location = New System.Drawing.Point(0, 412)
+        Me.statusStrip.Name = "statusStrip"
+        Me.statusStrip.Size = New System.Drawing.Size(784, 22)
+        Me.statusStrip.TabIndex = 7
+        Me.statusStrip.Text = "ss"
+        '
+        'tsCurrentDate
+        '
+        Me.tsCurrentDate.Name = "tsCurrentDate"
+        Me.tsCurrentDate.Size = New System.Drawing.Size(70, 17)
+        Me.tsCurrentDate.Text = "Date not set"
+        '
+        'tsUser
+        '
+        Me.tsUser.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.tsUser.Name = "tsUser"
+        Me.tsUser.Size = New System.Drawing.Size(68, 17)
+        Me.tsUser.Text = "No User yet"
+        '
+        'tssOthers
+        '
+        Me.tssOthers.Name = "tssOthers"
+        Me.tssOthers.Size = New System.Drawing.Size(0, 17)
+        '
+        'tmrCurrent
+        '
+        Me.tmrCurrent.Enabled = True
         '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(784, 434)
+        Me.Controls.Add(Me.statusStrip)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.MainMenuStrip = Me.MenuStrip1
@@ -171,6 +217,8 @@ Partial Class frmMain
         Me.MenuStrip1.PerformLayout()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
+        Me.statusStrip.ResumeLayout(False)
+        Me.statusStrip.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -191,5 +239,11 @@ Partial Class frmMain
     Friend WithEvents DailyToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SalesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents StockInToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents OpenStoreToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents statusStrip As System.Windows.Forms.StatusStrip
+    Friend WithEvents tsCurrentDate As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents tsUser As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents tssOthers As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents tmrCurrent As System.Windows.Forms.Timer
 
 End Class

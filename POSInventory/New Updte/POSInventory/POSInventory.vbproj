@@ -124,6 +124,12 @@
       <DependentUpon>frmMain.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\frmOpenStore.Designer.vb">
+      <DependentUpon>frmOpenStore.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmOpenStore.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmPLU.Designer.vb">
       <DependentUpon>frmPLU.vb</DependentUpon>
     </Compile>
@@ -212,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmOpenStore.resx">
+      <DependentUpon>frmOpenStore.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPLU.resx">
       <DependentUpon>frmPLU.vb</DependentUpon>

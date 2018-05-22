@@ -1,5 +1,6 @@
 ﻿Public Class frmMain
 
+    Friend dateSet As Boolean
     Friend Sub NotyetLogin(Optional ByVal st As Boolean = True)
         If Not st Then
             LoginToolStripMenuItem.Text = "&Log Out"
@@ -10,11 +11,23 @@
         UserManagementToolStripMenuItem.Enabled = Not st
 
         DailyToolStripMenuItem.Enabled = Not st
+        OpenStoreToolStripMenuItem.Enabled = Not st
 
         ToolStripButton1.Enabled = Not st
         ToolStripButton2.Enabled = Not st
         ToolStripButton3.Enabled = Not st
         ToolStripButton4.Enabled = Not st
+
+        If st Then
+            tsUser.Text = "No User yet"
+        Else
+            tsUser.Text = "Greetings " & SystemUser.firstname & " " & SystemUser.Lastname
+        End If
+    End Sub
+
+
+    Friend Sub CheckStoreStatus()
+        mod_system.LoadCurrentDate()
     End Sub
 
     Private Sub LoginToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoginToolStripMenuItem.Click
@@ -70,7 +83,7 @@
         frmIMD.Show()
     End Sub
 
-  
+
 
     Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
         End
@@ -84,5 +97,19 @@
     Private Sub StockInToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles StockInToolStripMenuItem.Click
         qryDate.FormType = qryDate.ReportType.StockIn
         qryDate.Show()
+    End Sub
+
+    Private Sub tmrCurrent_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrCurrent.Tick
+        If dateSet Then
+            tsCurrentDate.Text = CurrentDate.ToLongDateString & " " & Now.ToString("T")
+            OpenStoreToolStripMenuItem.Text = "&Close Store"
+        Else
+            tsCurrentDate.Text = "Date not set"
+            OpenStoreToolStripMenuItem.Text = "&Open Store"
+        End If
+    End Sub
+
+    Private Sub OpenStoreToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OpenStoreToolStripMenuItem.Click
+        frmOpenStore.Show()
     End Sub
 End Class

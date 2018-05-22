@@ -30,7 +30,7 @@
 
         frmMain.Show()
         frmMain.NotyetLogin(False)
-        'frmMain.CheckStoreStatus()
+        frmMain.CheckStoreStatus()
 
         Clearfield()
         Me.Close()

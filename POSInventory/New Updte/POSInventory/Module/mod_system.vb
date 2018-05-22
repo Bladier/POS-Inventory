@@ -15,52 +15,47 @@ Module mod_system
     Public SystemUser As New Sys_user
     Public UserIDX As Integer = SystemUser.UserID
     Public dailyID As Integer = 0
+
+    Public InitialBal As Double = 0
+
 #End Region
 
 #Region "Store"
     Private storeDB As String = "tblDaily" 'declare storeDB as string and initialize by tblDaily.
 
-    'Friend Function OpenStore() As Boolean
-    '    If MaintainBal = 0 Then
-    '        Dim ans As MsgBoxResult = _
-    '            MsgBox("Maintaining Balance is Zero(0)" + vbCrLf + "Are you sure you want to open the store?", _
-    '                   MsgBoxStyle.Information + MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2)
-    '        If ans = MsgBoxResult.No Then Return False
-    '    End If
+    Friend Function OpenStore(ByVal ini As Double) As Boolean
 
-    '    Dim mySql As String = "SELECT * FROM " & storeDB
-    '    mySql &= String.Format(" WHERE currentDate = '{0}'", CurrentDate.ToString("MM/dd/yyyy"))
-    '    Dim ds As DataSet = LoadSQL(mySql, storeDB)
+        Dim mySql As String = "SELECT * FROM " & storeDB
+        mySql &= String.Format(" WHERE currentDate = '{0}'", CurrentDate.ToString("yyyy-MM-dd"))
+        Dim ds As DataSet = LoadSQL(mySql, storeDB)
 
-    '     Do not allow previous date to OPEN if closed.
-    '        If ds.Tables(storeDB).Rows.Count = 1 Then
-    '            If ds.Tables(storeDB).Rows(0).Item("Status") = 0 Then
-    '                MsgBox("You cannot select to open a previous date", MsgBoxStyle.Critical)
-    '            Else
-    '                MsgBox("Error in OPENING STORE", MsgBoxStyle.Critical)
-    '            End If
-    '            Return False
-    '        End If
+        ' Do not allow previous date to OPEN if closed.
+        If ds.Tables(storeDB).Rows.Count = 1 Then
+            If ds.Tables(storeDB).Rows(0).Item("Status") = 0 Then
+                MsgBox("You cannot select to open a previous date", MsgBoxStyle.Critical)
+            Else
+                MsgBox("Error in OPENING STORE", MsgBoxStyle.Critical)
+            End If
+            Return False
+        End If
 
-    '        Dim dsNewRow As DataRow
-    '        dsNewRow = ds.Tables(storeDB).NewRow
-    '        With dsNewRow
-    '            .Item("CurrentDate") = CurrentDate
-    '            .Item("MaintainBal") = MaintainBal
-    '            .Item("InitialBal") = InitialBal
-    '            .Item("RepDep") = RepDep
-    '            .Item("CashCount") 'No CashCount on OPENING
-    '            .Item("Status") = 1
-    '            .Item("SystemInfo") = Now
-    '            .Item("Openner") = UserIDX
-    '        End With
-    '        ds.Tables(storeDB).Rows.Add(dsNewRow)
+        Dim dsNewRow As DataRow
+        dsNewRow = ds.Tables(storeDB).NewRow
+        With dsNewRow
+            .Item("CurrentDate") = CurrentDate
+            .Item("InitialBal") = ini
+            .Item("CashCount") = 0 'No CashCount on OPENING
+            .Item("Status") = 1
+            .Item("SystemInfo") = Now
+            .Item("Openner") = UserIDX
+        End With
+        ds.Tables(storeDB).Rows.Add(dsNewRow)
 
-    '        database.SaveEntry(ds)
-    '        Console.WriteLine("Store is now OPEN!")
+        database.SaveEntry(ds)
+        Console.WriteLine("Store is now OPEN!")
 
-    'Return True
-    'End Function
+        Return True
+    End Function
 
     Friend Function CheckifHasData() As Boolean
 
@@ -95,10 +90,10 @@ Module mod_system
         If ds.Tables(0).Rows.Count = 1 Then
             CurrentDate = ds.Tables(0).Rows(0).Item("CurrentDate")
             dailyID = ds.Tables(0).Rows(0).Item("ID")
-            '  InitialBal = ds.Tables(0).Rows(0).Item("INITIALBAL")
-            ' frmMain.dateSet = True
+            InitialBal = ds.Tables(0).Rows(0).Item("INITIALBAL")
+            frmMain.dateSet = True
         Else
-            ' frmMain.dateSet = False
+            frmMain.dateSet = False
         End If
     End Sub
 
@@ -403,6 +398,70 @@ Module mod_system
         End With
         database.SaveEntry(ds)
     End Sub
+
+    Friend Function GetSales_Today() As Double
+        Dim MySql As String
+        Dim dt As DateTime = Convert.ToDateTime(CurrentDate.ToShortDateString)
+        Dim format As String = "yyyy-MM-dd"
+        Dim str As String = dt.ToString(format)
+        Dim ds As DataSet
+        Dim tmpTotal As Double = 0
+
+        MySql = "SELECT D.DOCID, "
+        MySql &= "CASE D.DOCTYPE "
+        MySql &= "WHEN 0 THEN 'SALES' "
+        MySql &= "WHEN 1 THEN 'SALES' "
+        MySql &= "WHEN 2 THEN 'RECALL' "
+        MySql &= "WHEN 3 THEN 'RETURNS' "
+        MySql &= "WHEN 4 THEN 'STOCKOUT' "
+        MySql &= "End AS DOCTYPE, "
+        MySql &= "D.MOP, D.CODE, D.CUSTOMER, D.DOCDATE, D.NOVAT, D.VATRATE, D.VATTOTAL, D.DOCTOTAL, "
+        MySql &= "D.STATUS, D.REMARKS,"
+        MySql &= "DL.ITEMCODE, DL.DESCRIPTION, DL.QTY, DL.UNITPRICE, DL.SALEPRICE, DL.ROWTOTAL "
+        MySql &= "FROM DOC D "
+        MySql &= "INNER JOIN DOCLINES DL ON DL.DOCID = D.DOCID "
+        MySql &= "WHERE D.DOCDATE = '" & str & "' AND D.STATUS <> 'V'"
+
+        ds = LoadSQL(MySql, "DOC")
+
+        If ds.Tables(0).Rows.Count = 0 Then Return 0.0
+        For Each dr As DataRow In ds.Tables(0).Rows
+            tmpTotal += dr.Item("RowTotal")
+        Next
+
+
+        Return tmpTotal
+    End Function
+
+
+    Public Sub closestore(ByVal cc As Double)
+        Dim mysql As String = "SELECT * FROM " & storeDB & "  WHERE STATUS =1"
+        Dim ds As DataSet = LoadSQL(mysql, storeDB)
+
+        If ds.Tables(0).Rows.Count = 0 Then Exit Sub
+
+        Dim Over_Short As Double
+        Dim ini_sales As Double = 0
+        ini_sales = GetSales_Today() + InitialBal
+
+        If cc <> ini_sales Then
+            Over_Short = Val(cc) - Val(ini_sales)
+        End If
+
+        With ds.Tables(0).Rows(0)
+            .Item("CashCount") = cc
+            .Item("Status") = 0
+            .Item("Closer") = SystemUser.UserID
+            .Item("Overage/Shortage") = Over_Short
+        End With
+        database.SaveEntry(ds, False)
+
+        frmMain.dateSet = False
+        InitialBal = 0
+
+        MsgBox("Store successfully closer.", MsgBoxStyle.Information, "Closing")
+    End Sub
+
 #Region "Log Module"
     Const LOG_FILE As String = "syslog.txt"
     Private Sub CreateLog()

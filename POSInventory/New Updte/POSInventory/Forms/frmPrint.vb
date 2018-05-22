@@ -121,31 +121,14 @@ Public Class frmPrint
 
     Private Sub btnVoid_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVoid.Click
         If lvReceipt.SelectedItems.Count = 0 Then Exit Sub
-        'If Not OTPDisable Then
-        '    diagOTP.FormType = diagOTP.OTPType.VoidSales
-        '    If Not CheckOTP() Then Exit Sub
-        'Else
-        '    Void()
-        'End If
-        'OTPVoiding_Initialization()
+       
+        Void()
 
-        'If Not isOTPOn("Voiding") Then
-        '    diagGeneralOTP.GeneralOTP = OtpSettings
-        '    diagGeneralOTP.TopMost = True
-        '    diagGeneralOTP.ShowDialog()
-        '    If Not diagGeneralOTP.isValid Then
-        '        Exit Sub
-        '    Else
-        '        Void()
-        '    End If
-        'Else
-        '    Void()
-        'End If
     End Sub
 
     Friend Sub Void()
-        'Dim ans As DialogResult = MsgBox("Do you want to void this transaction?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
-        'If ans = Windows.Forms.DialogResult.No Then Exit Sub
+        Dim ans As DialogResult = MsgBox("Do you want to void this transaction?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
+        If ans = Windows.Forms.DialogResult.No Then Exit Sub
         Dim idx As String = lvReceipt.FocusedItem.Tag
         Dim mysql As String = "SELECT * FROM DOC WHERE DOCID = '" & idx & "'"
         Dim ds As DataSet = LoadSQL(mysql, "Doc")
@@ -161,65 +144,11 @@ Public Class frmPrint
         If ds.Tables(0).Rows(0).Item("DOCTYPE") = "0" Or ds.Tables(0).Rows(0).Item("DOCTYPE") = "1" Then isSales = True
 
         Dim EncoderID As String = ds.Tables(0).Rows(0).Item("USERID")
-        Dim TransactionName As String
-        '  Dim NewOtp As New ClassOtp("VOID SALES", diagGeneralOTP.txtPIN.Text, "DOCID: " & ds.Tables(0).Rows(0).Item("DocID"))
-        If isSales = True Then
-            TransactionName = "SALES"
-        Else
-            TransactionName = "RECALL"
-        End If
-        '  TransactionVoidSave(TransactionName, EncoderID, POSuser.UserID, "DOCID: " & ds.Tables(0).Rows(0).Item("DocID"))
-            ds.Clear()
-            mysql = "SELECT * FROM DOCLINES WHERE DOCID = '" & idx & "' "
-            ds = LoadSQL(mysql, "Doclines")
 
-            If isSales = True Then
-                For Each dr As DataRow In ds.Tables(0).Rows
-                    AddItemOnMaster(dr)
-                ' RemoveJournal(dr.Item("DLID"), , TransactionName)
-                Next
-            Else
-                For Each dr As DataRow In ds.Tables(0).Rows
-                    AddItemOnMaster(dr, True)
-                '  RemoveJournal(dr.Item("DLID"), , "RECALL")
-                ' RemoveJournal(dr.Item("DLID"), , "COSRECALL")
-                Next
-            End If
-            'MsgBox("Transaction VOIDED", MsgBoxStyle.Information)
+        MsgBox("Transaction VOIDED", MsgBoxStyle.Information)
             Me.Close()
     End Sub
 
-    Private Sub AddItemOnMaster(ByVal dr As DataRow, Optional ByVal isSale As Boolean = False)
-        If isSale = True Then
-            Dim trimPT As String = dr.Item("DESCRIPTION")
-            trimPT = trimPT.Remove(0, 3)
-            trimPT = trimPT.Substring(0, 7)
-            Dim mysql As String = "SELECT * FROM OPT WHERE PAWNTICKET = '" & trimPT & "'"
-            Dim ds As DataSet = LoadSQL(mysql, "OPT")
-            ds.Tables(0).Rows(0).Item("STATUS") = "S"
-            database.SaveEntry(ds, False)
-
-            mysql = "SELECT * FROM OPI WHERE PAWNITEMID = '" & ds.Tables(0).Rows(0).Item("PAWNITEMID") & "'"
-            ds.Clear()
-            ds = LoadSQL(mysql, "OPI")
-            Dim WithDrawDate As Date = Nothing
-            With ds.Tables(0).Rows(0)
-                .Item("STATUS") = "S"
-                .Item("WITHDRAWDATE") = WithDrawDate
-            End With
-            database.SaveEntry(ds, False)
-
-        Else
-            Dim mysql As String = "SELECT * FROM ITEMMASTER WHERE ITEMCODE = '" & dr.Item("ITEMCODE") & "'"
-            Dim ds As DataSet = LoadSQL(mysql, "ITEMMASTER")
-            If ds.Tables(0).Rows(0).Item("isInv") = 1 Then
-                With ds.Tables(0).Rows(0)
-                    .Item("OnHand") = .Item("Onhand") + dr.Item("Qty")
-                End With
-                database.SaveEntry(ds, False)
-            End If
-            End If
-    End Sub
 
     Private Sub btnView_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnView.Click
         If lvReceipt.SelectedItems.Count = 0 Then Exit Sub
