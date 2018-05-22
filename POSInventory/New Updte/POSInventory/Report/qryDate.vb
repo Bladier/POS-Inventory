@@ -8,7 +8,7 @@ Public Class qryDate
     Enum ReportType As Integer
         StockIn = 0
         Sales = 1
-
+        Inventory = 2
     End Enum
 
     Friend FormType As ReportType = ReportType.StockIn
@@ -18,29 +18,46 @@ Public Class qryDate
                 StockIn()
             Case ReportType.Sales
                 SalesReport()
+            Case ReportType.Inventory
+                InventoryReport()
         End Select
     End Sub
 
-    Private Sub Inventory()
 
-        Dim mysql As String
-        If monCal.SelectionRange.Start.ToShortDateString = CurrentDate.ToShortDateString Then
-            mysql = "Select * From ItemMaster"
-        Else
-            mysql = "Select D.CurrentDate, ITM.ItemCOde, ITM.Description, ITM.SalePrice, "
-            mysql &= "DL.Ending as Onhand "
-            mysql &= "From tblDaily D "
-            mysql &= "Inner Join tblDailyLines as DL on D.ID = DL.DailyID "
-            mysql &= "Inner Join ItemMaster ITM on ITM.ItemID = DL.ItemID "
-            mysql &= "Where D.CurrentDate = '" & monCal.SelectionStart.ToShortDateString & "'"
-        End If
+    Private Sub InventoryReport()
+        Dim mySql As String
+        Dim SelectedDate As Date = monCal.SelectionStart.ToShortDateString
+
+        mySql = "SELECT "
+        mySql &= vbCrLf & "	ITM.ITEMCODE, ITM.DESCRIPTION, ITM.CATEGORIES, ITM.SUBCAT,"
+        mySql &= vbCrLf & "	COALESCE(ITM.ONHAND - SUM(TBL.QTY),ITM.ONHAND) AS ACTUAL,"
+        mySql &= vbCrLf & "    ITM.ONHAND,CAST('ITM.ADD_TIME' AS DATE) as DocDate "
+        mySql &= vbCrLf & "FROM ("
+        mySql &= vbCrLf & "SELECT "
+        mySql &= vbCrLf & "    'IN' as TYPE, I.DOCDATE, IL.ITEMCODE, IL.QTY"
+        mySql &= vbCrLf & "FROM INV I"
+        mySql &= vbCrLf & "INNER JOIN INVLINES IL
+        mySql &= vbCrLf & "ON I.DOCID = IL.DOCID"
+        mySql &= vbCrLf & "WHERE I.DOCDATE > '" & SelectedDate & "'"
+        mySql &= vbCrLf & "UNION"
+        mySql &= vbCrLf & "SELECT "
+        mySql &= vbCrLf & "    'SALES' AS TYPE, D.DOCDATE, DL.ITEMCODE, DL.QTY * -1"
+        mySql &= vbCrLf & "FROM DOC D"
+        mySql &= vbCrLf & "INNER JOIN DOCLINES DL"
+        mySql &= vbCrLf & "ON D.DOCID = DL.DOCID"
+        mySql &= vbCrLf & "WHERE D.DOCDATE > '" & SelectedDate & "'"
+        mySql &= vbCrLf & ") TBL"
+        mySql &= vbCrLf & "RIGHT JOIN ITEMMASTER ITM"
+        mySql &= vbCrLf & "ON ITM.ITEMCODE = TBL.ITEMCODE"
+        mySql &= vbCrLf & "WHERE ITM.ONHAND <> 0"
+        mySql &= vbCrLf & "GROUP BY "
+        mySql &= vbCrLf & "	ITM.ITEMCODE, ITM.DESCRIPTION, ITM.CATEGORIES, ITM.SUBCAT, ITM.ONHAND, DocDate "
 
         Dim dic As New Dictionary(Of String, String)
-        dic.Add("txtMonthOf", "As of " & monCal.SelectionRange.Start.ToShortDateString)
-        ' dic.Add("branchName", branchName)
-        dic.Add("txtUsername", SystemUser.USERNAME)
+        dic.Add("txtMonthOf", SelectedDate.ToLongDateString)
+        dic.Add("branchName", "GSC")
 
-        frmReport.ReportInit(mysql, "dsInventory", "Reports\rpt_Inventory.rdlc", dic)
+        frmReport.ReportInit(mySql, "dsInventory", "Report\rpt_InventoryPOS.rdlc", dic)
         frmReport.Show()
     End Sub
 

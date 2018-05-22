@@ -112,4 +112,9 @@
     Private Sub OpenStoreToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OpenStoreToolStripMenuItem.Click
         frmOpenStore.Show()
     End Sub
+
+    Private Sub InventoryToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InventoryToolStripMenuItem.Click
+        qryDate.FormType = qryDate.ReportType.Inventory
+        qryDate.Show()
+    End Sub
 End Class
