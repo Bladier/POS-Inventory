@@ -3,6 +3,8 @@
     Private queueIMD As New CollectionItemData
     Private qtyitm As Double = 1
 
+    Friend isStockOut As Boolean = False
+
     Friend Sub load_Items(Optional ByVal src As String = "")
         Dim quiloader As Integer = 0
         Dim mysql As String
@@ -139,9 +141,17 @@
             End If
         Next
 
-        selected_itm.Quantity = qtyitm
-        selected_itm.SRP = selected_itm.SalePrice
-        frmTransaction.AddItem(selected_itm)
+        If isStockOut Then
+            selected_itm.Quantity = qtyitm
+            selected_itm.SRP = 0
+            frmTransaction.AddItem(selected_itm)
+        Else
+            selected_itm.Quantity = qtyitm
+            selected_itm.SRP = selected_itm.SalePrice
+            frmTransaction.AddItem(selected_itm)
+        End If
+
+       
         frmTransaction.txtSearch.Clear()
         Me.Close()
     End Sub

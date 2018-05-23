@@ -130,4 +130,14 @@
     Private Sub tsUser_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsUser.Click
 
     End Sub
+
+    Private Sub SalesToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SalesToolStripMenuItem1.Click
+        qryDate.FormType = qryDate.ReportType.Sales_Monthly
+        qryDate.Show()
+    End Sub
+
+    Private Sub StockOutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles StockOutToolStripMenuItem.Click
+        qryDate.FormType = qryDate.ReportType.stockOut
+        qryDate.Show()
+    End Sub
 End Class
