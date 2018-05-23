@@ -11,6 +11,7 @@ Public Class qryDate
         Inventory = 2
         Sales_Monthly = 3
         stockOut = 4
+
     End Enum
 
     Friend FormType As ReportType = ReportType.StockIn
@@ -26,12 +27,15 @@ Public Class qryDate
                 MonthlySalesReport()
             Case ReportType.stockOut
                 StockOut()
+           
         End Select
+
     End Sub
 
     Private Sub btnGenerate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGenerate.Click
         Generate()
     End Sub
+    
 
     Private Sub SalesReport()
         Dim mySql As String, dsName As String, rptPath As String
@@ -63,6 +67,7 @@ Public Class qryDate
         frmReport.ReportInit(mySql, dsName, rptPath, addParameter)
         frmReport.Show()
     End Sub
+  
 
     Private Sub MonthlySalesReport()
         Dim st As Date = GetFirstDate(monCal.SelectionStart)

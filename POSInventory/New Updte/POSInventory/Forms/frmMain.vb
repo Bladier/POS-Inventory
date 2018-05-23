@@ -140,4 +140,14 @@
         qryDate.FormType = qryDate.ReportType.stockOut
         qryDate.Show()
     End Sub
+
+    Private Sub SampleToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SampleToolStripMenuItem.Click
+      
+    End Sub
+
+ 
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        frmOpenStore.printReport()
+    End Sub
 End Class

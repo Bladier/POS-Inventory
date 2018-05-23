@@ -26,6 +26,27 @@
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
         Me.Close()
     End Sub
+    Public Sub printReport()
+        Dim mySql As String, dsName As String, rptPath As String
+        Dim dt As DateTime = Now
+        Dim format As String = "yyyy-MM-dd"
+        Dim str As String = dt.ToString(format)
+
+
+        dsName = "dailySalesReport"
+        rptPath = "Report\rptDailySales.rdlc"
+        mySql = "SELECT tbldaily.CURRENTDATE,tbldaily.INITIALBAL,tbldaily.CASHCOUNT,tbldaily.OPENNER,tbldaily.CLOSER,tbldaily.`Overage/Shortage`," & _
+            "doclines.ITEMCODE,doclines.DESCRIPTION,doclines.QTY,doclines.SALEPRICE,doclines.ROWTOTAL,doc.DOCTOTAL FROM tbldaily ,doclines INNER JOIN doc ON doclines.DOCID = doc.DOCID " & _
+            "where tbldaily.CURRENTDATE = '" & str & "'"
+
+
+        Dim addParameter As New Dictionary(Of String, String)
+        addParameter.Add("txtMonthOf", "DATE : " & str)
+        addParameter.Add("txtUsername", SystemUser.UserName)
+
+        frmReport.ReportInit(mySql, dsName, rptPath, addParameter)
+        frmReport.Show()
+    End Sub
 
     Private Sub btnSetup_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSetup.Click
         ' If frmMain.dateSet Then MsgBox("Please execute closing", MsgBoxStyle.Critical) : Exit Sub
@@ -33,6 +54,7 @@
         If frmMain.dateSet Then
             If txtInitial.Text > 0 Then
                 closestore(txtInitial.Text)
+                printReport()
             End If
         Else
             If txtInitial.Text = "" Then Exit Sub
