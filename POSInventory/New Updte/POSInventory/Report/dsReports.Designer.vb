@@ -1201,6 +1201,8 @@ Partial Public Class dsRepors
         
         Private columnDocDate As Global.System.Data.DataColumn
         
+        Private columnConsume As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -1293,6 +1295,14 @@ Partial Public Class dsRepors
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ConsumeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnConsume
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1329,9 +1339,9 @@ Partial Public Class dsRepors
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddPOS_INVENTORYRow(ByVal ITEMCODE As String, ByVal DESCRIPTION As String, ByVal CATEGORIES As String, ByVal SUBCAT As String, ByVal ACTUAL As String, ByVal ONHAND As String, ByVal DocDate As String) As POS_INVENTORYRow
+        Public Overloads Function AddPOS_INVENTORYRow(ByVal ITEMCODE As String, ByVal DESCRIPTION As String, ByVal CATEGORIES As String, ByVal SUBCAT As String, ByVal ACTUAL As String, ByVal ONHAND As String, ByVal DocDate As String, ByVal Consume As String) As POS_INVENTORYRow
             Dim rowPOS_INVENTORYRow As POS_INVENTORYRow = CType(Me.NewRow,POS_INVENTORYRow)
-            Dim columnValuesArray() As Object = New Object() {ITEMCODE, DESCRIPTION, CATEGORIES, SUBCAT, ACTUAL, ONHAND, DocDate}
+            Dim columnValuesArray() As Object = New Object() {ITEMCODE, DESCRIPTION, CATEGORIES, SUBCAT, ACTUAL, ONHAND, DocDate, Consume}
             rowPOS_INVENTORYRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowPOS_INVENTORYRow)
             Return rowPOS_INVENTORYRow
@@ -1361,6 +1371,7 @@ Partial Public Class dsRepors
             Me.columnACTUAL = MyBase.Columns("ACTUAL")
             Me.columnONHAND = MyBase.Columns("ONHAND")
             Me.columnDocDate = MyBase.Columns("DocDate")
+            Me.columnConsume = MyBase.Columns("Consume")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1380,6 +1391,8 @@ Partial Public Class dsRepors
             MyBase.Columns.Add(Me.columnONHAND)
             Me.columnDocDate = New Global.System.Data.DataColumn("DocDate", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDocDate)
+            Me.columnConsume = New Global.System.Data.DataColumn("Consume", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnConsume)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2365,6 +2378,21 @@ Partial Public Class dsRepors
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Consume() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePOS_INVENTORY.ConsumeColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Consume' in table 'POS_INVENTORY' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePOS_INVENTORY.ConsumeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsITEMCODENull() As Boolean
             Return Me.IsNull(Me.tablePOS_INVENTORY.ITEMCODEColumn)
         End Function
@@ -2445,6 +2473,18 @@ Partial Public Class dsRepors
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetDocDateNull()
             Me(Me.tablePOS_INVENTORY.DocDateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsConsumeNull() As Boolean
+            Return Me.IsNull(Me.tablePOS_INVENTORY.ConsumeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetConsumeNull()
+            Me(Me.tablePOS_INVENTORY.ConsumeColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

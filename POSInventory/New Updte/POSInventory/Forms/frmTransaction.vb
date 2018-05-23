@@ -171,7 +171,7 @@ Public Class frmTransaction
                 .Item("QTY") = itm.Quantity * IIf(TransactionMode = TransType.Returns, -1, 1)
                 .Item("UNITPRICE") = itm.UnitPrice
                 .Item("SALEPRICE") = itm.SalePrice
-                .Item("ROWTOTAL") = itm.SalePrice * itm.Quantity
+                .Item("ROWTOTAL") = IIf(TransactionMode = TransType.StockOut, 0, itm.SalePrice * itm.Quantity)
                 .Item("UOM") = itm.UnitofMeasure
                 .Item("Ending") = 0
             End With
@@ -245,7 +245,7 @@ Public Class frmTransaction
     Private Sub btnStockOut_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnStockOut.Click
             If ShiftMode() Then
                 btnPost.Enabled = True
-                Load_asStockOut()
+            Load_asStockOut()
             End If
     End Sub
 
@@ -334,6 +334,9 @@ Public Class frmTransaction
 
     Private Function Display_Total(ByVal tot As Double) As Double
         Dim final As Double = tot.ToString("##000.00")
+        If TransactionMode = TransType.StockOut Then
+            Return 0.0
+        End If
 
         Dim TOTALVAT As Double = final * VAT
         Display_NoVat(final)
@@ -452,58 +455,6 @@ Public Class frmTransaction
                 .SubItems(4).Text = ItemAmount.ToString("#,##0.00")
             End With
         Else
-
-            'If itm.ItemCode = "SMM 00001" OrElse itm.ItemCode = "SMP 00001" Then
-            '    IsRequired_CINum = False
-            '    If TransactionMode = TransType.Encashment Then
-            '        Dim lvEncash As ListViewItem = lvSale.Items.Add(itm.ItemCode)
-            '        lvEncash.SubItems.Add(itm.Description)
-            '        lvEncash.SubItems.Add(itm.Quantity)
-
-            '        lvEncash.SubItems.Add(itm.SalePrice.ToString("#,##0.00"))
-            '        ItemAmount = (itm.SalePrice * itm.Quantity)
-
-            '        lvEncash.SubItems.Add(ItemAmount.ToString("#,##0.00"))
-            '        lvEncash.SubItems.Add(itm.SRP.ToString("#,##0.00"))
-            '        lvEncash.SubItems.Add("One Time Customer")
-            '    Else
-            '        Dim Computation As SMPCompute
-            '        Computation = New SMPCompute(itm.Quantity, itm.ItemCode)
-
-            '        Dim lv As ListViewItem = lvSale.Items.Add(itm.ItemCode)
-            '        lv.SubItems.Add(itm.Description)
-            '        lv.SubItems.Add(Computation.TotalAmount)
-
-            '        lv.SubItems.Add(itm.SalePrice.ToString("#,##0.00"))
-            '        ItemAmount = (itm.SalePrice * Computation.TotalAmount)
-
-            '        lv.SubItems.Add(ItemAmount.ToString("#,##0.00"))
-            '        lv.SubItems.Add(itm.SRP.ToString("#,##0.00"))
-            '        itm.Quantity = Computation.TotalAmount
-            '        lv.SubItems.Add("One Time Customer")
-
-            '        If TransactionMode = TransType.Cash Then
-            '            Dim itm2 As New cItemData
-            '            itm2.ItemCode = "SMM 00002"
-            '            itm2.Load_Item()
-
-            '            itm2.Quantity = Computation.Commission
-
-            '            Dim lv2 As ListViewItem = lvSale.Items.Add(itm2.ItemCode)
-            '            lv2.SubItems.Add(itm2.Description)
-            '            lv2.SubItems.Add(itm2.Quantity)
-
-            '            lv2.SubItems.Add(itm2.SalePrice.ToString("#,##0.00"))
-            '            ItemAmount = (itm2.SalePrice * itm2.Quantity)
-
-            '            lv2.SubItems.Add(ItemAmount.ToString("#,##0.00"))
-            '            lv2.SubItems.Add(itm2.SRP.ToString("#,##0.00"))
-            '            lv2.SubItems.Add("One Time Customer")
-
-            '            ht_BroughtItems.Add(itm2.ItemCode, itm2)
-            '        End If
-            '    End If
-            'Else
             'If NEW
             Dim lv As ListViewItem = lvSale.Items.Add(itm.ItemCode)
             lv.SubItems.Add(itm.Description)
@@ -563,10 +514,12 @@ Public Class frmTransaction
 
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
-
+        If TransactionMode = TransType.StockOut Then
+            frmPLU.isStockOut = True
+        End If
         frmPLU.Show()
         'frmPLU.From_Sales()
-       
+
         If txtSearch.Text.Length > 0 Then frmPLU.SearchSelect(txtSearch.Text) : Exit Sub
 
         frmPLU.load_Items()
