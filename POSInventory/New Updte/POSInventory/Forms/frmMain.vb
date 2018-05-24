@@ -9,7 +9,8 @@
         End If
 
         UserManagementToolStripMenuItem.Enabled = Not st
-
+        MaitenanceToolStripMenuItem.Enabled = Not st
+        BackupToolStripMenuItem.Enabled = Not st
         DailyToolStripMenuItem.Enabled = Not st
         OpenStoreToolStripMenuItem.Enabled = Not st
 
