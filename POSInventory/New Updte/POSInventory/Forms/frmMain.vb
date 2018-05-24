@@ -54,6 +54,10 @@
     End Sub
 
     Private Sub UserManagementToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UserManagementToolStripMenuItem.Click
+        If SystemUser.userRole <> "Admin" Then
+            MsgBox("You don't have access in this module", MsgBoxStyle.Exclamation, "Notification")
+            Exit Sub
+        End If
         frmUserManagement.Show()
     End Sub
 
@@ -69,18 +73,39 @@
     End Sub
 
     Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton1.Click
+        If Not dateSet Then
+            MsgBox("Store is not open yet. Go to File>Open Store", MsgBoxStyle.Exclamation, "Notification")
+            Exit Sub
+        End If
         frmTransaction.Show()
     End Sub
 
     Private Sub ToolStripButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton2.Click
+        If Not dateSet Then
+            MsgBox("Store is not open yet. Go to File>Open Store", MsgBoxStyle.Exclamation, "Notification")
+            Exit Sub
+        End If
+        MsgBox("You don't have access in this module", MsgBoxStyle.Exclamation, "Notification")
+        Exit Sub
         frmAddInventory.Show()
     End Sub
 
     Private Sub ToolStripButton3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton3.Click
+        If Not dateSet Then
+            MsgBox("Store is not open yet. Go to File>Open Store", MsgBoxStyle.Exclamation, "Notification")
+            Exit Sub
+        End If
         frmIMDList.Show()
     End Sub
 
     Private Sub ToolStripButton4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton4.Click
+        If Not dateSet Then
+            MsgBox("Store is not open yet. Go to File>Open Store", MsgBoxStyle.Exclamation, "Notification")
+            Exit Sub
+        End If
+
+        MsgBox("You don't have access in this module", MsgBoxStyle.Exclamation, "Notification")
+        Exit Sub
         frmIMD.Show()
     End Sub
 
@@ -139,5 +164,17 @@
     Private Sub StockOutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles StockOutToolStripMenuItem.Click
         qryDate.FormType = qryDate.ReportType.stockOut
         qryDate.Show()
+    End Sub
+
+    Private Sub BackupToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BackupToolStripMenuItem.Click
+        frmbackup.Show()
+    End Sub
+
+    Private Sub MaitenanceToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MaitenanceToolStripMenuItem.Click
+        If SystemUser.userRole <> "Admin" Then
+            MsgBox("You don't have access in this module.", MsgBoxStyle.Exclamation, "Notification")
+            Exit Sub
+        End If
+        frmSettings.Show()
     End Sub
 End Class

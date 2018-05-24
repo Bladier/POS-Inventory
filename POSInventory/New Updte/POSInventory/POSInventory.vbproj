@@ -88,12 +88,19 @@
     <Compile Include="Class\invCollection.vb" />
     <Compile Include="Class\Inv.vb" />
     <Compile Include="Class\invLines.vb" />
+    <Compile Include="Class\Maintenance.vb" />
     <Compile Include="Class\Sys_user.vb" />
     <Compile Include="Class\InventoryController.vb" />
     <Compile Include="Forms\frmAddInventory.Designer.vb">
       <DependentUpon>frmAddInventory.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmAddInventory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmbackup.Designer.vb">
+      <DependentUpon>frmbackup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmbackup.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmHistory.Designer.vb">
@@ -149,6 +156,12 @@
       <DependentUpon>frmReceiptView.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmReceiptView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSettings.Designer.vb">
+      <DependentUpon>frmSettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSettings.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmTransaction.Designer.vb">
@@ -210,6 +223,9 @@
     <EmbeddedResource Include="Forms\frmAddInventory.resx">
       <DependentUpon>frmAddInventory.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmbackup.resx">
+      <DependentUpon>frmbackup.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmHistory.resx">
       <DependentUpon>frmHistory.vb</DependentUpon>
     </EmbeddedResource>
@@ -236,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmReceiptView.resx">
       <DependentUpon>frmReceiptView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSettings.resx">
+      <DependentUpon>frmSettings.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmTransaction.resx">
       <DependentUpon>frmTransaction.vb</DependentUpon>

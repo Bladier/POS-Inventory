@@ -36,6 +36,7 @@ Partial Class frmMain
         Me.SalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StockInToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InventoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StockOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MonthlToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalesToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -49,7 +50,8 @@ Partial Class frmMain
         Me.tsUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tssOthers = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tmrCurrent = New System.Windows.Forms.Timer(Me.components)
-        Me.StockOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BackupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MaitenanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.statusStrip.SuspendLayout()
@@ -99,6 +101,7 @@ Partial Class frmMain
         '
         'ToolsToolStripMenuItem
         '
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BackupToolStripMenuItem, Me.MaitenanceToolStripMenuItem})
         Me.ToolsToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
         Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
@@ -116,32 +119,38 @@ Partial Class frmMain
         '
         Me.DailyToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SalesToolStripMenuItem, Me.StockInToolStripMenuItem, Me.InventoryToolStripMenuItem, Me.StockOutToolStripMenuItem})
         Me.DailyToolStripMenuItem.Name = "DailyToolStripMenuItem"
-        Me.DailyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DailyToolStripMenuItem.Size = New System.Drawing.Size(119, 22)
         Me.DailyToolStripMenuItem.Text = "&Daily"
         '
         'SalesToolStripMenuItem
         '
         Me.SalesToolStripMenuItem.Name = "SalesToolStripMenuItem"
-        Me.SalesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SalesToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.SalesToolStripMenuItem.Text = "&Sales"
         '
         'StockInToolStripMenuItem
         '
         Me.StockInToolStripMenuItem.Name = "StockInToolStripMenuItem"
-        Me.StockInToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.StockInToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.StockInToolStripMenuItem.Text = "&StockIn"
         '
         'InventoryToolStripMenuItem
         '
         Me.InventoryToolStripMenuItem.Name = "InventoryToolStripMenuItem"
-        Me.InventoryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.InventoryToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.InventoryToolStripMenuItem.Text = "&Inventory"
+        '
+        'StockOutToolStripMenuItem
+        '
+        Me.StockOutToolStripMenuItem.Name = "StockOutToolStripMenuItem"
+        Me.StockOutToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
+        Me.StockOutToolStripMenuItem.Text = "&StockOut"
         '
         'MonthlToolStripMenuItem
         '
         Me.MonthlToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SalesToolStripMenuItem1})
         Me.MonthlToolStripMenuItem.Name = "MonthlToolStripMenuItem"
-        Me.MonthlToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.MonthlToolStripMenuItem.Size = New System.Drawing.Size(119, 22)
         Me.MonthlToolStripMenuItem.Text = "&Monthly"
         '
         'SalesToolStripMenuItem1
@@ -188,6 +197,7 @@ Partial Class frmMain
         '
         Me.ToolStripButton3.ForeColor = System.Drawing.Color.Black
         Me.ToolStripButton3.Image = CType(resources.GetObject("ToolStripButton3.Image"), System.Drawing.Image)
+        Me.ToolStripButton3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton3.Name = "ToolStripButton3"
         Me.ToolStripButton3.Size = New System.Drawing.Size(49, 22)
@@ -235,11 +245,17 @@ Partial Class frmMain
         '
         Me.tmrCurrent.Enabled = True
         '
-        'StockOutToolStripMenuItem
+        'BackupToolStripMenuItem
         '
-        Me.StockOutToolStripMenuItem.Name = "StockOutToolStripMenuItem"
-        Me.StockOutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.StockOutToolStripMenuItem.Text = "&StockOut"
+        Me.BackupToolStripMenuItem.Name = "BackupToolStripMenuItem"
+        Me.BackupToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.BackupToolStripMenuItem.Text = "&Backup"
+        '
+        'MaitenanceToolStripMenuItem
+        '
+        Me.MaitenanceToolStripMenuItem.Name = "MaitenanceToolStripMenuItem"
+        Me.MaitenanceToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.MaitenanceToolStripMenuItem.Text = "&Maitenance"
         '
         'frmMain
         '
@@ -291,5 +307,7 @@ Partial Class frmMain
     Friend WithEvents SalesToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents InventoryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents StockOutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents BackupToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MaitenanceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class
