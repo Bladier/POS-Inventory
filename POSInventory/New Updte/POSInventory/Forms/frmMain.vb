@@ -150,4 +150,9 @@
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         frmOpenStore.printReport()
     End Sub
+
+    Private Sub CascCountToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CascCountToolStripMenuItem.Click
+        qryDate.FormType = qryDate.ReportType.cashcount
+        qryDate.Show()
+    End Sub
 End Class

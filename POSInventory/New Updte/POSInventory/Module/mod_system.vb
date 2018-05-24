@@ -433,6 +433,40 @@ Module mod_system
         Return tmpTotal
     End Function
 
+    Friend Function GetSales_TodayV2(ByVal tmpdate As Date) As Double
+        Dim MySql As String
+        Dim dt As DateTime = Convert.ToDateTime(tmpdate.ToShortDateString)
+        Dim format As String = "yyyy-MM-dd"
+        Dim str As String = dt.ToString(format)
+        Dim ds As DataSet
+        Dim tmpTotal As Double = 0
+
+        MySql = "SELECT D.DOCID, "
+        MySql &= "CASE D.DOCTYPE "
+        MySql &= "WHEN 0 THEN 'SALES' "
+        MySql &= "WHEN 1 THEN 'SALES' "
+        MySql &= "WHEN 2 THEN 'RECALL' "
+        MySql &= "WHEN 3 THEN 'RETURNS' "
+        MySql &= "WHEN 4 THEN 'STOCKOUT' "
+        MySql &= "End AS DOCTYPE, "
+        MySql &= "D.MOP, D.CODE, D.CUSTOMER, D.DOCDATE, D.NOVAT, D.VATRATE, D.VATTOTAL, D.DOCTOTAL, "
+        MySql &= "D.STATUS, D.REMARKS,"
+        MySql &= "DL.ITEMCODE, DL.DESCRIPTION, DL.QTY, DL.UNITPRICE, DL.SALEPRICE, DL.ROWTOTAL "
+        MySql &= "FROM DOC D "
+        MySql &= "INNER JOIN DOCLINES DL ON DL.DOCID = D.DOCID "
+        MySql &= "WHERE D.DOCDATE = '" & str & "' AND D.STATUS <> 'V'"
+
+        ds = LoadSQL(MySql, "DOC")
+
+        If ds.Tables(0).Rows.Count = 0 Then Return 0.0
+        For Each dr As DataRow In ds.Tables(0).Rows
+            tmpTotal += dr.Item("RowTotal")
+        Next
+
+
+        Return tmpTotal
+    End Function
+
 
     Public Sub closestore(ByVal cc As Double)
         Dim mysql As String = "SELECT * FROM " & storeDB & "  WHERE STATUS =1"

@@ -11,7 +11,7 @@ Public Class qryDate
         Inventory = 2
         Sales_Monthly = 3
         stockOut = 4
-
+        cashcount = 5
     End Enum
 
     Friend FormType As ReportType = ReportType.StockIn
@@ -27,7 +27,8 @@ Public Class qryDate
                 MonthlySalesReport()
             Case ReportType.stockOut
                 StockOut()
-           
+            Case ReportType.cashcount
+                Cashcount()
         End Select
 
     End Sub
@@ -171,6 +172,40 @@ Public Class qryDate
         frmReport.ReportInit(mySql, "dsStockOut", "Report\rpt_StockOutReport.rdlc", dic)
         frmReport.Show()
     End Sub
+
+
+
+    Private Sub Cashcount()
+
+        Dim dt As DateTime = Convert.ToDateTime(monCal.SelectionStart.ToShortDateString)
+        Dim format As String = "yyyy-MM-dd"
+        Dim str As String = dt.ToString(format)
+
+        'If dt.ToShortDateString() = CurrentDate.ToShortDateString() Then
+        '    MsgBox("Please close store first before to generate cashcount report.", MsgBoxStyle.Critical, "Notification")
+        '    Exit Sub
+        'End If
+
+
+        Dim mysql As String
+        mysql = "SELECT tbldaily.ID,tbldaily.CURRENTDATE,"
+        mysql &= "tbldaily.INITIALBAL,tbldaily.CASHCOUNT,tbldaily.STATUS,"
+        mysql &= "tbldaily.REMARKS,tbldaily.SYSTEMINFO,tbldaily.`Overage/Shortage`,"
+        mysql &= "Concat(op.firstname,' ' , op.middlename, ' ' ,op.lastname) as Opener,"
+        mysql &= "concat(cl.firstname,' ' ,cl.middlename,' ' ,cl.lastname) as Closer "
+        mysql &= "FROM tbldaily Inner Join tbluser op ON tbldaily.OPENNER = op.ID "
+        mysql &= "Inner Join tbluser cl ON tbldaily.CLOSER = cl.ID "
+        mysql &= "WHERE tbldaily.CURRENTDATE = '" & str & "'"
+
+        Dim dic As New Dictionary(Of String, String)
+        dic.Add("txtMonthOf", dt.ToLongDateString)
+        dic.Add("TotaSlales", GetSales_TodayV2(str))
+
+        frmReport.ReportInit(mysql, "dailySalesReport", "Report\rptDailySales.rdlc", dic)
+        frmReport.Show()
+
+    End Sub
+
 
 
     Private Sub qryDate_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load

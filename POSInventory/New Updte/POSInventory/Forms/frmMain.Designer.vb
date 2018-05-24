@@ -51,6 +51,7 @@ Partial Class frmMain
         Me.tsUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tssOthers = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tmrCurrent = New System.Windows.Forms.Timer(Me.components)
+        Me.CascCountToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.statusStrip.SuspendLayout()
@@ -107,7 +108,7 @@ Partial Class frmMain
         '
         'ReportsToolStripMenuItem
         '
-        Me.ReportsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DailyToolStripMenuItem, Me.MonthlToolStripMenuItem})
+        Me.ReportsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DailyToolStripMenuItem, Me.MonthlToolStripMenuItem, Me.CascCountToolStripMenuItem})
         Me.ReportsToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
         Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(59, 20)
@@ -248,6 +249,12 @@ Partial Class frmMain
         '
         Me.tmrCurrent.Enabled = True
         '
+        'CascCountToolStripMenuItem
+        '
+        Me.CascCountToolStripMenuItem.Name = "CascCountToolStripMenuItem"
+        Me.CascCountToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CascCountToolStripMenuItem.Text = "Cash Caount"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -299,5 +306,6 @@ Partial Class frmMain
     Friend WithEvents InventoryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents StockOutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SampleToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CascCountToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

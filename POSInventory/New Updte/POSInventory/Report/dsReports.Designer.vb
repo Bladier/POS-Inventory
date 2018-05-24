@@ -1565,29 +1565,25 @@ Partial Public Class dsRepors
     Partial Public Class dailySalesReportDataTable
         Inherits Global.System.Data.TypedTableBase(Of dailySalesReportRow)
         
+        Private columnID As Global.System.Data.DataColumn
+        
         Private columnCURRENTDATE As Global.System.Data.DataColumn
         
         Private columnINITIALBAL As Global.System.Data.DataColumn
         
         Private columnCASHCOUNT As Global.System.Data.DataColumn
         
+        Private columnSTATUS As Global.System.Data.DataColumn
+        
+        Private columnREMARKS As Global.System.Data.DataColumn
+        
+        Private columnSYSTEMINFO As Global.System.Data.DataColumn
+        
         Private columnOPENNER As Global.System.Data.DataColumn
         
         Private columnCLOSER As Global.System.Data.DataColumn
         
         Private columnOVERSHORT As Global.System.Data.DataColumn
-        
-        Private columnITEMCODE As Global.System.Data.DataColumn
-        
-        Private columnDESCRIPTION As Global.System.Data.DataColumn
-        
-        Private columnQTY As Global.System.Data.DataColumn
-        
-        Private columnSALEPRICE As Global.System.Data.DataColumn
-        
-        Private columnROWTOTAL As Global.System.Data.DataColumn
-        
-        Private columnDOCTOTAL As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -1626,6 +1622,14 @@ Partial Public Class dsRepors
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property CURRENTDATEColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnCURRENTDATE
@@ -1650,6 +1654,30 @@ Partial Public Class dsRepors
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property STATUSColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSTATUS
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property REMARKSColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnREMARKS
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property SYSTEMINFOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSYSTEMINFO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property OPENNERColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnOPENNER
@@ -1669,54 +1697,6 @@ Partial Public Class dsRepors
         Public ReadOnly Property OVERSHORTColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnOVERSHORT
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property ITEMCODEColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnITEMCODE
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property DESCRIPTIONColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDESCRIPTION
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property QTYColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnQTY
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property SALEPRICEColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnSALEPRICE
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property ROWTOTALColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnROWTOTAL
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property DOCTOTALColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDOCTOTAL
             End Get
         End Property
         
@@ -1757,9 +1737,9 @@ Partial Public Class dsRepors
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AdddailySalesReportRow(ByVal CURRENTDATE As String, ByVal INITIALBAL As String, ByVal CASHCOUNT As String, ByVal OPENNER As String, ByVal CLOSER As String, ByVal OVERSHORT As String, ByVal ITEMCODE As String, ByVal DESCRIPTION As String, ByVal QTY As String, ByVal SALEPRICE As String, ByVal ROWTOTAL As String, ByVal DOCTOTAL As String) As dailySalesReportRow
+        Public Overloads Function AdddailySalesReportRow(ByVal ID As String, ByVal CURRENTDATE As String, ByVal INITIALBAL As String, ByVal CASHCOUNT As String, ByVal STATUS As String, ByVal REMARKS As String, ByVal SYSTEMINFO As String, ByVal OPENNER As String, ByVal CLOSER As String, ByVal OVERSHORT As String) As dailySalesReportRow
             Dim rowdailySalesReportRow As dailySalesReportRow = CType(Me.NewRow,dailySalesReportRow)
-            Dim columnValuesArray() As Object = New Object() {CURRENTDATE, INITIALBAL, CASHCOUNT, OPENNER, CLOSER, OVERSHORT, ITEMCODE, DESCRIPTION, QTY, SALEPRICE, ROWTOTAL, DOCTOTAL}
+            Dim columnValuesArray() As Object = New Object() {ID, CURRENTDATE, INITIALBAL, CASHCOUNT, STATUS, REMARKS, SYSTEMINFO, OPENNER, CLOSER, OVERSHORT}
             rowdailySalesReportRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowdailySalesReportRow)
             Return rowdailySalesReportRow
@@ -1782,47 +1762,41 @@ Partial Public Class dsRepors
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Friend Sub InitVars()
+            Me.columnID = MyBase.Columns("ID")
             Me.columnCURRENTDATE = MyBase.Columns("CURRENTDATE")
             Me.columnINITIALBAL = MyBase.Columns("INITIALBAL")
             Me.columnCASHCOUNT = MyBase.Columns("CASHCOUNT")
+            Me.columnSTATUS = MyBase.Columns("STATUS")
+            Me.columnREMARKS = MyBase.Columns("REMARKS")
+            Me.columnSYSTEMINFO = MyBase.Columns("SYSTEMINFO")
             Me.columnOPENNER = MyBase.Columns("OPENNER")
             Me.columnCLOSER = MyBase.Columns("CLOSER")
             Me.columnOVERSHORT = MyBase.Columns("OVERSHORT")
-            Me.columnITEMCODE = MyBase.Columns("ITEMCODE")
-            Me.columnDESCRIPTION = MyBase.Columns("DESCRIPTION")
-            Me.columnQTY = MyBase.Columns("QTY")
-            Me.columnSALEPRICE = MyBase.Columns("SALEPRICE")
-            Me.columnROWTOTAL = MyBase.Columns("ROWTOTAL")
-            Me.columnDOCTOTAL = MyBase.Columns("DOCTOTAL")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitClass()
+            Me.columnID = New Global.System.Data.DataColumn("ID", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnID)
             Me.columnCURRENTDATE = New Global.System.Data.DataColumn("CURRENTDATE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCURRENTDATE)
             Me.columnINITIALBAL = New Global.System.Data.DataColumn("INITIALBAL", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnINITIALBAL)
             Me.columnCASHCOUNT = New Global.System.Data.DataColumn("CASHCOUNT", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCASHCOUNT)
+            Me.columnSTATUS = New Global.System.Data.DataColumn("STATUS", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSTATUS)
+            Me.columnREMARKS = New Global.System.Data.DataColumn("REMARKS", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnREMARKS)
+            Me.columnSYSTEMINFO = New Global.System.Data.DataColumn("SYSTEMINFO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSYSTEMINFO)
             Me.columnOPENNER = New Global.System.Data.DataColumn("OPENNER", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnOPENNER)
             Me.columnCLOSER = New Global.System.Data.DataColumn("CLOSER", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCLOSER)
             Me.columnOVERSHORT = New Global.System.Data.DataColumn("OVERSHORT", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnOVERSHORT)
-            Me.columnITEMCODE = New Global.System.Data.DataColumn("ITEMCODE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnITEMCODE)
-            Me.columnDESCRIPTION = New Global.System.Data.DataColumn("DESCRIPTION", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDESCRIPTION)
-            Me.columnQTY = New Global.System.Data.DataColumn("QTY", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnQTY)
-            Me.columnSALEPRICE = New Global.System.Data.DataColumn("SALEPRICE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnSALEPRICE)
-            Me.columnROWTOTAL = New Global.System.Data.DataColumn("ROWTOTAL", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnROWTOTAL)
-            Me.columnDOCTOTAL = New Global.System.Data.DataColumn("DOCTOTAL", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDOCTOTAL)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2935,6 +2909,21 @@ Partial Public Class dsRepors
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ID() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabledailySalesReport.IDColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ID' in table 'dailySalesReport' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabledailySalesReport.IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property CURRENTDATE() As String
             Get
                 Try 
@@ -2975,6 +2964,51 @@ Partial Public Class dsRepors
             End Get
             Set
                 Me(Me.tabledailySalesReport.CASHCOUNTColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property STATUS() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabledailySalesReport.STATUSColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'STATUS' in table 'dailySalesReport' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabledailySalesReport.STATUSColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property REMARKS() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabledailySalesReport.REMARKSColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'REMARKS' in table 'dailySalesReport' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabledailySalesReport.REMARKSColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property SYSTEMINFO() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabledailySalesReport.SYSTEMINFOColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SYSTEMINFO' in table 'dailySalesReport' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabledailySalesReport.SYSTEMINFOColumn) = value
             End Set
         End Property
         
@@ -3025,93 +3059,15 @@ Partial Public Class dsRepors
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property ITEMCODE() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tabledailySalesReport.ITEMCODEColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'ITEMCODE' in table 'dailySalesReport' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabledailySalesReport.ITEMCODEColumn) = value
-            End Set
-        End Property
+        Public Function IsIDNull() As Boolean
+            Return Me.IsNull(Me.tabledailySalesReport.IDColumn)
+        End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property DESCRIPTION() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tabledailySalesReport.DESCRIPTIONColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'DESCRIPTION' in table 'dailySalesReport' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabledailySalesReport.DESCRIPTIONColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property QTY() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tabledailySalesReport.QTYColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'QTY' in table 'dailySalesReport' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabledailySalesReport.QTYColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property SALEPRICE() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tabledailySalesReport.SALEPRICEColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'SALEPRICE' in table 'dailySalesReport' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabledailySalesReport.SALEPRICEColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property ROWTOTAL() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tabledailySalesReport.ROWTOTALColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'ROWTOTAL' in table 'dailySalesReport' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabledailySalesReport.ROWTOTALColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property DOCTOTAL() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tabledailySalesReport.DOCTOTALColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'DOCTOTAL' in table 'dailySalesReport' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabledailySalesReport.DOCTOTALColumn) = value
-            End Set
-        End Property
+        Public Sub SetIDNull()
+            Me(Me.tabledailySalesReport.IDColumn) = Global.System.Convert.DBNull
+        End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -3151,6 +3107,42 @@ Partial Public Class dsRepors
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsSTATUSNull() As Boolean
+            Return Me.IsNull(Me.tabledailySalesReport.STATUSColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetSTATUSNull()
+            Me(Me.tabledailySalesReport.STATUSColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsREMARKSNull() As Boolean
+            Return Me.IsNull(Me.tabledailySalesReport.REMARKSColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetREMARKSNull()
+            Me(Me.tabledailySalesReport.REMARKSColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsSYSTEMINFONull() As Boolean
+            Return Me.IsNull(Me.tabledailySalesReport.SYSTEMINFOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetSYSTEMINFONull()
+            Me(Me.tabledailySalesReport.SYSTEMINFOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsOPENNERNull() As Boolean
             Return Me.IsNull(Me.tabledailySalesReport.OPENNERColumn)
         End Function
@@ -3183,78 +3175,6 @@ Partial Public Class dsRepors
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetOVERSHORTNull()
             Me(Me.tabledailySalesReport.OVERSHORTColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsITEMCODENull() As Boolean
-            Return Me.IsNull(Me.tabledailySalesReport.ITEMCODEColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetITEMCODENull()
-            Me(Me.tabledailySalesReport.ITEMCODEColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsDESCRIPTIONNull() As Boolean
-            Return Me.IsNull(Me.tabledailySalesReport.DESCRIPTIONColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetDESCRIPTIONNull()
-            Me(Me.tabledailySalesReport.DESCRIPTIONColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsQTYNull() As Boolean
-            Return Me.IsNull(Me.tabledailySalesReport.QTYColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetQTYNull()
-            Me(Me.tabledailySalesReport.QTYColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsSALEPRICENull() As Boolean
-            Return Me.IsNull(Me.tabledailySalesReport.SALEPRICEColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetSALEPRICENull()
-            Me(Me.tabledailySalesReport.SALEPRICEColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsROWTOTALNull() As Boolean
-            Return Me.IsNull(Me.tabledailySalesReport.ROWTOTALColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetROWTOTALNull()
-            Me(Me.tabledailySalesReport.ROWTOTALColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsDOCTOTALNull() As Boolean
-            Return Me.IsNull(Me.tabledailySalesReport.DOCTOTALColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetDOCTOTALNull()
-            Me(Me.tabledailySalesReport.DOCTOTALColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

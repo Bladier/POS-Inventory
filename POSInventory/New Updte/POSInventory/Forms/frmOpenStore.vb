@@ -35,10 +35,10 @@
 
         dsName = "dailySalesReport"
         rptPath = "Report\rptDailySales.rdlc"
-        mySql = "SELECT tbldaily.CURRENTDATE,tbldaily.INITIALBAL,tbldaily.CASHCOUNT,tbldaily.OPENNER,tbldaily.CLOSER,tbldaily.`Overage/Shortage`," & _
-            "doclines.ITEMCODE,doclines.DESCRIPTION,doclines.QTY,doclines.SALEPRICE,doclines.ROWTOTAL,doc.DOCTOTAL FROM tbldaily ,doclines INNER JOIN doc ON doclines.DOCID = doc.DOCID " & _
-            "where tbldaily.CURRENTDATE = '" & str & "'"
-
+        mySql = "SELECT tbldaily.ID,tbldaily.CURRENTDATE,tbldaily.INITIALBAL,tbldaily.CASHCOUNT,tbldaily.STATUS,tbldaily.REMARKS," & _
+            "tbldaily.SYSTEMINFO,tbldaily.`Overage/Shortage`,Concat(op.firstname,' ' , op.middlename, ' ' ,op.lastname) as " & _
+            "Opener,concat(cl.firstname,' ' ,cl.middlename,' ' ,cl.lastname) as Closer FROM tbldaily Inner Join tbluser op ON tbldaily.OPENNER = op.ID" & _
+            "Inner Join tbluser cl ON tbldaily.CLOSER = cl.ID where tbldaily.STATUS = 0"
 
         Dim addParameter As New Dictionary(Of String, String)
         addParameter.Add("txtMonthOf", "DATE : " & str)
