@@ -190,6 +190,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsReports.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Report\dsReports.vb">
+      <DependentUpon>dsReports.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Report\frmReport.Designer.vb">
       <DependentUpon>frmReport.vb</DependentUpon>
     </Compile>
@@ -251,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\qryDate.resx">
       <DependentUpon>qryDate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptRecipe.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rptStockIn.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

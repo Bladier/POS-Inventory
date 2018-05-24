@@ -12,7 +12,7 @@ Public Class frmTransaction
     Private ReturnNum As Double = GetOption("SalesReturnNum")
     Private StockOutNum As Double = GetOption("STONum")
 
-    'Private PRINTER_PT As String = GetOption("PRINTER")
+    Private PRINTER_PT As String = GetOption("PRINTER")
 
     Private DOC_TYPE As Integer = 0
     Dim Customer As String = "One Time Customer"
@@ -191,9 +191,9 @@ Public Class frmTransaction
 
         ItemPosted()
 
-        'If MsgBox("Do you want to print it?", MsgBoxStyle.Information + MsgBoxStyle.YesNo + vbDefaultButton2, "PRINT") = MsgBoxResult.Yes Then
-        '    PrintOR(DOCID)
-        'End If
+        If MsgBox("Do you want to print it?", MsgBoxStyle.Information + MsgBoxStyle.YesNo + vbDefaultButton2, "PRINT") = MsgBoxResult.Yes Then
+            PrintOR(DOCID)
+        End If
 
         MsgBox("ITEM POSTED", MsgBoxStyle.Information)
 
@@ -364,66 +364,69 @@ Public Class frmTransaction
         Me.StartPosition = FormStartPosition.CenterScreen
     End Sub
 
-    '#Region "Print"
+#Region "Print"
 
-    '    Private Sub PrintOR(ByVal docID As Integer)
-    '        ' Check if able to print
-    '        Dim printerName As String = PRINTER_PT
-    '        If Not canPrint(printerName) Then Exit Sub
+    Private Sub PrintOR(ByVal docID As Integer)
+        ' Check if able to print
+        Dim printerName As String = PRINTER_PT
+        'If Not canPrint(printerName) Then Exit Sub
 
-    '        ' Execute SQL
-    '        Dim mySql As String = "SELECT * FROM SALES_OR WHERE DOCID = " & docID
-    '        Dim ds As DataSet, fillData As String = "OR"
-    '        ds = LoadSQL(mySql, fillData)
+        ' Execute SQL
+        Dim mySql As String = "SELECT * FROM SALES_OR WHERE DOCID = " & docID
+        Dim ds As DataSet, fillData As String = "dsRecipe"
+        ds = LoadSQL(mySql, fillData)
 
-    '        ' Declare AutoPrint
-    '        Dim autoPrint As Reporting
-    '        Dim report As LocalReport = New LocalReport
-    '        autoPrint = New Reporting
+        Console.WriteLine(ds.Tables(0).Rows.Count)
+        ' Declare AutoPrint
+        Dim autoPrint As Reporting
+        Dim report As LocalReport = New LocalReport
+        autoPrint = New Reporting
 
-    '        ' Initialize Auto Print
-    '        report.ReportPath = "Reports\OfficialReceipt.rdlc"
-    '        report.DataSources.Add(New ReportDataSource(fillData, ds.Tables(fillData)))
+        ' Initialize Auto Print
+        report.ReportPath = "Report\rptRecipe.rdlc"
+        report.DataSources.Add(New ReportDataSource(fillData, ds.Tables(fillData)))
 
-    '        ' Assign Parameters
-    '        Dim dic As New Dictionary(Of String, String)
-    '        With ds.Tables(0).Rows(0)
-    '            dic.Add("txtORNum", .Item("CODE"))
-    '            dic.Add("txtPostingDate", .Item("DOCDATE"))
-    '            dic.Add("txtCustomer", .Item("CUSTOMER"))
-    '        End With
+        ' Assign Parameters
+        Dim dic As New Dictionary(Of String, String)
+        With ds.Tables(0).Rows(0)
+            Dim tmpOr As String = .Item("CODE")
+            tmpOr = tmpOr.Replace("INV#", "")
+            dic.Add("txtORNum", tmpOr)
+            dic.Add("txtPostingDate", .Item("DOCDATE"))
+            dic.Add("txtCustomer", .Item("CUSTOMER"))
+        End With
 
-    '        ' Importer Parameters
-    '        If Not dic Is Nothing Then
-    '            For Each nPara In dic
-    '                Dim tmpPara As New ReportParameter
-    '                tmpPara.Name = nPara.Key
-    '                tmpPara.Values.Add(nPara.Value)
-    '                report.SetParameters(New ReportParameter() {tmpPara})
-    '                Console.WriteLine(String.Format("{0}: {1}", nPara.Key, nPara.Value))
-    '            Next
-    '        End If
+        ' Importer Parameters
+        If Not dic Is Nothing Then
+            For Each nPara In dic
+                Dim tmpPara As New ReportParameter
+                tmpPara.Name = nPara.Key
+                tmpPara.Values.Add(nPara.Value)
+                report.SetParameters(New ReportParameter() {tmpPara})
+                Console.WriteLine(String.Format("{0}: {1}", nPara.Key, nPara.Value))
+            Next
+        End If
 
-    '        ' Executing Auto Print
-    '        autoPrint.Export(report)
-    '        autoPrint.m_currentPageIndex = 0
-    '        autoPrint.Print(printerName)
+        ' Executing Auto Print
+        autoPrint.Export(report)
+        autoPrint.m_currentPageIndex = 0
+        autoPrint.Print(printerName)
 
-    '        'frmReport.ReportInit(mySql, "OR", "Reports\OfficialReceipt.rdlc", dic)
-    '        'frmReport.Show()
-    '    End Sub
+        frmReport.ReportInit(mySql, "dsRecipe", "Report\rptRecipe.rdlc", dic)
+        frmReport.Show()
+    End Sub
 
 
-    '    Private Function canPrint(ByVal printerName As String) As Boolean
-    '        Try
-    '            Dim printDocument As Drawing.Printing.PrintDocument = New Drawing.Printing.PrintDocument
-    '            printDocument.PrinterSettings.PrinterName = printerName
-    '            Return printDocument.PrinterSettings.IsValid
-    '        Catch ex As Exception
-    '            Return False
-    '        End Try
-    '    End Function
-    '#End Region
+    Private Function canPrint(ByVal printerName As String) As Boolean
+        Try
+            Dim printDocument As Drawing.Printing.PrintDocument = New Drawing.Printing.PrintDocument
+            printDocument.PrinterSettings.PrinterName = printerName
+            Return printDocument.PrinterSettings.IsValid
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+#End Region
 
 
     '#Region "Function"

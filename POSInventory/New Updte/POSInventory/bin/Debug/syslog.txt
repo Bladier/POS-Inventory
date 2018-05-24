@@ -202,3 +202,11 @@
    at Microsoft.Reporting.WinForms.LocalReport.EnsureExecutionSession()
    at Microsoft.Reporting.WinForms.LocalReport.SetParameters(IEnumerable`1 parameters)
    at POSInventory.frmReport.ReportInit(String mySql, String dsName, String rptUrl, Dictionary`2 addPara, Boolean hasUser) in C:\Users\MISGWAPOHON\Documents\GitHub\POS-Inventory\POSInventory\New Updte\POSInventory\Report\frmReport.vb:line 88
+[05/24/2018 10:02:40] REPORT - Microsoft.Reporting.WinForms.LocalProcessingException: An error occurred during local report processing. ---> Microsoft.ReportingServices.Diagnostics.Utilities.UnknownReportParameterException: An attempt was made to set a report parameter 'txtUsername' that is not defined in this report.
+   at Microsoft.ReportingServices.ReportProcessing.ParameterInfoCollection.Combine(ParameterInfoCollection oldParameters, ParameterInfoCollection newParameters, Boolean checkReadOnly, Boolean ignoreNewQueryParams, Boolean isParameterDefinitionUpdate, CultureInfo culture)
+   at Microsoft.Reporting.LocalService.GetReportParameters(CatalogItemContextBase reportContext, NameValueCollection userSpecifiedValues, ParameterInfoCollection baseLineParameters, DatasourceCredentialsCollection credentials, ReportRuntimeSetup reportRuntimeSetup, CreateAndRegisterStream createStreamCallback)
+   at Microsoft.Reporting.WinForms.LocalReport.InternalGetReportParameters(CatalogItemContextBase reportContext, NameValueCollection userSpecifiedValues, ParameterInfoCollection baseLineParameters, DatasourceCredentialsCollection credentials, ReportRuntimeSetup reportRuntimeSetup)
+   --- End of inner exception stack trace ---
+   at Microsoft.Reporting.WinForms.LocalReport.InternalGetReportParameters(CatalogItemContextBase reportContext, NameValueCollection userSpecifiedValues, ParameterInfoCollection baseLineParameters, DatasourceCredentialsCollection credentials, ReportRuntimeSetup reportRuntimeSetup)
+   at Microsoft.Reporting.WinForms.LocalReport.SetParameters(IEnumerable`1 parameters)
+   at POSInventory.frmReport.ReportInit(String mySql, String dsName, String rptUrl, Dictionary`2 addPara, Boolean hasUser) in C:\Users\MISGWAPOHON\Documents\GitHub\POS-Inventory\POSInventory\New Updte\POSInventory\Report\frmReport.vb:line 88

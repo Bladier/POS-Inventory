@@ -2,6 +2,7 @@
 
 Public Class frmPrint
     Private PRINTER_Sales As String '= GetOption("PrinterPT")
+    Friend isStockOut As Boolean = False
 
     Private Sub LoadReceipt()
         Dim mySql As String = "SELECT * FROM DOC WHERE STATUS <> 'V' ORDER BY DOCDate DESC limit 50"
@@ -70,7 +71,7 @@ Public Class frmPrint
         mySql &= "WHERE D.DOCID = '" & idx & "'"
         Dim ds As DataSet = LoadSQL(mySql, dsName)
 
-        report.ReportPath = "Reports\rptReceipt.rdlc"
+        report.ReportPath = "Report\rptReceipt.rdlc"
         report.DataSources.Add(New ReportDataSource(dsName, ds.Tables(dsName)))
 
         Dim addParameters As New Dictionary(Of String, String)
@@ -121,7 +122,7 @@ Public Class frmPrint
 
     Private Sub btnVoid_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVoid.Click
         If lvReceipt.SelectedItems.Count = 0 Then Exit Sub
-       
+
         Void()
 
     End Sub
@@ -133,6 +134,13 @@ Public Class frmPrint
         Dim mysql As String = "SELECT * FROM DOC WHERE DOCID = '" & idx & "'"
         Dim ds As DataSet = LoadSQL(mysql, "Doc")
         Dim DocDate As Date = ds.Tables(0).Rows(0).Item("DOCDATE")
+
+        Dim tmpstr As String = ds.Tables(0).Rows(0).Item("Code")
+        If tmpstr.Contains("STO#") Then
+            MsgBox("Unable to void stock out", MsgBoxStyle.Critical, "Notification")
+            Exit Sub
+        End If
+
         If DocDate <> CurrentDate.Date Then
             MsgBox("You cannot void transaction in a DIFFERENT date", MsgBoxStyle.Critical)
             Exit Sub
