@@ -2,23 +2,23 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "POS"
-#define MyAppVersion "1.0.0."
-#define MyAppPublisher "bL@d3G@g3R"
-#define MyAppExeName "pawnshop.exe"
+#define MyAppVersion "1.0.0.0"
+#define MyAppPublisher "bl@d3G@geR"
+#define MyAppExeName "POSInventory.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{67EEF29A-59B8-4181-AD15-2DED75A284F0}
+AppId={{31A1EAF5-FBA4-4D86-A30A-EDF5CC007B58}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
-DefaultDirName={pf}\psi-S0ft\Point of Sales System
-DefaultGroupName=psi-S0ft\Point of Sales System
+DefaultDirName={pf}\psi-S0ft\POS
+DefaultGroupName=psi-S0ft\POS
 OutputDir=C:\Users\MISGWAPOHON\Documents\GitHub\POS-Inventory\POSInventory\New Updte\deployment
-OutputBaseFilename=pos1.0.0.0
+OutputBaseFilename=POS1000
 SetupIconFile=C:\Users\MISGWAPOHON\Documents\GitHub\POS-Inventory\POSInventory\New Updte\deployment\if_system-software-installer_28708.ico
 Compression=lzma
 SolidCompression=yes
