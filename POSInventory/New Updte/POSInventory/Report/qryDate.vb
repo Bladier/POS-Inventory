@@ -190,7 +190,7 @@ Public Class qryDate
         Dim mysql As String
         mysql = "SELECT tbldaily.ID,tbldaily.CURRENTDATE,"
         mysql &= "tbldaily.INITIALBAL,tbldaily.CASHCOUNT,tbldaily.STATUS,"
-        mysql &= "tbldaily.REMARKS,tbldaily.SYSTEMINFO,tbldaily.`Overage/Shortage`,"
+        mysql &= "tbldaily.REMARKS,tbldaily.SYSTEMINFO,tbldaily.`Overage/Shortage` as OVERSHORT,"
         mysql &= "Concat(op.firstname,' ' , op.middlename, ' ' ,op.lastname) as Opener,"
         mysql &= "concat(cl.firstname,' ' ,cl.middlename,' ' ,cl.lastname) as Closer "
         mysql &= "FROM tbldaily Inner Join tbluser op ON tbldaily.OPENNER = op.ID "

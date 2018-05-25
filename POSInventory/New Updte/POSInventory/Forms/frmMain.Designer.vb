@@ -40,6 +40,7 @@ Partial Class frmMain
         Me.SampleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MonthlToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalesToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CascCountToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
@@ -51,7 +52,6 @@ Partial Class frmMain
         Me.tsUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tssOthers = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tmrCurrent = New System.Windows.Forms.Timer(Me.components)
-        Me.CascCountToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.statusStrip.SuspendLayout()
@@ -124,31 +124,31 @@ Partial Class frmMain
         'SalesToolStripMenuItem
         '
         Me.SalesToolStripMenuItem.Name = "SalesToolStripMenuItem"
-        Me.SalesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SalesToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.SalesToolStripMenuItem.Text = "&Sales"
         '
         'StockInToolStripMenuItem
         '
         Me.StockInToolStripMenuItem.Name = "StockInToolStripMenuItem"
-        Me.StockInToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.StockInToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.StockInToolStripMenuItem.Text = "&StockIn"
         '
         'InventoryToolStripMenuItem
         '
         Me.InventoryToolStripMenuItem.Name = "InventoryToolStripMenuItem"
-        Me.InventoryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.InventoryToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.InventoryToolStripMenuItem.Text = "&Inventory"
         '
         'StockOutToolStripMenuItem
         '
         Me.StockOutToolStripMenuItem.Name = "StockOutToolStripMenuItem"
-        Me.StockOutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.StockOutToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.StockOutToolStripMenuItem.Text = "&StockOut"
         '
         'SampleToolStripMenuItem
         '
         Me.SampleToolStripMenuItem.Name = "SampleToolStripMenuItem"
-        Me.SampleToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SampleToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.SampleToolStripMenuItem.Text = "sample"
         '
         'MonthlToolStripMenuItem
@@ -163,6 +163,12 @@ Partial Class frmMain
         Me.SalesToolStripMenuItem1.Name = "SalesToolStripMenuItem1"
         Me.SalesToolStripMenuItem1.Size = New System.Drawing.Size(100, 22)
         Me.SalesToolStripMenuItem1.Text = "&Sales"
+        '
+        'CascCountToolStripMenuItem
+        '
+        Me.CascCountToolStripMenuItem.Name = "CascCountToolStripMenuItem"
+        Me.CascCountToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CascCountToolStripMenuItem.Text = "&Cash Count"
         '
         'AboutToolStripMenuItem
         '
@@ -248,12 +254,6 @@ Partial Class frmMain
         'tmrCurrent
         '
         Me.tmrCurrent.Enabled = True
-        '
-        'CascCountToolStripMenuItem
-        '
-        Me.CascCountToolStripMenuItem.Name = "CascCountToolStripMenuItem"
-        Me.CascCountToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.CascCountToolStripMenuItem.Text = "Cash Caount"
         '
         'frmMain
         '

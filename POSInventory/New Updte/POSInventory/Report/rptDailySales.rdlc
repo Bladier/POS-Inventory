@@ -40,16 +40,16 @@
           <DataField>SYSTEMINFO</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="OPENNER">
-          <DataField>OPENNER</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="CLOSER">
-          <DataField>CLOSER</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="OVERSHORT">
           <DataField>OVERSHORT</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Opener">
+          <DataField>Opener</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Closer">
+          <DataField>Closer</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -75,7 +75,9 @@
             <TextRuns>
               <TextRun>
                 <Value>=First(Fields!INITIALBAL.Value, "dailySalesReport")</Value>
-                <Style />
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -83,12 +85,12 @@
         </Paragraphs>
         <rd:DefaultName>INITIALBAL</rd:DefaultName>
         <Top>0.23625in</Top>
-        <Left>1.99479in</Left>
+        <Left>2.47829in</Left>
         <Height>0.23958in</Height>
         <Width>1.30208in</Width>
         <Style>
           <Border>
-            <Style>None</Style>
+            <Style>Solid</Style>
           </Border>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
@@ -104,7 +106,9 @@
             <TextRuns>
               <TextRun>
                 <Value>=First(Fields!CASHCOUNT.Value, "dailySalesReport")</Value>
-                <Style />
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -112,43 +116,13 @@
         </Paragraphs>
         <rd:DefaultName>CASHCOUNT</rd:DefaultName>
         <Top>0.50361in</Top>
-        <Left>1.80222in</Left>
+        <Left>2.47829in</Left>
         <Height>0.20833in</Height>
         <Width>1.30208in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="OVERSHORT">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First(Fields!OVERSHORT.Value, "dailySalesReport")</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>OVERSHORT</rd:DefaultName>
-        <Top>0.75361in</Top>
-        <Left>2.46354in</Left>
-        <Height>0.20833in</Height>
-        <Width>1.30208in</Width>
-        <ZIndex>2</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
+            <Style>Solid</Style>
           </Border>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
@@ -163,7 +137,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>INITIAL BALANCE ₱</Value>
+                <Value>INITIAL BALANCE </Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -172,10 +146,10 @@
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
         <Top>0.23625in</Top>
-        <Left>0.5in</Left>
+        <Left>0.25in</Left>
         <Height>0.23958in</Height>
-        <Width>1.45312in</Width>
-        <ZIndex>3</ZIndex>
+        <Width>2.22743in</Width>
+        <ZIndex>2</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -193,7 +167,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>CASH COUNT  ₱</Value>
+                <Value>CASH COUNT  </Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -202,10 +176,10 @@
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
         <Top>0.50361in</Top>
-        <Left>0.5in</Left>
+        <Left>0.25in</Left>
         <Height>0.20833in</Height>
-        <Width>1.24666in</Width>
-        <ZIndex>4</ZIndex>
+        <Width>2.22743in</Width>
+        <ZIndex>3</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -223,7 +197,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>OVERAGE / SHORTAGE  ₱</Value>
+                <Value>OVERAGE / SHORTAGE  </Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -232,10 +206,10 @@
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
         <Top>0.75361in</Top>
-        <Left>0.5in</Left>
+        <Left>0.25in</Left>
         <Height>0.20833in</Height>
-        <Width>1.93576in</Width>
-        <ZIndex>5</ZIndex>
+        <Width>2.22743in</Width>
+        <ZIndex>4</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -257,19 +231,21 @@
                 <Style />
               </TextRun>
               <TextRun>
-                <Value>=Fields!OPENNER.Value</Value>
-                <Style />
+                <Value>=Fields!Opener.Value</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>1.2675in</Top>
+        <Top>1.1425in</Top>
         <Left>0.125in</Left>
-        <Height>0.25in</Height>
+        <Height>0.23612in</Height>
         <Width>4.16492in</Width>
-        <ZIndex>6</ZIndex>
+        <ZIndex>5</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -291,19 +267,89 @@
                 <Style />
               </TextRun>
               <TextRun>
-                <Value>=Fields!CLOSER.Value</Value>
-                <Style />
+                <Value>=Fields!Closer.Value</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>1.57306in</Top>
+        <Top>1.3925in</Top>
         <Left>0.125in</Left>
         <Height>0.25in</Height>
         <Width>4.16492in</Width>
+        <ZIndex>6</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="OVERSHORT">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!OVERSHORT.Value, "dailySalesReport")</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>OVERSHORT</rd:DefaultName>
+        <Top>0.75361in</Top>
+        <Left>2.47829in</Left>
+        <Height>0.20833in</Height>
+        <Width>1.30208in</Width>
         <ZIndex>7</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox11">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Generate By :</Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=Parameters!txtUsername.Value</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox5</rd:DefaultName>
+        <Top>1.65639in</Top>
+        <Left>0.125in</Left>
+        <Height>0.25in</Height>
+        <Width>2.69704in</Width>
+        <ZIndex>8</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -315,8 +361,12 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>2.06959in</Height>
-    <Style />
+    <Height>2.14251in</Height>
+    <Style>
+      <Border>
+        <Style>None</Style>
+      </Border>
+    </Style>
   </Body>
   <ReportParameters>
     <ReportParameter Name="txtMonthOf">
@@ -386,7 +436,9 @@
                 </TextRun>
                 <TextRun>
                   <Value>=Parameters!txtMonthOf.Value</Value>
-                  <Style />
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
                 </TextRun>
               </TextRuns>
               <Style />
@@ -419,41 +471,6 @@
       <Height>0.7743in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
-      <ReportItems>
-        <Textbox Name="Textbox11">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>User Account :</Value>
-                  <Style />
-                </TextRun>
-                <TextRun>
-                  <Value>=Parameters!txtUsername.Value</Value>
-                  <Style />
-                </TextRun>
-              </TextRuns>
-              <Style />
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox5</rd:DefaultName>
-          <Top>0.06944in</Top>
-          <Left>0.125in</Left>
-          <Height>0.25in</Height>
-          <Width>2.69704in</Width>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-      </ReportItems>
       <Style>
         <Border>
           <Style>None</Style>
