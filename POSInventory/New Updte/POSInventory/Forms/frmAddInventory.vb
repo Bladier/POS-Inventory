@@ -182,6 +182,8 @@
     End Sub
 
     Private Sub btnRemove_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRemove.Click
+        If lvListIItems.SelectedItems.Count = 0 Then Exit Sub
+
         lvListIItems.SelectedItems(0).Remove()
     End Sub
 

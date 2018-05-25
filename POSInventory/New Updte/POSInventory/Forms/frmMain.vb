@@ -15,7 +15,7 @@
         OpenStoreToolStripMenuItem.Enabled = Not st
         SalesToolStripMenuItem1.Enabled = Not st
         MonthlToolStripMenuItem.Enabled = Not st
-
+        CashCountMonitoringToolStripMenuItem.Enabled = Not st
 
         ToolStripButton1.Enabled = Not st
         ToolStripButton2.Enabled = Not st
@@ -89,8 +89,10 @@
             MsgBox("Store is not open yet. Go to File>Open Store", MsgBoxStyle.Exclamation, "Notification")
             Exit Sub
         End If
-        MsgBox("You don't have access in this module", MsgBoxStyle.Exclamation, "Notification")
-        Exit Sub
+        If SystemUser.userRole <> "Admin" Then
+            MsgBox("You don't have access in this module", MsgBoxStyle.Exclamation, "Notification")
+            Exit Sub
+        End If
         frmAddInventory.Show()
     End Sub
 
@@ -108,8 +110,11 @@
             Exit Sub
         End If
 
-        MsgBox("You don't have access in this module", MsgBoxStyle.Exclamation, "Notification")
-        Exit Sub
+        If SystemUser.userRole <> "Admin" Then
+            MsgBox("You don't have access in this module", MsgBoxStyle.Exclamation, "Notification")
+            Exit Sub
+        End If
+       
         frmIMD.Show()
     End Sub
 
@@ -180,5 +185,13 @@
             Exit Sub
         End If
         frmSettings.Show()
+    End Sub
+
+    Private Sub MenuStrip1_ItemClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolStripItemClickedEventArgs) Handles MenuStrip1.ItemClicked
+
+    End Sub
+
+    Private Sub CashCountMonitoringToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CashCountMonitoringToolStripMenuItem.Click
+        frmCashCountMonitoring.Show()
     End Sub
 End Class
