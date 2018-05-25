@@ -107,7 +107,7 @@
     End Sub
 
     Private Sub lvitemList_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles lvitemList.KeyPress
-
+        If isEnter(e) Then btnselect.PerformClick()
     End Sub
 
     Private Sub txtSearch_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSearch.Leave
@@ -128,7 +128,12 @@
         selected_itm = queueIMD.Item(idx)
 
         If selected_itm.onHold Then
-            MsgBox("ITEM IS CURRENTLY ONHOLD", MsgBoxStyle.Critical, "Information")
+            MsgBox("ITEM IS CURRENTLY ONHOLD", MsgBoxStyle.Critical, "Notification")
+            Exit Sub
+        End If
+
+        If selected_itm.onHand <= 0 Then
+            MsgBox("THIS ITEM HAS NO INVENTORY, PLEASE BE ADVICED", MsgBoxStyle.Critical, "Notification")
             Exit Sub
         End If
 
@@ -173,5 +178,9 @@
         lv.SubItems.Add(loadItems.UnitofMeasure)
         lv.SubItems.Add(loadItems.onHand)
         lv.SubItems.Add(ToCurrency(loadItems.SalePrice))
+    End Sub
+
+    Private Sub lvitemList_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lvitemList.DoubleClick
+        btnselect.PerformClick()
     End Sub
 End Class

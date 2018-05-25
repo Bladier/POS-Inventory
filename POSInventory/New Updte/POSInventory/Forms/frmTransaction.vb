@@ -659,4 +659,8 @@ Public Class frmTransaction
         If promptName = "" Then lblCustomer.Text = defaultName : Exit Sub
         lblCustomer.Text = promptName
     End Sub
+
+    Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+        Me.Close()
+    End Sub
 End Class
