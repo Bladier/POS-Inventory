@@ -82,10 +82,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>INITIALBAL</rd:DefaultName>
-        <Top>0.22584in</Top>
-        <Left>1.85937in</Left>
-        <Height>0.25in</Height>
-        <Width>1in</Width>
+        <Top>0.23625in</Top>
+        <Left>1.99479in</Left>
+        <Height>0.23958in</Height>
+        <Width>1.30208in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -111,10 +111,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>CASHCOUNT</rd:DefaultName>
-        <Top>0.54528in</Top>
-        <Left>1.60937in</Left>
-        <Height>0.25in</Height>
-        <Width>1in</Width>
+        <Top>0.50361in</Top>
+        <Left>1.80222in</Left>
+        <Height>0.20833in</Height>
+        <Width>1.30208in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -141,10 +141,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>OVERSHORT</rd:DefaultName>
-        <Top>0.86473in</Top>
-        <Left>2.35937in</Left>
-        <Height>0.25in</Height>
-        <Width>1in</Width>
+        <Top>0.75361in</Top>
+        <Left>2.46354in</Left>
+        <Height>0.20833in</Height>
+        <Width>1.30208in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -171,10 +171,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>0.22584in</Top>
+        <Top>0.23625in</Top>
         <Left>0.5in</Left>
-        <Height>0.25in</Height>
-        <Width>1.3177in</Width>
+        <Height>0.23958in</Height>
+        <Width>1.45312in</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -201,10 +201,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>0.54528in</Top>
+        <Top>0.50361in</Top>
         <Left>0.5in</Left>
-        <Height>0.25in</Height>
-        <Width>1.11125in</Width>
+        <Height>0.20833in</Height>
+        <Width>1.24666in</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -231,10 +231,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>0.85084in</Top>
+        <Top>0.75361in</Top>
         <Left>0.5in</Left>
-        <Height>0.25in</Height>
-        <Width>1.80034in</Width>
+        <Height>0.20833in</Height>
+        <Width>1.93576in</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -265,7 +265,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>1.3925in</Top>
+        <Top>1.2675in</Top>
         <Left>0.125in</Left>
         <Height>0.25in</Height>
         <Width>4.16492in</Width>
@@ -299,7 +299,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>1.69806in</Top>
+        <Top>1.57306in</Top>
         <Left>0.125in</Left>
         <Height>0.25in</Height>
         <Width>4.16492in</Width>
@@ -315,7 +315,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>2.1425in</Height>
+    <Height>2.06959in</Height>
     <Style />
   </Body>
   <ReportParameters>
