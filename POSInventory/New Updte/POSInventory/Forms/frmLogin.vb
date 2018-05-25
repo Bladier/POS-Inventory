@@ -28,6 +28,7 @@
 
         MsgBox("Welcome, " & u_ser.UserName, MsgBoxStyle.Information, "L O G I N")
 
+        u_ser.UpdateLogin()
         frmMain.Show()
         frmMain.NotyetLogin(False)
         frmMain.CheckStoreStatus()

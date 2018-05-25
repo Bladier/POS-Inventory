@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2018 at 08:08 AM
+-- Generation Time: May 25, 2018 at 04:19 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -42,35 +42,6 @@ CREATE TABLE `doc` (
   `USERID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `doc`
---
-
-INSERT INTO `doc` (`DOCID`, `DOCTYPE`, `MOP`, `DOCDATE`, `CODE`, `CUSTOMER`, `NOVAT`, `VATRATE`, `VATTOTAL`, `DOCTOTAL`, `STATUS`, `REMARKS`, `USERID`) VALUES
-(1, 0, 'C', '2018-05-22', 'INV#000001', 'One Time Customer', '10.00', '0.00', '0.00', '10.000', 'V', NULL, 0),
-(2, 0, 'C', '2018-05-22', 'INV#000002', 'One Time Customer', '12.00', '0.00', '0.00', '12.000', '1', NULL, 0),
-(3, 0, 'C', '2018-05-23', 'INV#000003', 'One Time Customer', '7.00', '0.00', '0.00', '7.000', '1', NULL, 1),
-(4, 0, 'C', '2018-05-23', 'INV#000004', 'One Time Customer', '22.00', '0.00', '0.00', '22.000', '1', NULL, 1),
-(5, 0, 'C', '2018-05-23', 'INV#000005', 'One Time Customer', '7.00', '0.00', '0.00', '7.000', '1', NULL, 1),
-(6, 0, 'C', '2018-05-23', 'INV#000006', 'One Time Customer', '5.00', '0.00', '0.00', '5.000', '1', NULL, 1),
-(7, 0, 'C', '2018-05-23', 'INV#000007', 'One Time Customer', '5.00', '0.00', '0.00', '5.000', '1', NULL, 1),
-(9, 4, 'S', '2018-05-23', 'STO#000001', 'One Time Customer', '0.00', '0.00', '0.00', '7.000', '1', 'sample', 1),
-(10, 0, 'C', '2018-05-23', 'INV#000008', 'One Time Customer', '5.00', '0.00', '0.00', '5.000', '1', NULL, 1),
-(11, 0, 'C', '2018-05-24', 'INV#000009', 'One Time Customer', '12.00', '0.00', '0.00', '12.000', '1', NULL, 1),
-(12, 0, 'C', '2018-05-24', 'INV#000010', 'One Time Customer', '12.00', '0.00', '0.00', '12.000', '1', NULL, 1),
-(13, 0, 'C', '2018-05-24', 'INV#000011', 'One Time Customer', '12.00', '0.00', '0.00', '12.000', '1', NULL, 1),
-(14, 0, 'C', '2018-05-24', 'INV#000012', 'One Time Customer', '12.00', '0.00', '0.00', '12.000', '1', NULL, 1),
-(15, 0, 'C', '2018-05-24', 'INV#000013', 'One Time Customer', '5.00', '0.00', '0.00', '5.000', '1', NULL, 1),
-(16, 0, 'C', '2018-05-24', 'INV#000014', 'One Time Customer', '7.00', '0.00', '0.00', '7.000', '1', NULL, 1),
-(17, 0, 'C', '2018-05-24', 'INV#000015', 'One Time Customer', '5.00', '0.00', '0.00', '5.000', '1', NULL, 1),
-(18, 0, 'C', '2018-05-24', 'INV#000016', 'One Time Customer', '12.00', '0.00', '0.00', '12.000', '1', NULL, 1),
-(19, 0, 'C', '2018-05-24', 'INV#000017', 'One Time Customer', '12.00', '0.00', '0.00', '12.000', '1', NULL, 1),
-(20, 0, 'C', '2018-05-24', 'INV#000018', 'One Time Customer', '5.00', '0.00', '0.00', '5.000', '1', NULL, 1),
-(21, 0, 'C', '2018-05-24', 'INV#000019', 'One Time Customer', '12.00', '0.00', '0.00', '12.000', '1', NULL, 1),
-(22, 0, 'C', '2018-05-24', 'INV#000020', 'One Time Customer', '12.00', '0.00', '0.00', '12.000', '1', NULL, 1),
-(23, 0, 'C', '2018-05-24', 'INV#000021', 'One Time Customer', '12.00', '0.00', '0.00', '12.000', '1', NULL, 1),
-(24, 0, 'C', '2018-05-24', 'INV#000022', 'One Time Customer', '12.00', '0.00', '0.00', '12.000', '1', NULL, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -91,47 +62,6 @@ CREATE TABLE `doclines` (
   `ENDING` decimal(12,6) NOT NULL DEFAULT '0.000000'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `doclines`
---
-
-INSERT INTO `doclines` (`DLID`, `DOCID`, `ITEMCODE`, `DESCRIPTION`, `QTY`, `UNITPRICE`, `SALEPRICE`, `ROWTOTAL`, `UOM`, `REMARKS`, `ENDING`) VALUES
-(1, 1, '0001', 'pencil monggol 2', '2.000000', '0.000000', '5.000000', '10.000000', 'PCS', NULL, '0.000000'),
-(2, 2, '00002', 'Uni Pen', '1.000000', '0.000000', '7.000000', '7.000000', 'PCS', NULL, '0.000000'),
-(3, 2, '0001', 'pencil monggol 2', '1.000000', '0.000000', '5.000000', '5.000000', 'PCS', NULL, '0.000000'),
-(4, 3, '00002', 'Uni Pen', '1.000000', '0.000000', '7.000000', '7.000000', 'PCS', NULL, '0.000000'),
-(5, 4, '00002', 'Uni Pen', '1.000000', '0.000000', '7.000000', '7.000000', 'PCS', NULL, '0.000000'),
-(6, 4, '0001', 'pencil monggol 2', '3.000000', '0.000000', '5.000000', '15.000000', 'PCS', NULL, '0.000000'),
-(7, 5, '00002', 'Uni Pen', '1.000000', '0.000000', '7.000000', '7.000000', 'PCS', NULL, '0.000000'),
-(8, 6, '0001', 'pencil monggol 2', '1.000000', '0.000000', '5.000000', '5.000000', 'PCS', NULL, '0.000000'),
-(9, 7, '0001', 'pencil monggol 2', '1.000000', '0.000000', '5.000000', '5.000000', 'PCS', NULL, '0.000000'),
-(10, 9, '00002', 'Uni Pen', '1.000000', '0.000000', '7.000000', '0.000000', 'PCS', NULL, '0.000000'),
-(11, 10, '0001', 'pencil monggol 2', '1.000000', '0.000000', '5.000000', '5.000000', 'PCS', NULL, '0.000000'),
-(12, 11, '00002', 'Uni Pen', '1.000000', '0.000000', '7.000000', '7.000000', 'PCS', NULL, '0.000000'),
-(13, 11, '0001', 'pencil monggol 2', '1.000000', '0.000000', '5.000000', '5.000000', 'PCS', NULL, '0.000000'),
-(14, 12, '00002', 'Uni Pen', '1.000000', '0.000000', '7.000000', '7.000000', 'PCS', NULL, '0.000000'),
-(15, 12, '0001', 'pencil monggol 2', '1.000000', '0.000000', '5.000000', '5.000000', 'PCS', NULL, '0.000000'),
-(16, 13, '00002', 'Uni Pen', '1.000000', '0.000000', '7.000000', '7.000000', 'PCS', NULL, '0.000000'),
-(17, 13, '0001', 'pencil monggol 2', '1.000000', '0.000000', '5.000000', '5.000000', 'PCS', NULL, '0.000000'),
-(18, 14, '00002', 'Uni Pen', '1.000000', '0.000000', '7.000000', '7.000000', 'PCS', NULL, '0.000000'),
-(19, 14, '0001', 'pencil monggol 2', '1.000000', '0.000000', '5.000000', '5.000000', 'PCS', NULL, '0.000000'),
-(20, 15, '0001', 'pencil monggol 2', '1.000000', '0.000000', '5.000000', '5.000000', 'PCS', NULL, '0.000000'),
-(21, 16, '00002', 'Uni Pen', '1.000000', '0.000000', '7.000000', '7.000000', 'PCS', NULL, '0.000000'),
-(22, 17, '0001', 'pencil monggol 2', '1.000000', '0.000000', '5.000000', '5.000000', 'PCS', NULL, '0.000000'),
-(23, 18, '00002', 'Uni Pen', '1.000000', '0.000000', '7.000000', '7.000000', 'PCS', NULL, '0.000000'),
-(24, 18, '0001', 'pencil monggol 2', '1.000000', '0.000000', '5.000000', '5.000000', 'PCS', NULL, '0.000000'),
-(25, 19, '00002', 'Uni Pen', '1.000000', '0.000000', '7.000000', '7.000000', 'PCS', NULL, '0.000000'),
-(26, 19, '0001', 'pencil monggol 2', '1.000000', '0.000000', '5.000000', '5.000000', 'PCS', NULL, '0.000000'),
-(27, 20, '0001', 'pencil monggol 2', '1.000000', '0.000000', '5.000000', '5.000000', 'PCS', NULL, '0.000000'),
-(28, 21, '00002', 'Uni Pen', '1.000000', '0.000000', '7.000000', '7.000000', 'PCS', NULL, '0.000000'),
-(29, 21, '0001', 'pencil monggol 2', '1.000000', '0.000000', '5.000000', '5.000000', 'PCS', NULL, '0.000000'),
-(30, 22, '00002', 'Uni Pen', '1.000000', '0.000000', '7.000000', '7.000000', 'PCS', NULL, '0.000000'),
-(31, 22, '0001', 'pencil monggol 2', '1.000000', '0.000000', '5.000000', '5.000000', 'PCS', NULL, '0.000000'),
-(32, 23, '00002', 'Uni Pen', '1.000000', '0.000000', '7.000000', '7.000000', 'PCS', NULL, '0.000000'),
-(33, 23, '0001', 'pencil monggol 2', '1.000000', '0.000000', '5.000000', '5.000000', 'PCS', NULL, '0.000000'),
-(34, 24, '00002', 'Uni Pen', '1.000000', '0.000000', '7.000000', '7.000000', 'PCS', NULL, '0.000000'),
-(35, 24, '0001', 'pencil monggol 2', '1.000000', '0.000000', '5.000000', '5.000000', 'PCS', NULL, '0.000000');
-
 -- --------------------------------------------------------
 
 --
@@ -147,22 +77,6 @@ CREATE TABLE `inv` (
   `REMARKS` varchar(255) DEFAULT NULL,
   `DOCSTATUS` varchar(20) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `inv`
---
-
-INSERT INTO `inv` (`DOCID`, `DOCNUM`, `DOCDATE`, `PARTNER`, `GRANDTOTAL`, `REMARKS`, `DOCSTATUS`) VALUES
-(1, 'STO#00001', '2018-05-21', 'N/A', '0.00', NULL, '0'),
-(2, 'STO#00002', '2018-05-21', 'N/A', '2.00', NULL, '1'),
-(3, 'STO#00002', '2018-05-21', 'N/A', '1.00', NULL, '1'),
-(4, 'STO#00003', '2018-05-21', 'N/A', '2.00', NULL, '1'),
-(5, 'STO#00004', '2018-05-21', 'N/A', '1.00', NULL, '1'),
-(6, 'STO#00005', '2018-05-21', 'N/A', '2.00', NULL, '1'),
-(7, 'STO#00006', '2018-05-21', 'N/A', '1.00', NULL, '0'),
-(8, 'STO#00007', '2018-05-21', 'N/A', '2.00', NULL, '1'),
-(9, 'STO#00008', '2018-05-21', 'N/A', '1.00', NULL, '1'),
-(10, 'STO#00008', '2018-05-23', 'N/A', '2.00', NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -182,26 +96,6 @@ CREATE TABLE `invlines` (
   `UOM` varchar(20) DEFAULT NULL,
   `REMARKS` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `invlines`
---
-
-INSERT INTO `invlines` (`INVID`, `DOCID`, `ITEMCODE`, `DESCRIPTION`, `QTY`, `UNITPRICE`, `SALEPRICE`, `ROWTOTAL`, `UOM`, `REMARKS`) VALUES
-(1, 1, '0001', 'pencil monggol 2', '20.000000', '0.000000', NULL, '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 8:41:26 AM'),
-(2, 2, '00002', 'Uni Pen', '10.000000', '0.000000', NULL, '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 10:09:06 AM'),
-(3, 3, '00002', 'Uni Pen', '1.000000', '0.000000', NULL, '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 10:11:04 AM'),
-(4, 4, '0001', 'pencil monggol 2', '2.000000', '0.000000', NULL, '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 10:11:46 AM'),
-(5, 4, '00002', 'Uni Pen', '1.000000', '0.000000', NULL, '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 10:11:46 AM'),
-(6, 5, '00002', 'Uni Pen', '1.000000', '0.000000', NULL, '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 11:55:41 AM'),
-(7, 6, '00002', 'Uni Pen', '1.000000', '0.000000', NULL, '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 11:55:41 AM'),
-(8, 6, '0001', 'pencil monggol 2', '2.000000', '0.000000', NULL, '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 11:55:41 AM'),
-(9, 7, '0001', 'pencil monggol 2', '1.000000', '0.000000', '5.000000', '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 12:44:30 PM'),
-(10, 8, '0001', 'pencil monggol 2', '8.000000', '0.000000', '5.000000', '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 1:49:58 PM'),
-(11, 8, '00002', 'Uni Pen', '8.000000', '0.000000', '7.000000', '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 1:49:58 PM'),
-(12, 9, '00002', 'Uni Pen', '1.000000', '0.000000', '0.000000', '0.000000', 'PCS', 'UPLOADED DATE 5/21/2018 2:02:43 PM'),
-(13, 10, '0001', 'pencil monggol 2', '20.000000', '0.000000', '5.000000', '0.000000', 'PCS', 'UPLOADED DATE 5/23/2018 10:07:11 AM'),
-(14, 10, '00002', 'Uni Pen', '20.000000', '0.000000', '7.000000', '0.000000', 'PCS', 'UPLOADED DATE 5/23/2018 10:07:11 AM');
 
 -- --------------------------------------------------------
 
@@ -232,8 +126,8 @@ CREATE TABLE `itemmaster` (
 --
 
 INSERT INTO `itemmaster` (`ITEMID`, `ITEMCODE`, `DESCRIPTION`, `CATEGORIES`, `SUBCAT`, `UOM`, `UNITPRICE`, `SALEPRICE`, `ISSALE`, `ISINV`, `ONHAND`, `REMARKS`, `ADDTIME`, `UPDATETIME`, `ONHOLD`) VALUES
-(1, '0001', 'pencil monggol 2', 'pens', '', 'PCS', '0.000', '5.000', '1', '1', '3.00', '', '2018-05-21 00:33:49', '2018-05-24 02:29:03', '0'),
-(2, '00002', 'Uni Pen', 'pens', '', 'PCS', '0.000', '7.000', '1', '1', '44.00', '', '2018-05-21 02:09:52', '2018-05-24 02:29:03', '0');
+(1, '0001', 'pencil monggol 2', 'pens', '', 'PCS', '0.000', '5.000', '1', '1', '-2.00', '', '2018-05-21 00:33:49', '2018-05-25 01:40:01', '0'),
+(2, '00002', 'Uni Pen', 'pens', '', 'PCS', '0.000', '7.000', '1', '1', '42.00', '', '2018-05-21 02:09:52', '2018-05-25 01:37:45', '0');
 
 -- --------------------------------------------------------
 
@@ -281,13 +175,6 @@ CREATE TABLE `tbldaily` (
   `Overage/Shortage` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tbldaily`
---
-
-INSERT INTO `tbldaily` (`ID`, `CURRENTDATE`, `INITIALBAL`, `CASHCOUNT`, `STATUS`, `REMARKS`, `SYSTEMINFO`, `OPENNER`, `CLOSER`, `Overage/Shortage`) VALUES
-(4, '2018-05-23', '1000.00', '1050.00', 0, NULL, '2018-05-23', 1, 1, 4);
-
 -- --------------------------------------------------------
 
 --
@@ -306,13 +193,16 @@ CREATE TABLE `tblmaintenance` (
 --
 
 INSERT INTO `tblmaintenance` (`ID`, `OPT_KEYS`, `OPT_VALUES`, `REMARKS`) VALUES
-(1, 'InvoiceNum', '23', NULL),
+(1, 'InvoiceNum', '1', NULL),
 (2, 'SalesReturnNum', '1', NULL),
-(3, 'STONum', '2', NULL),
-(4, 'InventoryNum', '9', ''),
-(5, 'CurrentBalance', '1000', NULL),
-(6, 'PRINTER', 'sam', ''),
-(7, 'BackupPath', 'C:\\Users\\MISGWAPOHON\\Desktop\\backup', '');
+(3, 'STONum', '1', NULL),
+(4, 'InventoryNum', '1', ''),
+(5, 'CurrentBalance', '1', NULL),
+(6, 'PRINTER', '', ''),
+(7, 'BackupPath', 'C:\\Users\\MISGWAPOHON\\Desktop\\backup', ''),
+(8, 'StoreName', '', NULL),
+(9, 'Address', '', NULL),
+(10, 'DBVERSION', '1', NULL);
 
 -- --------------------------------------------------------
 
@@ -337,8 +227,7 @@ CREATE TABLE `tbluser` (
 --
 
 INSERT INTO `tbluser` (`ID`, `firstname`, `middlename`, `lastname`, `uname`, `pword`, `userrole`, `status`, `lastLogin`) VALUES
-(1, 'Admin', '', 'Admin', 'Admin', 'GSTLEXYzj+g=', 'Admin', '1', '2018-05-21 06:54:02'),
-(2, 'User', 'User', 'User', '1', 'gRSUjH6XasE=', 'User', '1', NULL);
+(1, 'Admin', '', 'Admin', 'Admin', 'GSTLEXYzj+g=', 'Admin', '1', '2018-05-25 02:01:02');
 
 -- --------------------------------------------------------
 
@@ -409,22 +298,22 @@ ALTER TABLE `tbluser`
 -- AUTO_INCREMENT for table `doc`
 --
 ALTER TABLE `doc`
-  MODIFY `DOCID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `DOCID` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `doclines`
 --
 ALTER TABLE `doclines`
-  MODIFY `DLID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `DLID` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `inv`
 --
 ALTER TABLE `inv`
-  MODIFY `DOCID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `DOCID` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `invlines`
 --
 ALTER TABLE `invlines`
-  MODIFY `INVID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `INVID` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `itemmaster`
 --
@@ -434,17 +323,17 @@ ALTER TABLE `itemmaster`
 -- AUTO_INCREMENT for table `tbldaily`
 --
 ALTER TABLE `tbldaily`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tblmaintenance`
 --
 ALTER TABLE `tblmaintenance`
-  MODIFY `ID` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tbluser`
 --
 ALTER TABLE `tbluser`
-  MODIFY `ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

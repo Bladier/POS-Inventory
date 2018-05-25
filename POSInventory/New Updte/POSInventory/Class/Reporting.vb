@@ -43,8 +43,8 @@ Public Class Reporting
         Dim deviceInfo As String = _
           "<DeviceInfo>" + _
           "  <OutputFormat>EMF</OutputFormat>" + _
-          "  <PageWidth>8.5in</PageWidth>" + _
-          "  <PageHeight>11in</PageHeight>" + _
+          "  <PageWidth>3in</PageWidth>" + _
+          "  <PageHeight>4in</PageHeight>" + _
           "  <MarginTop>0.25in</MarginTop>" + _
           "  <MarginLeft>0.25in</MarginLeft>" + _
           "  <MarginRight>0.25in</MarginRight>" + _

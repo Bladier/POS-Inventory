@@ -48,6 +48,8 @@ Partial Class frmTransaction
         Me.btnReceipt = New System.Windows.Forms.Button()
         Me.btnCash = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnCustomer = New System.Windows.Forms.Button()
+        Me.lblCustomer = New System.Windows.Forms.Label()
         Me.cms.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -230,7 +232,7 @@ Partial Class frmTransaction
         Me.btnStockOut.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnStockOut.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnStockOut.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnStockOut.Location = New System.Drawing.Point(379, 17)
+        Me.btnStockOut.Location = New System.Drawing.Point(457, 17)
         Me.btnStockOut.Name = "btnStockOut"
         Me.btnStockOut.Size = New System.Drawing.Size(106, 41)
         Me.btnStockOut.TabIndex = 4
@@ -242,7 +244,7 @@ Partial Class frmTransaction
         Me.btnReceipt.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnReceipt.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnReceipt.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnReceipt.Location = New System.Drawing.Point(491, 17)
+        Me.btnReceipt.Location = New System.Drawing.Point(569, 17)
         Me.btnReceipt.Name = "btnReceipt"
         Me.btnReceipt.Size = New System.Drawing.Size(106, 41)
         Me.btnReceipt.TabIndex = 5
@@ -254,7 +256,7 @@ Partial Class frmTransaction
         Me.btnCash.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnCash.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnCash.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCash.Location = New System.Drawing.Point(267, 17)
+        Me.btnCash.Location = New System.Drawing.Point(230, 17)
         Me.btnCash.Name = "btnCash"
         Me.btnCash.Size = New System.Drawing.Size(106, 41)
         Me.btnCash.TabIndex = 2
@@ -267,6 +269,7 @@ Partial Class frmTransaction
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.BackColor = System.Drawing.Color.DimGray
         Me.GroupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.GroupBox1.Controls.Add(Me.btnCustomer)
         Me.GroupBox1.Controls.Add(Me.btnCash)
         Me.GroupBox1.Controls.Add(Me.btnReceipt)
         Me.GroupBox1.Controls.Add(Me.btnStockOut)
@@ -280,6 +283,29 @@ Partial Class frmTransaction
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "MODE"
         '
+        'btnCustomer
+        '
+        Me.btnCustomer.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.btnCustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCustomer.Location = New System.Drawing.Point(345, 17)
+        Me.btnCustomer.Name = "btnCustomer"
+        Me.btnCustomer.Size = New System.Drawing.Size(106, 41)
+        Me.btnCustomer.TabIndex = 6
+        Me.btnCustomer.Text = "&CUSTOMER"
+        Me.btnCustomer.UseVisualStyleBackColor = True
+        '
+        'lblCustomer
+        '
+        Me.lblCustomer.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblCustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCustomer.Location = New System.Drawing.Point(650, 214)
+        Me.lblCustomer.Name = "lblCustomer"
+        Me.lblCustomer.Size = New System.Drawing.Size(256, 43)
+        Me.lblCustomer.TabIndex = 20
+        Me.lblCustomer.Text = "One-Time Customer"
+        Me.lblCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'frmTransaction
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -287,6 +313,7 @@ Partial Class frmTransaction
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(915, 430)
         Me.ContextMenuStrip = Me.cms
+        Me.Controls.Add(Me.lblCustomer)
         Me.Controls.Add(Me.lblMode)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.lblNoVat)
@@ -331,4 +358,6 @@ Partial Class frmTransaction
     Friend WithEvents btnReceipt As System.Windows.Forms.Button
     Friend WithEvents btnCash As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents btnCustomer As System.Windows.Forms.Button
+    Friend WithEvents lblCustomer As System.Windows.Forms.Label
 End Class

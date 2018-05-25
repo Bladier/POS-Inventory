@@ -59,6 +59,7 @@ Public Class qryDate
         addParameter.Add("txtMonthOf", "DATE : " & monCal.SelectionStart.ToString("MMMM dd, yyyy"))
         addParameter.Add("branchName", "GSC")
         addParameter.Add("txtUsername", SystemUser.UserName)
+        addParameter.Add("txtStore", IIf(GetOption("StoreName") = "", "Store not initialize", GetOption("StoreName")))
 
         frmReport.ReportInit(mySql, dsName, rptPath, addParameter)
         frmReport.Show()
@@ -95,6 +96,7 @@ Public Class qryDate
         addParameter.Add("txtMonthOf", "DATE : " & monCal.SelectionStart.ToString("MMMM dd, yyyy"))
         addParameter.Add("branchName", "GSC")
         addParameter.Add("txtUsername", SystemUser.UserName)
+        addParameter.Add("txtStore", IIf(GetOption("StoreName") = "", "Store not initialize", GetOption("StoreName")))
 
         frmReport.ReportInit(mySql, dsName, rptPath, addParameter)
         frmReport.Show()
@@ -117,6 +119,8 @@ Public Class qryDate
         Dim addParameter As New Dictionary(Of String, String)
         addParameter.Add("txtMonthOf", "DATE : " & monCal.SelectionStart.ToString("MMMM dd, yyyy"))
         addParameter.Add("txtUsername", SystemUser.UserName)
+        addParameter.Add("txtStore", IIf(GetOption("StoreName") = "", "Store not initialize", GetOption("StoreName")))
+
 
         frmReport.ReportInit(mySql, dsName, rptPath, addParameter)
         frmReport.Show()
@@ -143,6 +147,7 @@ Public Class qryDate
         Dim dic As New Dictionary(Of String, String)
         dic.Add("txtMonthOf", dt.ToLongDateString)
         dic.Add("branchName", "GSC")
+        dic.Add("txtStore", IIf(GetOption("StoreName") = "", "Store not initialize", GetOption("StoreName")))
 
         frmReport.ReportInit(mySql, "dsInventory", "Report\rpt_InventoryPOS.rdlc", dic)
         frmReport.Show()
@@ -162,6 +167,7 @@ Public Class qryDate
         dic.Add("branchName", "GSC")
         dic.Add("txtUsername", SystemUser.UserName)
         dic.Add("txtStock", "StockOut")
+        dic.Add("txtStore", IIf(GetOption("StoreName") = "", "Store not initialize", GetOption("StoreName")))
 
         frmReport.ReportInit(mySql, "dsStockOut", "Report\rpt_StockOutReport.rdlc", dic)
         frmReport.Show()

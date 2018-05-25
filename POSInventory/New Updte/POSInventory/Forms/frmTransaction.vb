@@ -12,7 +12,7 @@ Public Class frmTransaction
     Private ReturnNum As Double = GetOption("SalesReturnNum")
     Private StockOutNum As Double = GetOption("STONum")
 
-    Private PRINTER_PT As String = GetOption("PRINTER")
+    Private PRINTER_OR As String = GetOption("PRINTER")
 
     Private DOC_TYPE As Integer = 0
     Dim Customer As String = "One Time Customer"
@@ -124,6 +124,10 @@ Public Class frmTransaction
                 prefix = "STO"
                 DocCode = String.Format("{1}#{0:000000}", StockOutNum, prefix)
         End Select
+
+        If lblCustomer.Text <> "One-Time Customer" Then
+            Customer = lblCustomer.Text
+        End If
 
         With dsNewRow
             .Item("DOCTYPE") = DOC_TYPE
@@ -330,6 +334,7 @@ Public Class frmTransaction
         Display_Total(0)
         Load_asCash()
         ht_BroughtItems.Clear()
+        lblCustomer.Text = "One-Time Customer"
     End Sub
 
     Private Function Display_Total(ByVal tot As Double) As Double
@@ -368,8 +373,10 @@ Public Class frmTransaction
 
     Private Sub PrintOR(ByVal docID As Integer)
         ' Check if able to print
-        Dim printerName As String = PRINTER_PT
-        'If Not canPrint(printerName) Then Exit Sub
+        Dim printerName As String = PRINTER_OR
+        If printerName <> "" Then
+            If Not canPrint(printerName) Then Exit Sub
+        End If
 
         ' Execute SQL
         Dim mySql As String = "SELECT * FROM SALES_OR WHERE DOCID = " & docID
@@ -408,12 +415,15 @@ Public Class frmTransaction
         End If
 
         ' Executing Auto Print
-        autoPrint.Export(report)
-        autoPrint.m_currentPageIndex = 0
-        autoPrint.Print(printerName)
+        'autoPrint.Export(report)
+        'autoPrint.m_currentPageIndex = 0
+        'autoPrint.Print(printerName)
 
-        frmReport.ReportInit(mySql, "dsRecipe", "Report\rptRecipe.rdlc", dic)
-        frmReport.Show()
+
+        If printerName = "" Then
+            frmReport.ReportInit(mySql, "dsRecipe", "Report\rptRecipe.rdlc", dic)
+            frmReport.Show()
+        End If
     End Sub
 
 
@@ -640,5 +650,13 @@ Public Class frmTransaction
    
     Private Sub btnReceipt_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReceipt.Click
         frmPrint.Show()
+    End Sub
+
+    Private Sub btnCustomer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustomer.Click
+        Dim defaultName As String = "One-Time Customer"
+        Dim promptName As String = InputBox("Customer's Name", "Customer", defaultName)
+
+        If promptName = "" Then lblCustomer.Text = defaultName : Exit Sub
+        lblCustomer.Text = promptName
     End Sub
 End Class

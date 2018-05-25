@@ -209,9 +209,9 @@ Public Class Sys_user
     End Function
 
     Public Sub UpdateLogin()
-        mySql = "SELECT * FROM " & fillData & " WHERE UserID = " & _userID
+        mySql = "SELECT * FROM " & fillData & " WHERE ID = " & _userID
         Dim ds As DataSet = LoadSQL(mySql, fillData)
-        ds.Tables(0).Rows(0).Item("LastLogin") = Now
+        ds.Tables(0).Rows(0).Item("LastLogin") = CurrentDate
         database.SaveEntry(ds, False)
         Console.WriteLine("Login Saved")
     End Sub

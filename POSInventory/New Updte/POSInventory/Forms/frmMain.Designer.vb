@@ -31,6 +31,8 @@ Partial Class frmMain
         Me.LoginToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BackupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MaitenanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DailyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -50,8 +52,6 @@ Partial Class frmMain
         Me.tsUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tssOthers = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tmrCurrent = New System.Windows.Forms.Timer(Me.components)
-        Me.BackupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MaitenanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.statusStrip.SuspendLayout()
@@ -106,6 +106,18 @@ Partial Class frmMain
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
         Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
+        '
+        'BackupToolStripMenuItem
+        '
+        Me.BackupToolStripMenuItem.Name = "BackupToolStripMenuItem"
+        Me.BackupToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
+        Me.BackupToolStripMenuItem.Text = "&Backup"
+        '
+        'MaitenanceToolStripMenuItem
+        '
+        Me.MaitenanceToolStripMenuItem.Name = "MaitenanceToolStripMenuItem"
+        Me.MaitenanceToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
+        Me.MaitenanceToolStripMenuItem.Text = "&Maitenance"
         '
         'ReportsToolStripMenuItem
         '
@@ -244,18 +256,6 @@ Partial Class frmMain
         'tmrCurrent
         '
         Me.tmrCurrent.Enabled = True
-        '
-        'BackupToolStripMenuItem
-        '
-        Me.BackupToolStripMenuItem.Name = "BackupToolStripMenuItem"
-        Me.BackupToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.BackupToolStripMenuItem.Text = "&Backup"
-        '
-        'MaitenanceToolStripMenuItem
-        '
-        Me.MaitenanceToolStripMenuItem.Name = "MaitenanceToolStripMenuItem"
-        Me.MaitenanceToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.MaitenanceToolStripMenuItem.Text = "&Maitenance"
         '
         'frmMain
         '

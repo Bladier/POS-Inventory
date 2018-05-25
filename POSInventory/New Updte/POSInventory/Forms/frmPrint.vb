@@ -1,7 +1,7 @@
 ﻿Imports Microsoft.Reporting.WinForms
 
 Public Class frmPrint
-    Private PRINTER_Sales As String '= GetOption("PrinterPT")
+    Private PRINTER_OR As String = GetOption("PRINTER")
     Friend isStockOut As Boolean = False
 
     Private Sub LoadReceipt()
@@ -51,35 +51,40 @@ Public Class frmPrint
         If lvReceipt.SelectedItems.Count <= 0 Then Exit Sub
         Dim idx As Integer = CInt(lvReceipt.FocusedItem.Tag)
 
+        Dim printerName As String = PRINTER_OR
+
         Dim ans As DialogResult = _
            MsgBox("Do you want to print?", MsgBoxStyle.YesNo + MsgBoxStyle.Information + MsgBoxStyle.DefaultButton2, "Print")
         If ans = Windows.Forms.DialogResult.No Then Exit Sub
 
-        Dim autoPrintPT As Reporting
-        'On Error Resume Next
+        ' Execute SQL
+        Dim mySql As String = "SELECT * FROM SALES_OR WHERE DOCID = " & idx
+        Dim ds As DataSet, fillData As String = "dsRecipe"
+        ds = LoadSQL(mySql, fillData)
 
-        Dim printerName As String = PRINTER_Sales
-        If Not canPrint(printerName) Then Exit Sub
-
+        Console.WriteLine(ds.Tables(0).Rows.Count)
+        ' Declare AutoPrint
+        Dim autoPrint As Reporting
         Dim report As LocalReport = New LocalReport
-        autoPrintPT = New Reporting
+        autoPrint = New Reporting
 
-        Dim mySql As String, dsName As String = "dsReceipt"
-        mySql = "SELECT D.*, DL.ITEMCODE, DL.DESCRIPTION, DL.QTY, DL.UNITPRICE, DL.SALEPRICE "
-        mySql &= "FROM DOC D "
-        mySql &= "INNER JOIN DOCLINES DL ON DL.DOCID = D.DOCID "
-        mySql &= "WHERE D.DOCID = '" & idx & "'"
-        Dim ds As DataSet = LoadSQL(mySql, dsName)
+        ' Initialize Auto Print
+        report.ReportPath = "Report\rptRecipe.rdlc"
+        report.DataSources.Add(New ReportDataSource(fillData, ds.Tables(fillData)))
 
-        report.ReportPath = "Report\rptReceipt.rdlc"
-        report.DataSources.Add(New ReportDataSource(dsName, ds.Tables(dsName)))
+        ' Assign Parameters
+        Dim dic As New Dictionary(Of String, String)
+        With ds.Tables(0).Rows(0)
+            Dim tmpOr As String = .Item("CODE")
+            tmpOr = tmpOr.Replace("INV#", "")
+            dic.Add("txtORNum", tmpOr)
+            dic.Add("txtPostingDate", .Item("DOCDATE"))
+            dic.Add("txtCustomer", .Item("CUSTOMER"))
+        End With
 
-        Dim addParameters As New Dictionary(Of String, String)
-        ' addParameters.Add("branchName", branchName)
-        'addParameters.Add("txtUsername", POSuser.UserName)
-
-        If Not addParameters Is Nothing Then
-            For Each nPara In addParameters
+        ' Importer Parameters
+        If Not dic Is Nothing Then
+            For Each nPara In dic
                 Dim tmpPara As New ReportParameter
                 tmpPara.Name = nPara.Key
                 tmpPara.Values.Add(nPara.Value)
@@ -88,13 +93,15 @@ Public Class frmPrint
             Next
         End If
 
-        If DEV_MODE Then
-            frmReport.ReportInit(mySql, dsName, report.ReportPath, addParameters, False)
+        ' Executing Auto Print
+        'autoPrint.Export(report)
+        'autoPrint.m_currentPageIndex = 0
+        'autoPrint.Print(printerName)
+
+
+        If printerName = "" Then
+            frmReport.ReportInit(mySql, "dsRecipe", "Report\rptRecipe.rdlc", dic)
             frmReport.Show()
-        Else
-            autoPrintPT.Export(report)
-            autoPrintPT.m_currentPageIndex = 0
-            autoPrintPT.Print(printerName)
         End If
 
         Me.Focus()
@@ -164,5 +171,9 @@ Public Class frmPrint
         Dim idx As String = lvReceipt.FocusedItem.Tag
         frmReceiptView.LoadItems(idx)
         frmReceiptView.Show()
+    End Sub
+
+    Private Sub gbReceipt_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles gbReceipt.Enter
+
     End Sub
 End Class

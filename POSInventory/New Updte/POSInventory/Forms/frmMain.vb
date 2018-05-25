@@ -13,6 +13,9 @@
         BackupToolStripMenuItem.Enabled = Not st
         DailyToolStripMenuItem.Enabled = Not st
         OpenStoreToolStripMenuItem.Enabled = Not st
+        SalesToolStripMenuItem1.Enabled = Not st
+        MonthlToolStripMenuItem.Enabled = Not st
+
 
         ToolStripButton1.Enabled = Not st
         ToolStripButton2.Enabled = Not st

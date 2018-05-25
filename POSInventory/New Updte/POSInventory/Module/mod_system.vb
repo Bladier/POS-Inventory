@@ -47,7 +47,7 @@ Module mod_system
             .Item("CashCount") = 0 'No CashCount on OPENING
             .Item("Status") = 1
             .Item("SystemInfo") = Now
-            .Item("Openner") = UserIDX
+            .Item("Openner") = SystemUser.UserID
         End With
         ds.Tables(storeDB).Rows.Add(dsNewRow)
 
