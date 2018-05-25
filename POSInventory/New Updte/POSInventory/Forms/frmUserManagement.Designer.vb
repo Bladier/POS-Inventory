@@ -157,6 +157,7 @@ Partial Class frmUserManagement
         Me.txtPword.Name = "txtPword"
         Me.txtPword.Size = New System.Drawing.Size(178, 22)
         Me.txtPword.TabIndex = 10
+        Me.txtPword.UseSystemPasswordChar = True
         '
         'Label5
         '
@@ -175,6 +176,7 @@ Partial Class frmUserManagement
         Me.txtpword1.Name = "txtpword1"
         Me.txtpword1.Size = New System.Drawing.Size(178, 22)
         Me.txtpword1.TabIndex = 12
+        Me.txtpword1.UseSystemPasswordChar = True
         '
         'Label6
         '

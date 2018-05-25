@@ -175,7 +175,7 @@ Public Class Sys_user
                 .Item("uname") = _userName
                 .Item("UserRole") = _userRole
                 If NewPassword <> "" Then
-                    .Item("Pword") = Encrypt(_password)
+                    .Item("Pword") = Encrypt(NewPassword)
                 End If
                 .Item("Status") = IIf(_UserStatus, 1, 0)
             End With
