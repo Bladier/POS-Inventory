@@ -54,7 +54,7 @@
         If frmMain.dateSet Then
             If txtInitial.Text > 0 Then
                 closestore(txtInitial.Text)
-                printReport()
+
             End If
         Else
             If txtInitial.Text = "" Then Exit Sub

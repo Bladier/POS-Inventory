@@ -1579,11 +1579,11 @@ Partial Public Class dsRepors
         
         Private columnSYSTEMINFO As Global.System.Data.DataColumn
         
-        Private columnOPENNER As Global.System.Data.DataColumn
+        Private _column_Overage_Shortage As Global.System.Data.DataColumn
+        
+        Private columnOPENER As Global.System.Data.DataColumn
         
         Private columnCLOSER As Global.System.Data.DataColumn
-        
-        Private columnOVERSHORT As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -1678,9 +1678,17 @@ Partial Public Class dsRepors
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property OPENNERColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property __Overage_ShortageColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnOPENNER
+                Return Me._column_Overage_Shortage
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property OPENERColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnOPENER
             End Get
         End Property
         
@@ -1689,14 +1697,6 @@ Partial Public Class dsRepors
         Public ReadOnly Property CLOSERColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnCLOSER
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property OVERSHORTColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnOVERSHORT
             End Get
         End Property
         
@@ -1737,9 +1737,9 @@ Partial Public Class dsRepors
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AdddailySalesReportRow(ByVal ID As String, ByVal CURRENTDATE As String, ByVal INITIALBAL As String, ByVal CASHCOUNT As String, ByVal STATUS As String, ByVal REMARKS As String, ByVal SYSTEMINFO As String, ByVal OPENNER As String, ByVal CLOSER As String, ByVal OVERSHORT As String) As dailySalesReportRow
+        Public Overloads Function AdddailySalesReportRow(ByVal ID As String, ByVal CURRENTDATE As String, ByVal INITIALBAL As String, ByVal CASHCOUNT As String, ByVal STATUS As String, ByVal REMARKS As String, ByVal SYSTEMINFO As String, ByVal __Overage_Shortage As String, ByVal OPENER As String, ByVal CLOSER As String) As dailySalesReportRow
             Dim rowdailySalesReportRow As dailySalesReportRow = CType(Me.NewRow,dailySalesReportRow)
-            Dim columnValuesArray() As Object = New Object() {ID, CURRENTDATE, INITIALBAL, CASHCOUNT, STATUS, REMARKS, SYSTEMINFO, OPENNER, CLOSER, OVERSHORT}
+            Dim columnValuesArray() As Object = New Object() {ID, CURRENTDATE, INITIALBAL, CASHCOUNT, STATUS, REMARKS, SYSTEMINFO, __Overage_Shortage, OPENER, CLOSER}
             rowdailySalesReportRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowdailySalesReportRow)
             Return rowdailySalesReportRow
@@ -1769,9 +1769,9 @@ Partial Public Class dsRepors
             Me.columnSTATUS = MyBase.Columns("STATUS")
             Me.columnREMARKS = MyBase.Columns("REMARKS")
             Me.columnSYSTEMINFO = MyBase.Columns("SYSTEMINFO")
-            Me.columnOPENNER = MyBase.Columns("OPENNER")
+            Me._column_Overage_Shortage = MyBase.Columns("`Overage/Shortage")
+            Me.columnOPENER = MyBase.Columns("OPENER")
             Me.columnCLOSER = MyBase.Columns("CLOSER")
-            Me.columnOVERSHORT = MyBase.Columns("OVERSHORT")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1791,12 +1791,14 @@ Partial Public Class dsRepors
             MyBase.Columns.Add(Me.columnREMARKS)
             Me.columnSYSTEMINFO = New Global.System.Data.DataColumn("SYSTEMINFO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSYSTEMINFO)
-            Me.columnOPENNER = New Global.System.Data.DataColumn("OPENNER", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnOPENNER)
+            Me._column_Overage_Shortage = New Global.System.Data.DataColumn("`Overage/Shortage", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me._column_Overage_Shortage.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_column_Overage_Shortage")
+            Me._column_Overage_Shortage.ExtendedProperties.Add("Generator_UserColumnName", "`Overage/Shortage")
+            MyBase.Columns.Add(Me._column_Overage_Shortage)
+            Me.columnOPENER = New Global.System.Data.DataColumn("OPENER", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnOPENER)
             Me.columnCLOSER = New Global.System.Data.DataColumn("CLOSER", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCLOSER)
-            Me.columnOVERSHORT = New Global.System.Data.DataColumn("OVERSHORT", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnOVERSHORT)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3014,16 +3016,31 @@ Partial Public Class dsRepors
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property OPENNER() As String
+        Public Property __Overage_Shortage() As String
             Get
                 Try 
-                    Return CType(Me(Me.tabledailySalesReport.OPENNERColumn),String)
+                    Return CType(Me(Me.tabledailySalesReport.__Overage_ShortageColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'OPENNER' in table 'dailySalesReport' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column '`Overage/Shortage' in table 'dailySalesReport' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabledailySalesReport.OPENNERColumn) = value
+                Me(Me.tabledailySalesReport.__Overage_ShortageColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property OPENER() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabledailySalesReport.OPENERColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'OPENER' in table 'dailySalesReport' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabledailySalesReport.OPENERColumn) = value
             End Set
         End Property
         
@@ -3039,21 +3056,6 @@ Partial Public Class dsRepors
             End Get
             Set
                 Me(Me.tabledailySalesReport.CLOSERColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property OVERSHORT() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tabledailySalesReport.OVERSHORTColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'OVERSHORT' in table 'dailySalesReport' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabledailySalesReport.OVERSHORTColumn) = value
             End Set
         End Property
         
@@ -3143,14 +3145,26 @@ Partial Public Class dsRepors
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsOPENNERNull() As Boolean
-            Return Me.IsNull(Me.tabledailySalesReport.OPENNERColumn)
+        Public Function Is__Overage_ShortageNull() As Boolean
+            Return Me.IsNull(Me.tabledailySalesReport.__Overage_ShortageColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetOPENNERNull()
-            Me(Me.tabledailySalesReport.OPENNERColumn) = Global.System.Convert.DBNull
+        Public Sub Set__Overage_ShortageNull()
+            Me(Me.tabledailySalesReport.__Overage_ShortageColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsOPENERNull() As Boolean
+            Return Me.IsNull(Me.tabledailySalesReport.OPENERColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetOPENERNull()
+            Me(Me.tabledailySalesReport.OPENERColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3163,18 +3177,6 @@ Partial Public Class dsRepors
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetCLOSERNull()
             Me(Me.tabledailySalesReport.CLOSERColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsOVERSHORTNull() As Boolean
-            Return Me.IsNull(Me.tabledailySalesReport.OVERSHORTColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetOVERSHORTNull()
-            Me(Me.tabledailySalesReport.OVERSHORTColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
