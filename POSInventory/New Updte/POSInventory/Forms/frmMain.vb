@@ -194,4 +194,9 @@
     Private Sub CashCountMonitoringToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CashCountMonitoringToolStripMenuItem.Click
         frmCashCountMonitoring.Show()
     End Sub
+
+    Private Sub StockoutToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles StockoutToolStripMenuItem1.Click
+        qryDate.FormType = qryDate.ReportType.stockoutMonthly
+        qryDate.Show()
+    End Sub
 End Class

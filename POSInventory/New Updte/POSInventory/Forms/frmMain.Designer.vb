@@ -33,6 +33,7 @@ Partial Class frmMain
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BackupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MaitenanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CashCountMonitoringToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DailyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -52,7 +53,7 @@ Partial Class frmMain
         Me.tsUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tssOthers = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tmrCurrent = New System.Windows.Forms.Timer(Me.components)
-        Me.CashCountMonitoringToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StockoutToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.statusStrip.SuspendLayout()
@@ -120,6 +121,12 @@ Partial Class frmMain
         Me.MaitenanceToolStripMenuItem.Size = New System.Drawing.Size(199, 22)
         Me.MaitenanceToolStripMenuItem.Text = "&Maitenance"
         '
+        'CashCountMonitoringToolStripMenuItem
+        '
+        Me.CashCountMonitoringToolStripMenuItem.Name = "CashCountMonitoringToolStripMenuItem"
+        Me.CashCountMonitoringToolStripMenuItem.Size = New System.Drawing.Size(199, 22)
+        Me.CashCountMonitoringToolStripMenuItem.Text = "&Cash Count Monitoring"
+        '
         'ReportsToolStripMenuItem
         '
         Me.ReportsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DailyToolStripMenuItem, Me.MonthlToolStripMenuItem})
@@ -138,30 +145,30 @@ Partial Class frmMain
         'SalesToolStripMenuItem
         '
         Me.SalesToolStripMenuItem.Name = "SalesToolStripMenuItem"
-        Me.SalesToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
+        Me.SalesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SalesToolStripMenuItem.Text = "&Sales"
         '
         'StockInToolStripMenuItem
         '
         Me.StockInToolStripMenuItem.Name = "StockInToolStripMenuItem"
-        Me.StockInToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
+        Me.StockInToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.StockInToolStripMenuItem.Text = "&StockIn"
         '
         'InventoryToolStripMenuItem
         '
         Me.InventoryToolStripMenuItem.Name = "InventoryToolStripMenuItem"
-        Me.InventoryToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
+        Me.InventoryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.InventoryToolStripMenuItem.Text = "&Inventory"
         '
         'StockOutToolStripMenuItem
         '
         Me.StockOutToolStripMenuItem.Name = "StockOutToolStripMenuItem"
-        Me.StockOutToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
+        Me.StockOutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.StockOutToolStripMenuItem.Text = "&StockOut"
         '
         'MonthlToolStripMenuItem
         '
-        Me.MonthlToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SalesToolStripMenuItem1})
+        Me.MonthlToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SalesToolStripMenuItem1, Me.StockoutToolStripMenuItem1})
         Me.MonthlToolStripMenuItem.Name = "MonthlToolStripMenuItem"
         Me.MonthlToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.MonthlToolStripMenuItem.Text = "&Monthly"
@@ -169,7 +176,7 @@ Partial Class frmMain
         'SalesToolStripMenuItem1
         '
         Me.SalesToolStripMenuItem1.Name = "SalesToolStripMenuItem1"
-        Me.SalesToolStripMenuItem1.Size = New System.Drawing.Size(100, 22)
+        Me.SalesToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
         Me.SalesToolStripMenuItem1.Text = "&Sales"
         '
         'AboutToolStripMenuItem
@@ -258,11 +265,11 @@ Partial Class frmMain
         '
         Me.tmrCurrent.Enabled = True
         '
-        'CashCountMonitoringToolStripMenuItem
+        'StockoutToolStripMenuItem1
         '
-        Me.CashCountMonitoringToolStripMenuItem.Name = "CashCountMonitoringToolStripMenuItem"
-        Me.CashCountMonitoringToolStripMenuItem.Size = New System.Drawing.Size(199, 22)
-        Me.CashCountMonitoringToolStripMenuItem.Text = "&Cash Count Monitoring"
+        Me.StockoutToolStripMenuItem1.Name = "StockoutToolStripMenuItem1"
+        Me.StockoutToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.StockoutToolStripMenuItem1.Text = "&Stockout"
         '
         'frmMain
         '
@@ -317,5 +324,6 @@ Partial Class frmMain
     Friend WithEvents BackupToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MaitenanceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CashCountMonitoringToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents StockoutToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
 
 End Class

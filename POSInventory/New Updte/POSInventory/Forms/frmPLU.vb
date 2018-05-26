@@ -69,8 +69,10 @@
     End Sub
 
     Private Sub autoselect()
-        lvitemList.Focus()
-        lvitemList.Items(0).Selected = True
+        If lvitemList.Items.Count > 0 Then
+            lvitemList.Focus()
+            lvitemList.Items(0).Selected = True
+        End If
     End Sub
 
     Friend Sub SearchSelect(ByVal str As String)

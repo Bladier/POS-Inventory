@@ -663,4 +663,8 @@ Public Class frmTransaction
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
         Me.Close()
     End Sub
+
+    Private Sub txtSearch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSearch.KeyPress
+        If isEnter(e) Then btnSearch.PerformClick()
+    End Sub
 End Class

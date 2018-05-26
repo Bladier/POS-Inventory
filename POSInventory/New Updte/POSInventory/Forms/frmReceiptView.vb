@@ -15,10 +15,15 @@
             Dim lv As ListViewItem = lvSaleItem.Items.Add(.Item("DLID"))
             lv.SubItems.Add(.Item("ItemCode"))
             lv.SubItems.Add(.Item("Description"))
-            lv.SubItems.Add(.Item("Qty"))
+            Dim tmp As Double = .Item("Qty")
+            lv.SubItems.Add(tmp.ToString("#,##0.00"))
             lv.SubItems.Add(FormatCurrency(.Item("SalePrice")))
             lv.SubItems.Add(FormatCurrency(.Item("RowTotal")))
         End With
+
+    End Sub
+
+    Private Sub frmReceiptView_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
     End Sub
 End Class

@@ -11,6 +11,7 @@ Public Class qryDate
         Inventory = 2
         Sales_Monthly = 3
         stockOut = 4
+        stockoutMonthly = 5
     End Enum
 
     Friend FormType As ReportType = ReportType.StockIn
@@ -26,6 +27,8 @@ Public Class qryDate
                 MonthlySalesReport()
             Case ReportType.stockOut
                 StockOut()
+            Case ReportType.stockoutMonthly
+                StockOutmonthly()
         End Select
     End Sub
 
@@ -157,10 +160,38 @@ Public Class qryDate
         Dim mySql As String
         Dim st As Date = GetFirstDate(monCal.SelectionStart)
         Dim en As Date = GetLastDate(monCal.SelectionEnd)
+        Dim dt As DateTime = Convert.ToDateTime(monCal.SelectionStart.ToShortDateString)
+        Dim format As String = "yyyy-MM-dd"
+        Dim str As String = dt.ToString(format)
 
         mySql = "Select D.CODE, D.CUSTOMER, DL.ITEMCODE, DL.DESCRIPTION, DL.QTY "
         mySql &= "From Doc D INNER JOIN DOCLINES DL ON DL.DOCID = D.DOCID "
-        mySql &= "Where D.CODE LIKE '%STO#%' AND D.DOCDATE BETWEEN '" & st.ToShortDateString & "' AND '" & en.ToShortDateString & "' "
+        mySql &= "Where D.CODE LIKE '%STO#%' AND D.DOCDATE ='" & str & "' "
+
+        Dim dic As New Dictionary(Of String, String)
+        dic.Add("txtMonthOf", "DATE : " & monCal.SelectionStart.ToString("MMMM dd, yyyy"))
+        dic.Add("branchName", "GSC")
+        dic.Add("txtUsername", SystemUser.UserName)
+        dic.Add("txtStock", "StockOut")
+        dic.Add("txtStore", IIf(GetOption("StoreName") = "", "Store not initialize", GetOption("StoreName")))
+
+        frmReport.ReportInit(mySql, "dsStockOut", "Report\rpt_StockOutReport.rdlc", dic)
+        frmReport.Show()
+    End Sub
+
+    Private Sub StockOutmonthly()
+        Dim mySql As String
+        Dim st As Date = GetFirstDate(monCal.SelectionStart)
+        Dim en As Date = GetLastDate(monCal.SelectionEnd)
+        Dim dt As DateTime = Convert.ToDateTime(st.ToShortDateString)
+        Dim format As String = "yyyy-MM-dd"
+        Dim str As String = dt.ToString(format)
+
+        Dim dt1 As DateTime = Convert.ToDateTime(en.ToShortDateString)
+        Dim str1 As String = dt1.ToString(format)
+        mySql = "Select D.DocDate,D.CODE, D.CUSTOMER, DL.ITEMCODE, DL.DESCRIPTION, DL.QTY "
+        mySql &= "From Doc D INNER JOIN DOCLINES DL ON DL.DOCID = D.DOCID "
+        mySql &= "Where D.CODE LIKE '%STO#%' AND D.DOCDATE BETWEEN '" & str & "' AND '" & str1 & "' "
 
         Dim dic As New Dictionary(Of String, String)
         dic.Add("txtMonthOf", "FOR THE MONTH OF " + st.ToString("MMMM yyyy"))
@@ -169,7 +200,7 @@ Public Class qryDate
         dic.Add("txtStock", "StockOut")
         dic.Add("txtStore", IIf(GetOption("StoreName") = "", "Store not initialize", GetOption("StoreName")))
 
-        frmReport.ReportInit(mySql, "dsStockOut", "Report\rpt_StockOutReport.rdlc", dic)
+        frmReport.ReportInit(mySql, "dsStockOut", "Report\rpt_StockOutReportMontly.rdlc", dic)
         frmReport.Show()
     End Sub
 
