@@ -12,7 +12,7 @@
     End Sub
 
 
-    Private Sub loadIMD(Optional ByVal mysql As String = "select * from itemmaster order by itemid asc limit 30")
+    Private Sub loadIMD(Optional ByVal mysql As String = "select * from itemmaster order by itemid asc")
         Dim ds As DataSet = LoadSQL(mysql, "itemmaster")
 
         If ds.Tables(0).Rows.Count = 0 Then lvIMDList.Items.Clear() : Exit Sub

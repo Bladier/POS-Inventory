@@ -14,7 +14,7 @@
 
         queueIMD.Clear()
 
-        mysql = "Select * from ItemMaster Where Onhold=0 limit 100"
+        mysql = "Select * from ItemMaster Where Onhold=0 "
 
         If src <> "" Then
             mysql = "Select * from ItemMaster where Onhold=0"
