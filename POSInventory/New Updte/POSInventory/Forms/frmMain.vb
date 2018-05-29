@@ -66,6 +66,7 @@
     End Sub
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.Text = "POS & INVENTORY SYSTEM" & " | Version " & Me.GetType.Assembly.GetName.Version.ToString
 
         If SystemUser.UserName = Nothing Then
             NotyetLogin()

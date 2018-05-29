@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "POS"
-#define MyAppVersion "1.0.0.1"
+#define MyAppVersion "1.0.0.2"
 #define MyAppPublisher "bl@d3G@geR"
 #define MyAppExeName "POSInventory.exe"
 
@@ -18,7 +18,7 @@ AppPublisher={#MyAppPublisher}
 DefaultDirName={pf}\psi-S0ft\POS
 DefaultGroupName=psi-S0ft\POS
 OutputDir=C:\Users\MISGWAPOHON\Documents\GitHub\POS-Inventory\POSInventory\New Updte\deployment
-OutputBaseFilename=POS1001
+OutputBaseFilename=POS1002
 SetupIconFile=C:\Users\MISGWAPOHON\Documents\GitHub\POS-Inventory\POSInventory\New Updte\deployment\if_system-software-installer_28708.ico
 Compression=lzma
 SolidCompression=yes
