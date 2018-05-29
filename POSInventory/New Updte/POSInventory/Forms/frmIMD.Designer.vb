@@ -260,6 +260,7 @@ Partial Class frmIMD
         '
         Me.txtItemcode.Location = New System.Drawing.Point(74, 14)
         Me.txtItemcode.Name = "txtItemcode"
+        Me.txtItemcode.ReadOnly = True
         Me.txtItemcode.Size = New System.Drawing.Size(212, 20)
         Me.txtItemcode.TabIndex = 0
         '

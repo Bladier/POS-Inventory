@@ -23,6 +23,20 @@
 
     End Sub
 
+    Private Function Make_itmcode() As String
+        Dim str As String = GetOption("ItemIDX")
+
+        If str = "" Then
+            MsgBox("Please add ItemIDX to maintenance", MsgBoxStyle.Critical, "Notification")
+            Return ""
+        End If
+        str = String.Format("{0}{1}", "ITM00000", str)
+
+        Return str
+    End Function
+
+
+
     Private Sub saveIMD()
         If Not isValid() Then Exit Sub
         Dim msg As DialogResult = MsgBox("Do you want to save this item?", MsgBoxStyle.YesNo, "Save")
@@ -46,6 +60,7 @@
 
         MsgBox("Item saved.", MsgBoxStyle.Information, "Save")
         clearfields()
+        UpdateOptions("ItemIDX", GetOption("ItemIDX") + 1)
     End Sub
 
     Private Sub UpdateIMD()
@@ -86,7 +101,7 @@
     End Function
 
     Private Sub clearfields()
-        txtItemcode.Text = ""
+        txtItemcode.Text = Make_itmcode()
         txtDescription.Text = ""
         txtCategory.Text = ""
         txtSubCat.Text = ""
@@ -98,6 +113,8 @@
         chkOnOhold.Checked = False
         txtRemarks.Text = ""
         txtSearch.Text = ""
+
+
     End Sub
 
     Private Sub disablesFields(ByVal st As Boolean)
@@ -171,5 +188,12 @@
 
         disablesFields(True)
         clearfields()
+    End Sub
+
+    Private Sub frmIMD_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        If Make_itmcode() = "" Then
+            Me.Close()
+        End If
+        txtItemcode.Text = Make_itmcode()
     End Sub
 End Class
