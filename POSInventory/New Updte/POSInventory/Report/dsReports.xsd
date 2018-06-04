@@ -64,6 +64,16 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="sales1" msprop:Generator_TableClassName="sales1DataTable" msprop:Generator_TableVarName="tablesales1" msprop:Generator_TablePropName="sales1" msprop:Generator_RowDeletingName="sales1RowDeleting" msprop:Generator_RowChangingName="sales1RowChanging" msprop:Generator_RowEvHandlerName="sales1RowChangeEventHandler" msprop:Generator_RowDeletedName="sales1RowDeleted" msprop:Generator_UserTableName="sales1" msprop:Generator_RowChangedName="sales1RowChanged" msprop:Generator_RowEvArgName="sales1RowChangeEvent" msprop:Generator_RowClassName="sales1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DocDate" msprop:Generator_ColumnVarNameInTable="columnDocDate" msprop:Generator_ColumnPropNameInRow="DocDate" msprop:Generator_ColumnPropNameInTable="DocDateColumn" msprop:Generator_UserColumnName="DocDate" type="xs:string" minOccurs="0" />
+              <xs:element name="Grand_GrandTotal" msprop:Generator_ColumnVarNameInTable="columnGrand_GrandTotal" msprop:Generator_ColumnPropNameInRow="Grand_GrandTotal" msprop:Generator_ColumnPropNameInTable="Grand_GrandTotalColumn" msprop:Generator_UserColumnName="Grand_GrandTotal" type="xs:string" minOccurs="0" />
+              <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status" type="xs:string" minOccurs="0" />
+              <xs:element name="Code" msprop:Generator_ColumnVarNameInTable="columnCode" msprop:Generator_ColumnPropNameInRow="Code" msprop:Generator_ColumnPropNameInTable="CodeColumn" msprop:Generator_UserColumnName="Code" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

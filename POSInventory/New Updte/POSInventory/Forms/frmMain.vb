@@ -167,8 +167,7 @@
     End Sub
 
     Private Sub SalesToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SalesToolStripMenuItem1.Click
-        qryDate.FormType = qryDate.ReportType.Sales_Monthly
-        qryDate.Show()
+        frmMonthlySales.Show()
     End Sub
 
     Private Sub StockOutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles StockOutToolStripMenuItem.Click

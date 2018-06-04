@@ -215,6 +215,12 @@
     <Compile Include="Report\dsReports.vb">
       <DependentUpon>dsReports.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Report\frmMonthlySales.Designer.vb">
+      <DependentUpon>frmMonthlySales.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Report\frmMonthlySales.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Report\frmReport.Designer.vb">
       <DependentUpon>frmReport.vb</DependentUpon>
     </Compile>
@@ -279,6 +285,12 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmMonthlySales.resx">
+      <DependentUpon>frmMonthlySales.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\monthlySales.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rpt_StockOutReportMontly.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
