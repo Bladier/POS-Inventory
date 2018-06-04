@@ -81,6 +81,8 @@ Partial Class frmMonthlySales
         Me.Controls.Add(Me.DateTimePicker2)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.MaximumSize = New System.Drawing.Size(500, 140)
+        Me.MinimumSize = New System.Drawing.Size(500, 140)
         Me.Name = "frmMonthlySales"
         Me.Text = "Monthly Sales"
         Me.ResumeLayout(False)
