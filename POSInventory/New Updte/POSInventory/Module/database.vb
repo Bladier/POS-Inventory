@@ -8,14 +8,16 @@ Friend Module database
     Public con As MySqlConnection
     Public ReaderCon As MySqlConnection
     Friend dbName As String = "w3w1llh@cku" 'Final
-    Friend fbUser As String = "blade"
-    Friend fbPass As String = "bladegamer"
+    'Friend fbUser As String = "blade"
+    'Friend fbPass As String = "bladegamer"
+    Friend fbUser As String = "root"
+    Friend fbPass As String = ""
     Friend fbDataSet As New DataSet
     Friend conStr As String = String.Empty
 
 
     Private DBversion As String = "1" 'Database version.
-    Private language() As String = _
+    Private language() As String =
         {"Connection error failed."} 'verification if the database is connected.
     ''' <summary>
     ''' This method shows the connection string of a database.
@@ -205,6 +207,6 @@ Friend Module database
         ReaderCon.Close()
     End Sub
 
-   
-   
+
+
 End Module
