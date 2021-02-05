@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "POS"
-#define MyAppVersion "1.0.0.3"
+#define MyAppVersion "1.0.0.0"
 #define MyAppPublisher "bl@d3G@geR"
 #define MyAppExeName "POSInventory.exe"
 
@@ -17,9 +17,9 @@ AppVersion={#MyAppVersion}
 AppPublisher={#MyAppPublisher}
 DefaultDirName={pf}\psi-S0ft\POS
 DefaultGroupName=psi-S0ft\POS
-OutputDir=C:\Users\MISGWAPOHON\Documents\GitHub\POS-Inventory\POSInventory\New Updte\deployment
+OutputDir=C:\Users\RDO-13\Documents\GitHub\POS-Inventory\POSInventory\New Updte\deployment
 OutputBaseFilename=POS1003
-SetupIconFile=C:\Users\MISGWAPOHON\Documents\GitHub\POS-Inventory\POSInventory\New Updte\deployment\if_system-software-installer_28708.ico
+SetupIconFile=C:\Users\RDO-13\Documents\GitHub\POS-Inventory\POSInventory\New Updte\POSInventory\Ampeross-Qetto-Power-point.ico
 Compression=lzma
 SolidCompression=yes
 
@@ -30,8 +30,8 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\MISGWAPOHON\Documents\GitHub\POS-Inventory\POSInventory\New Updte\POSInventory\bin\Debug\POSInventory.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\MISGWAPOHON\Documents\GitHub\POS-Inventory\POSInventory\New Updte\POSInventory\bin\Debug\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\RDO-13\Documents\GitHub\POS-Inventory\POSInventory\New Updte\POSInventory\bin\Debug\POSInventory.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\RDO-13\Documents\GitHub\POS-Inventory\POSInventory\New Updte\POSInventory\bin\Debug\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
