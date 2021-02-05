@@ -122,6 +122,7 @@ Public Class Sys_user
         dsNewRow = ds.Tables(fillData).NewRow
         With dsNewRow
             .Item("Firstname") = fname
+            .Item("Middlename") = ""
             .Item("Lastname") = lname
             .Item("Uname") = user
             .Item("Pword") = Encrypt(pass)
