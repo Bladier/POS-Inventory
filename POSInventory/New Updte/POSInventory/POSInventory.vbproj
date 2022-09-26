@@ -58,7 +58,18 @@
     <Reference Include="DeathCodez">
       <HintPath>.\DeathCodez.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.ReportViewer.WinForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.9.10.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -110,6 +121,12 @@
       <DependentUpon>frmCashCountMonitoring.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmCashCountMonitoring.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDiscount.Designer.vb">
+      <DependentUpon>frmDiscount.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDiscount.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmHistory.Designer.vb">
@@ -244,6 +261,9 @@
     <EmbeddedResource Include="Forms\frmCashCountMonitoring.resx">
       <DependentUpon>frmCashCountMonitoring.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDiscount.resx">
+      <DependentUpon>frmDiscount.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmHistory.resx">
       <DependentUpon>frmHistory.vb</DependentUpon>
     </EmbeddedResource>
@@ -330,6 +350,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="packages.config" />
     <None Include="Report\dsReports.xsc">
       <DependentUpon>dsReports.xsd</DependentUpon>
     </None>

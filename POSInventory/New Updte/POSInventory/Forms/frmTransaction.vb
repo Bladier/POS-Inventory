@@ -667,4 +667,24 @@ Public Class frmTransaction
     Private Sub txtSearch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSearch.KeyPress
         If isEnter(e) Then btnSearch.PerformClick()
     End Sub
+
+
+
+
+
+    Private Sub EnterDiscountToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EnterDiscountToolStripMenuItem.Click
+        If lvSale.Items.Count = 0 Then Exit Sub
+        frmDiscount.ht_broughtItems_discounted = ht_BroughtItems
+        frmDiscount.itemcode = lvSale.FocusedItem.SubItems(0).Text
+        frmDiscount.ShowDialog()
+
+        DOC_TOTAL = 0
+        For Each lv As ListViewItem In lvSale.Items
+            DOC_TOTAL += CDbl(lv.SubItems(4).Text)
+        Next
+
+        Display_Total(DOC_TOTAL)
+
+        ht_BroughtItems = frmDiscount.ht_broughtItems_discounted
+    End Sub
 End Class

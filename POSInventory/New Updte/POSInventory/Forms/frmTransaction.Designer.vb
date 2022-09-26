@@ -36,6 +36,8 @@ Partial Class frmTransaction
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.EnterDiscountToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.lblNoVat = New System.Windows.Forms.Label()
         Me.btnPost = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
@@ -50,6 +52,7 @@ Partial Class frmTransaction
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnCustomer = New System.Windows.Forms.Button()
         Me.lblCustomer = New System.Windows.Forms.Label()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.cms.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -69,7 +72,7 @@ Partial Class frmTransaction
         'txtSearch
         '
         Me.txtSearch.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSearch.Location = New System.Drawing.Point(84, 387)
         Me.txtSearch.Name = "txtSearch"
@@ -93,9 +96,10 @@ Partial Class frmTransaction
         'lvSale
         '
         Me.lvSale.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lvSale.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader7, Me.ColumnHeader6})
+        Me.lvSale.ContextMenuStrip = Me.ContextMenuStrip1
         Me.lvSale.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvSale.FullRowSelect = True
         Me.lvSale.GridLines = True
@@ -140,6 +144,18 @@ Partial Class frmTransaction
         '
         Me.ColumnHeader6.Text = "Customer"
         Me.ColumnHeader6.Width = 140
+        '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnterDiscountToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(152, 26)
+        '
+        'EnterDiscountToolStripMenuItem
+        '
+        Me.EnterDiscountToolStripMenuItem.Name = "EnterDiscountToolStripMenuItem"
+        Me.EnterDiscountToolStripMenuItem.Size = New System.Drawing.Size(151, 22)
+        Me.EnterDiscountToolStripMenuItem.Text = "Enter Discount"
         '
         'lblNoVat
         '
@@ -266,7 +282,7 @@ Partial Class frmTransaction
         'GroupBox1
         '
         Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.BackColor = System.Drawing.Color.DimGray
         Me.GroupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.GroupBox1.Controls.Add(Me.btnCustomer)
@@ -329,6 +345,7 @@ Partial Class frmTransaction
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmTransaction"
         Me.Text = "Transaction"
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.cms.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -360,4 +377,6 @@ Partial Class frmTransaction
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents btnCustomer As System.Windows.Forms.Button
     Friend WithEvents lblCustomer As System.Windows.Forms.Label
+    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
+    Friend WithEvents EnterDiscountToolStripMenuItem As ToolStripMenuItem
 End Class
